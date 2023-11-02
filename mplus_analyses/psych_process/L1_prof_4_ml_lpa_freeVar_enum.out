@@ -1,0 +1,448 @@
+Mplus VERSION 8.7 (Mac)
+MUTHEN & MUTHEN
+05/25/2023  10:32 AM
+
+INPUT INSTRUCTIONS
+
+  TITLE:
+  L1_P_4_lpa_freeVar;
+  DATA:
+  FILE = "mplus_analyses/psych_process/L1_prof_4_ml_lpa_freeVar_enum.dat";
+
+  VARIABLE:
+  NAMES = drives cognition affect social wc big_words PCP_ID;
+   MISSING=.;
+   CLASSES = c(4);
+  DEFINE:
+  STANDARDIZE drives cognition affect social wc big_words;
+  ANALYSIS:
+  TYPE = MIXTURE;
+      ESTIMATOR=MLR;
+      STARTS=1000 50;
+      STITERATIONS=50;
+      LRTSTARTS=1000 50 1000 50;
+      PROCESSORS=4;
+  MODEL:
+  %OVERALL%
+  %C#1%
+  [drives cognition affect social wc big_words];
+  drives cognition affect social wc big_words;
+  %C#2%
+  [drives cognition affect social wc big_words];
+  drives cognition affect social wc big_words;
+  %C#3%
+  [drives cognition affect social wc big_words];
+  drives cognition affect social wc big_words;
+  %C#4%
+  [drives cognition affect social wc big_words];
+  drives cognition affect social wc big_words;
+  PLOT:
+  type = plot3;
+
+
+
+*** WARNING in VARIABLE command
+  Note that only the first 8 characters of variable names are used in the output.
+  Shorten variable names to avoid any confusion.
+*** WARNING in MODEL command
+  All variables are uncorrelated with all other variables within class.
+  Check that this is what is intended.
+*** WARNING in PLOT command
+  Note that only the first 8 characters of variable names are used in plots.
+  If variable names are not unique within the first 8 characters, problems
+  may occur.
+   3 WARNING(S) FOUND IN THE INPUT INSTRUCTIONS
+
+
+
+
+L1_P_4_lpa_freeVar;
+
+SUMMARY OF ANALYSIS
+
+Number of groups                                                 1
+Number of observations                                        1670
+
+Number of dependent variables                                    7
+Number of independent variables                                  0
+Number of continuous latent variables                            0
+Number of categorical latent variables                           1
+
+Observed dependent variables
+
+  Continuous
+   DRIVES      COGNITION   AFFECT      SOCIAL      WC          BIG_WORDS
+   PCP_ID
+
+Categorical latent variables
+   C
+
+
+Estimator                                                      MLR
+Information matrix                                        OBSERVED
+Optimization Specifications for the Quasi-Newton Algorithm for
+Continuous Outcomes
+  Maximum number of iterations                                 100
+  Convergence criterion                                  0.100D-05
+Optimization Specifications for the EM Algorithm
+  Maximum number of iterations                                 500
+  Convergence criteria
+    Loglikelihood change                                 0.100D-06
+    Relative loglikelihood change                        0.100D-06
+    Derivative                                           0.100D-05
+Optimization Specifications for the M step of the EM Algorithm for
+Categorical Latent variables
+  Number of M step iterations                                    1
+  M step convergence criterion                           0.100D-05
+  Basis for M step termination                           ITERATION
+Optimization Specifications for the M step of the EM Algorithm for
+Censored, Binary or Ordered Categorical (Ordinal), Unordered
+Categorical (Nominal) and Count Outcomes
+  Number of M step iterations                                    1
+  M step convergence criterion                           0.100D-05
+  Basis for M step termination                           ITERATION
+  Maximum value for logit thresholds                            15
+  Minimum value for logit thresholds                           -15
+  Minimum expected cell size for chi-square              0.100D-01
+Maximum number of iterations for H1                           2000
+Convergence criterion for H1                             0.100D-03
+Optimization algorithm                                         EMA
+Random Starts Specifications
+  Number of initial stage random starts                       1000
+  Number of final stage optimizations                           50
+  Number of initial stage iterations                            50
+  Initial stage convergence criterion                    0.100D+01
+  Random starts scale                                    0.500D+01
+  Random seed for generating random starts                       0
+
+Input data file(s)
+  mplus_analyses/psych_process/L1_prof_4_ml_lpa_freeVar_enum.dat
+Input data format  FREE
+
+
+SUMMARY OF DATA
+
+     Number of missing data patterns             1
+     Number of y missing data patterns           1
+     Number of u missing data patterns           0
+
+
+COVARIANCE COVERAGE OF DATA
+
+Minimum covariance coverage value   0.100
+
+
+     PROPORTION OF DATA PRESENT FOR Y
+
+
+           Covariance Coverage
+              DRIVES        COGNITIO      AFFECT        SOCIAL        WC
+              ________      ________      ________      ________      ________
+ DRIVES         1.000
+ COGNITIO       1.000         1.000
+ AFFECT         1.000         1.000         1.000
+ SOCIAL         1.000         1.000         1.000         1.000
+ WC             1.000         1.000         1.000         1.000         1.000
+ BIG_WORD       1.000         1.000         1.000         1.000         1.000
+ PCP_ID         1.000         1.000         1.000         1.000         1.000
+
+
+           Covariance Coverage
+              BIG_WORD      PCP_ID
+              ________      ________
+ BIG_WORD       1.000
+ PCP_ID         1.000         1.000
+
+
+
+UNIVARIATE SAMPLE STATISTICS
+
+
+     UNIVARIATE HIGHER-ORDER MOMENT DESCRIPTIVE STATISTICS
+
+         Variable/         Mean/     Skewness/   Minimum/ % with                Percentiles
+        Sample Size      Variance    Kurtosis    Maximum  Min/Max      20%/60%    40%/80%    Median
+
+     DRIVES                0.000       0.358      -2.668    0.06%      -0.842     -0.284     -0.039
+            1670.000       1.000       0.166       3.571    0.06%       0.179      0.792
+     COGNITION             0.000       0.212      -3.225    0.06%      -0.832     -0.296     -0.044
+            1670.000       1.000       0.290       4.468    0.06%       0.225      0.815
+     AFFECT                0.000       0.663      -2.958    0.06%      -0.826     -0.317     -0.092
+            1670.000       1.000       0.978       4.396    0.06%       0.162      0.739
+     SOCIAL                0.000       0.460      -2.644    0.06%      -0.844     -0.329     -0.077
+            1670.000       1.000       0.387       3.992    0.06%       0.175      0.792
+     WC                    0.000       1.218      -1.854    0.06%      -0.801     -0.370     -0.167
+            1670.000       1.000       2.407       4.876    0.06%       0.057      0.714
+     BIG_WORDS             0.000       0.326      -3.514    0.06%      -0.843     -0.292     -0.055
+            1670.000       1.000       0.490       4.575    0.06%       0.188      0.835
+     PCP_ID               88.160      -0.797       2.000    0.36%      58.000     90.000     96.000
+            1670.000    1098.636      -0.056     142.000    0.42%     105.000    115.000
+
+RANDOM STARTS RESULTS RANKED FROM THE BEST TO THE WORST LOGLIKELIHOOD VALUES
+
+
+65 perturbed starting value run(s) did not converge or were rejected in the third stage.
+Final stage loglikelihood values at local maxima, seeds, and initial stage start numbers:
+
+          -21755.980  312754           562
+          -21755.980  502495           724
+          -21755.980  106561           686
+          -21755.980  341519           653
+          -21755.980  127215           9
+          -21755.980  252949           487
+          -21755.980  130011           587
+          -21755.980  715561           125
+          -21755.980  822698           621
+          -21755.980  789985           67
+          -21755.980  379823           905
+          -21755.980  953843           651
+          -21755.980  551340           766
+          -21755.980  754100           56
+          -21755.980  907810           795
+          -21755.980  941975           816
+          -21755.980  783165           170
+          -21755.980  843555           952
+          -21755.980  887676           22
+          -21755.980  850840           232
+          -21755.980  609185           181
+          -21755.980  773195           849
+          -21755.980  738393           619
+          -21755.994  520865           763
+          -21755.994  563584           657
+          -21755.994  496710           386
+          -21755.994  147440           514
+          -21755.994  741888           138
+          -21755.994  432513           803
+          -21755.994  150531           154
+          -21755.994  366706           29
+
+19 perturbed starting value run(s) did not converge or were rejected in the third stage.
+
+
+
+THE BEST LOGLIKELIHOOD VALUE HAS BEEN REPLICATED.  RERUN WITH AT LEAST TWICE THE
+RANDOM STARTS TO CHECK THAT THE BEST LOGLIKELIHOOD IS STILL OBTAINED AND REPLICATED.
+
+
+THE MODEL ESTIMATION TERMINATED NORMALLY
+
+
+
+MODEL FIT INFORMATION
+
+Number of Free Parameters                       56
+
+Loglikelihood
+
+          H0 Value                      -21755.980
+          H0 Scaling Correction Factor      1.5684
+            for MLR
+
+Information Criteria
+
+          Akaike (AIC)                   43623.961
+          Bayesian (BIC)                 43927.513
+          Sample-Size Adjusted BIC       43749.609
+            (n* = (n + 2) / 24)
+
+
+
+FINAL CLASS COUNTS AND PROPORTIONS FOR THE LATENT CLASSES
+BASED ON THE ESTIMATED MODEL
+
+    Latent
+   Classes
+
+       1        258.01569          0.15450
+       2        290.50549          0.17396
+       3        409.27271          0.24507
+       4        712.20612          0.42647
+
+
+FINAL CLASS COUNTS AND PROPORTIONS FOR THE LATENT CLASSES
+BASED ON ESTIMATED POSTERIOR PROBABILITIES
+
+    Latent
+   Classes
+
+       1        258.01569          0.15450
+       2        290.50549          0.17396
+       3        409.27271          0.24507
+       4        712.20612          0.42647
+
+
+FINAL CLASS COUNTS AND PROPORTIONS FOR THE LATENT CLASSES
+BASED ON THEIR MOST LIKELY LATENT CLASS MEMBERSHIP
+
+Class Counts and Proportions
+
+    Latent
+   Classes
+
+       1              236          0.14132
+       2              291          0.17425
+       3              356          0.21317
+       4              787          0.47126
+
+
+CLASSIFICATION QUALITY
+
+     Entropy                         0.658
+
+
+Average Latent Class Probabilities for Most Likely Latent Class Membership (Row)
+by Latent Class (Column)
+
+           1        2        3        4
+
+    1   0.740    0.069    0.040    0.151
+    2   0.068    0.894    0.015    0.023
+    3   0.015    0.016    0.811    0.158
+    4   0.074    0.011    0.136    0.780
+
+
+Classification Probabilities for the Most Likely Latent Class Membership (Column)
+by Latent Class (Row)
+
+           1        2        3        4
+
+    1   0.677    0.077    0.020    0.226
+    2   0.056    0.895    0.020    0.029
+    3   0.023    0.011    0.706    0.261
+    4   0.050    0.010    0.079    0.862
+
+
+Logits for the Classification Probabilities for the Most Likely Latent Class Membership (Column)
+by Latent Class (Row)
+
+              1        2        3        4
+
+    1      1.099   -1.078   -2.414    0.000
+    2      0.667    3.438   -0.372    0.000
+    3     -2.431   -3.209    0.995    0.000
+    4     -2.848   -4.506   -2.390    0.000
+
+
+MODEL RESULTS
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+Latent Class 1
+
+ Means
+    DRIVES             0.170      0.272      0.625      0.532
+    COGNITION         -0.107      0.229     -0.467      0.641
+    AFFECT             0.462      0.201      2.300      0.021
+    SOCIAL             0.213      0.162      1.309      0.191
+    WC                -0.925      0.116     -7.983      0.000
+    BIG_WORDS         -0.061      0.261     -0.236      0.814
+    PCP_ID            77.331     15.934      4.853      0.000
+
+ Variances
+    DRIVES             1.739      0.226      7.701      0.000
+    COGNITION          1.504      0.360      4.178      0.000
+    AFFECT             2.014      0.298      6.765      0.000
+    SOCIAL             1.562      0.226      6.909      0.000
+    WC                 0.181      0.068      2.645      0.008
+    BIG_WORDS          1.563      0.331      4.726      0.000
+    PCP_ID           382.461     41.232      9.276      0.000
+
+Latent Class 2
+
+ Means
+    DRIVES            -0.094      0.078     -1.196      0.232
+    COGNITION         -0.369      0.072     -5.126      0.000
+    AFFECT            -0.222      0.082     -2.710      0.007
+    SOCIAL            -0.083      0.063     -1.310      0.190
+    WC                -0.118      0.104     -1.126      0.260
+    BIG_WORDS          0.666      0.080      8.341      0.000
+    PCP_ID            33.822      2.791     12.118      0.000
+
+ Variances
+    DRIVES             0.786      0.100      7.829      0.000
+    COGNITION          0.962      0.103      9.382      0.000
+    AFFECT             0.599      0.097      6.193      0.000
+    SOCIAL             0.696      0.077      9.034      0.000
+    WC                 0.761      0.090      8.494      0.000
+    BIG_WORDS          0.974      0.150      6.477      0.000
+    PCP_ID           382.461     41.232      9.276      0.000
+
+Latent Class 3
+
+ Means
+    DRIVES             0.005      0.136      0.034      0.973
+    COGNITION          0.560      0.132      4.233      0.000
+    AFFECT            -0.338      0.109     -3.111      0.002
+    SOCIAL            -0.366      0.402     -0.910      0.363
+    WC                 0.959      0.504      1.902      0.057
+    BIG_WORDS          0.124      0.264      0.470      0.638
+    PCP_ID           105.268      1.743     60.392      0.000
+
+ Variances
+    DRIVES             0.758      0.217      3.484      0.000
+    COGNITION          0.813      0.103      7.904      0.000
+    AFFECT             0.440      0.094      4.678      0.000
+    SOCIAL             0.716      0.518      1.383      0.167
+    WC                 1.341      0.561      2.388      0.017
+    BIG_WORDS          0.737      0.115      6.421      0.000
+    PCP_ID           382.461     41.232      9.276      0.000
+
+Latent Class 4
+
+ Means
+    DRIVES            -0.026      0.139     -0.185      0.853
+    COGNITION         -0.132      0.364     -0.364      0.716
+    AFFECT             0.117      0.280      0.419      0.675
+    SOCIAL             0.167      0.080      2.094      0.036
+    WC                -0.168      0.395     -0.425      0.671
+    BIG_WORDS         -0.321      0.107     -2.997      0.003
+    PCP_ID           104.416      1.345     77.604      0.000
+
+ Variances
+    DRIVES             0.944      0.097      9.689      0.000
+    COGNITION          0.683      0.208      3.287      0.001
+    AFFECT             0.941      0.401      2.347      0.019
+    SOCIAL             0.960      0.124      7.755      0.000
+    WC                 0.326      0.191      1.709      0.087
+    BIG_WORDS          0.664      0.114      5.834      0.000
+    PCP_ID           382.461     41.232      9.276      0.000
+
+Categorical Latent Variables
+
+ Means
+    C#1               -1.015      0.308     -3.294      0.001
+    C#2               -0.897      0.290     -3.087      0.002
+    C#3               -0.554      1.230     -0.450      0.652
+
+
+QUALITY OF NUMERICAL RESULTS
+
+     Condition Number for the Information Matrix              0.152E-03
+       (ratio of smallest to largest eigenvalue)
+
+
+PLOT INFORMATION
+
+The following plots are available:
+
+  Histograms (sample values)
+  Scatterplots (sample values)
+  Estimated overall and class-specific distributions
+
+     Beginning Time:  10:32:16
+        Ending Time:  10:32:33
+       Elapsed Time:  00:00:17
+
+
+
+MUTHEN & MUTHEN
+3463 Stoner Ave.
+Los Angeles, CA  90066
+
+Tel: (310) 391-9971
+Fax: (310) 391-8971
+Web: www.StatModel.com
+Support: Support@StatModel.com
+
+Copyright (c) 1998-2021 Muthen & Muthen

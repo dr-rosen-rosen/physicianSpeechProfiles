@@ -1,0 +1,40 @@
+TITLE:
+L1_P_6_lpa_freeVar;
+DATA:
+FILE = "mplus_analyses/sum_vars/L1_prof_6_ml_lpa_freeVar_enum.dat";
+ 
+VARIABLE:
+NAMES = analytic clout authentic tone wc big_words PCP_ID; 
+ MISSING=.;
+ CLASSES = c(6);
+DEFINE:
+STANDARDIZE analytic clout authentic tone wc big_words;
+ANALYSIS:
+TYPE = MIXTURE;
+    ESTIMATOR=MLR;
+    STARTS=1000 50;
+    STITERATIONS=50;
+    LRTSTARTS=1000 50 1000 50;
+    PROCESSORS=4;
+MODEL:
+%OVERALL%
+%C#1%
+[analytic clout authentic tone wc big_words];
+analytic clout authentic tone wc big_words;
+%C#2%
+[analytic clout authentic tone wc big_words];
+analytic clout authentic tone wc big_words;
+%C#3%
+[analytic clout authentic tone wc big_words];
+analytic clout authentic tone wc big_words;
+%C#4%
+[analytic clout authentic tone wc big_words];
+analytic clout authentic tone wc big_words;
+%C#5%
+[analytic clout authentic tone wc big_words];
+analytic clout authentic tone wc big_words;
+%C#6%
+[analytic clout authentic tone wc big_words];
+analytic clout authentic tone wc big_words;
+PLOT:
+type = plot3;

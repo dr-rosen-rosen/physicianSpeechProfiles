@@ -1,0 +1,1708 @@
+Mplus VERSION 8.9 (Mac)
+MUTHEN & MUTHEN
+05/26/2023  10:37 AM
+
+INPUT INSTRUCTIONS
+
+  TITLE:
+  L2_6_P_7_lpa_freeVar;
+  DATA:
+  FILE = "mplus_analyses/sum_vars/L2_6_P_7_ml_lpa_freeVar.dat";
+
+  VARIABLE:
+  NAMES = analytic clout authentic tone wc big_words PCP_ID;
+   MISSING=.;
+   CLASSES = BC(6) c(7);
+  CLUSTER IS PCP_ID;
+  WITHIN ARE analytic clout authentic tone wc big_words;
+  BETWEEN ARE BC;
+  DEFINE:
+  STANDARDIZE analytic clout authentic tone wc big_words;
+  ANALYSIS:
+  TYPE = MIXTURE TWOLEVEL;
+      ESTIMATOR=MLR;
+      STARTS=1000 200;
+      STITERATIONS=50;
+      LRTSTARTS=1000 50 1000 50;
+      PROCESSORS=4;
+  MODEL:
+  %WITHIN%
+  %OVERALL%
+  %BETWEEN%
+  %OVERALL%
+  c ON BC;
+  MODEL c:
+  %WITHIN%
+  %C#1%
+  [analytic clout authentic tone wc big_words];
+  analytic clout authentic tone wc big_words;
+  %C#2%
+  [analytic clout authentic tone wc big_words];
+  analytic clout authentic tone wc big_words;
+  %C#3%
+  [analytic clout authentic tone wc big_words];
+  analytic clout authentic tone wc big_words;
+  %C#4%
+  [analytic clout authentic tone wc big_words];
+  analytic clout authentic tone wc big_words;
+  %C#5%
+  [analytic clout authentic tone wc big_words];
+  analytic clout authentic tone wc big_words;
+  %C#6%
+  [analytic clout authentic tone wc big_words];
+  analytic clout authentic tone wc big_words;
+  %C#7%
+  [analytic clout authentic tone wc big_words];
+  analytic clout authentic tone wc big_words;
+  SAVEDATA:
+  file=mlLpa_L2_6_L1_7.dat; save=cprob; TECH4 IS tech4.dat;
+  PLOT:
+  type = plot3;
+
+
+
+*** WARNING in VARIABLE command
+  Note that only the first 8 characters of variable names are used in the output.
+  Shorten variable names to avoid any confusion.
+*** WARNING in MODEL command
+  Variable is uncorrelated with all other variables within class: ANALYTIC
+*** WARNING in MODEL command
+  Variable is uncorrelated with all other variables within class: CLOUT
+*** WARNING in MODEL command
+  Variable is uncorrelated with all other variables within class: AUTHENTIC
+*** WARNING in MODEL command
+  Variable is uncorrelated with all other variables within class: TONE
+*** WARNING in MODEL command
+  Variable is uncorrelated with all other variables within class: WC
+*** WARNING in MODEL command
+  Variable is uncorrelated with all other variables within class: BIG_WORDS
+*** WARNING in MODEL command
+  At least one variable is uncorrelated with all other variables within class.
+  Check that this is what is intended.
+*** WARNING in PLOT command
+  Note that only the first 8 characters of variable names are used in plots.
+  If variable names are not unique within the first 8 characters, problems
+  may occur.
+   9 WARNING(S) FOUND IN THE INPUT INSTRUCTIONS
+
+
+
+
+L2_6_P_7_lpa_freeVar;
+
+SUMMARY OF ANALYSIS
+
+Number of groups                                                 1
+Number of observations                                        1672
+
+Number of dependent variables                                    6
+Number of independent variables                                  0
+Number of continuous latent variables                            0
+Number of categorical latent variables                           2
+
+Observed dependent variables
+
+  Continuous
+   ANALYTIC    CLOUT       AUTHENTIC   TONE        WC          BIG_WORDS
+
+Categorical latent variables
+   BC          C
+
+Variables with special functions
+
+  Cluster variable      PCP_ID
+
+  Within variables
+   ANALYTIC    CLOUT       AUTHENTI    TONE        WC          BIG_WORD
+
+
+Estimator                                                      MLR
+Information matrix                                        OBSERVED
+Optimization Specifications for the Quasi-Newton Algorithm for
+Continuous Outcomes
+  Maximum number of iterations                                 100
+  Convergence criterion                                  0.100D-05
+Optimization Specifications for the EM Algorithm
+  Maximum number of iterations                                 500
+  Convergence criteria
+    Loglikelihood change                                 0.100D-02
+    Relative loglikelihood change                        0.100D-05
+    Derivative                                           0.100D-02
+Optimization Specifications for the M step of the EM Algorithm for
+Categorical Latent variables
+  Number of M step iterations                                    1
+  M step convergence criterion                           0.100D-02
+  Basis for M step termination                           ITERATION
+Optimization Specifications for the M step of the EM Algorithm for
+Censored, Binary or Ordered Categorical (Ordinal), Unordered
+Categorical (Nominal) and Count Outcomes
+  Number of M step iterations                                    1
+  M step convergence criterion                           0.100D-02
+  Basis for M step termination                           ITERATION
+  Maximum value for logit thresholds                            15
+  Minimum value for logit thresholds                           -15
+  Minimum expected cell size for chi-square              0.100D-01
+Maximum number of iterations for H1                           2000
+Convergence criterion for H1                             0.100D-03
+Optimization algorithm                                         EMA
+Integration Specifications
+  Type                                                    STANDARD
+  Number of integration points                                  15
+  Dimensions of numerical integration                            0
+  Adaptive quadrature                                           ON
+Random Starts Specifications
+  Number of initial stage random starts                       1000
+  Number of final stage optimizations                          200
+  Number of initial stage iterations                            50
+  Initial stage convergence criterion                    0.100D+01
+  Random starts scale                                    0.500D+01
+  Random seed for generating random starts                       0
+Parameterization                                             LOGIT
+Cholesky                                                       OFF
+
+Input data file(s)
+  mplus_analyses/sum_vars/L2_6_P_7_ml_lpa_freeVar.dat
+Input data format  FREE
+
+
+SUMMARY OF DATA
+
+     Number of missing data patterns             1
+     Number of y missing data patterns           1
+     Number of u missing data patterns           0
+     Number of clusters                        116
+
+
+
+COVARIANCE COVERAGE OF DATA
+
+Minimum covariance coverage value   0.100
+
+
+     PROPORTION OF DATA PRESENT FOR Y
+
+
+           Covariance Coverage
+              ANALYTIC      CLOUT         AUTHENTI      TONE          WC
+              ________      ________      ________      ________      ________
+ ANALYTIC       1.000
+ CLOUT          1.000         1.000
+ AUTHENTI       1.000         1.000         1.000
+ TONE           1.000         1.000         1.000         1.000
+ WC             1.000         1.000         1.000         1.000         1.000
+ BIG_WORD       1.000         1.000         1.000         1.000         1.000
+
+
+           Covariance Coverage
+              BIG_WORD
+              ________
+ BIG_WORD       1.000
+
+
+
+UNIVARIATE SAMPLE STATISTICS
+
+
+     UNIVARIATE HIGHER-ORDER MOMENT DESCRIPTIVE STATISTICS
+
+         Variable/         Mean/     Skewness/   Minimum/ % with                Percentiles
+        Sample Size      Variance    Kurtosis    Maximum  Min/Max      20%/60%    40%/80%    Median
+
+     ANALYTIC              0.000       1.350      -1.279    1.67%      -0.818     -0.476     -0.258
+            1672.000       1.000       2.045       5.202    0.06%      -0.029      0.703
+     CLOUT                 0.000      -1.716      -5.773    0.06%      -0.610      0.087      0.305
+            1672.000       1.000       3.556       0.973    6.88%       0.502      0.791
+     AUTHENTIC             0.000       0.159      -2.584    0.06%      -0.867     -0.326     -0.042
+            1672.000       1.000      -0.318       3.354    0.06%       0.245      0.889
+     TONE                  0.000       0.515      -2.462    0.06%      -0.872     -0.362     -0.127
+            1672.000       1.000      -0.083       3.099    0.06%       0.147      0.848
+     WC                    0.000       1.215      -2.015    0.06%      -0.800     -0.370     -0.169
+            1672.000       1.000       2.403       4.875    0.06%       0.057      0.716
+     BIG_WORDS             0.000       0.356      -3.516    0.06%      -0.841     -0.290     -0.060
+            1672.000       1.000       0.509       4.567    0.06%       0.183      0.842
+
+RANDOM STARTS RESULTS RANKED FROM THE BEST TO THE WORST LOGLIKELIHOOD VALUES
+
+
+58 perturbed starting value run(s) did not converge or were rejected in the third stage.
+Final stage loglikelihood values at local maxima, seeds, and initial stage start numbers:
+
+          -12233.096  995648           936
+          -12233.620  406935           958
+          -12233.621  848890           95
+          -12234.157  7195             697
+          -12237.258  354395           486
+          -12241.243  350608           334
+          -12241.787  699810           571
+          -12242.242  695155           150
+          -12242.695  22089            143
+          -12243.156  21132            351
+          -12243.236  514326           325
+          -12245.511  55115            408
+          -12246.970  851945           18
+          -12247.393  118438           601
+          -12250.623  266038           672
+          -12253.932  166851           638
+          -12269.195  251680           794
+          -12292.825  988761           475
+
+182 perturbed starting value run(s) did not converge or were rejected in the third stage.
+
+
+
+THE BEST LOGLIKELIHOOD VALUE HAS BEEN REPLICATED.  RERUN WITH AT LEAST TWICE THE
+RANDOM STARTS TO CHECK THAT THE BEST LOGLIKELIHOOD IS STILL OBTAINED AND REPLICATED.
+
+     THE STANDARD ERRORS OF THE MODEL PARAMETER ESTIMATES MAY NOT BE
+     TRUSTWORTHY FOR SOME PARAMETERS DUE TO A NON-POSITIVE DEFINITE
+     FIRST-ORDER DERIVATIVE PRODUCT MATRIX.  THIS MAY BE DUE TO THE STARTING
+     VALUES BUT MAY ALSO BE AN INDICATION OF MODEL NONIDENTIFICATION.  THE
+     CONDITION NUMBER IS      -0.510D-20.  PROBLEM INVOLVING THE FOLLOWING PARAMETER:
+     Parameter 102, %BETWEEN%: C#1 ON BC#2
+
+     THE NONIDENTIFICATION IS MOST LIKELY DUE TO HAVING MORE PARAMETERS THAN THE
+     NUMBER OF CLUSTERS. REDUCE THE NUMBER OF PARAMETERS.
+
+     ONE OR MORE MULTINOMIAL LOGIT PARAMETERS WERE FIXED TO AVOID SINGULARITY
+     OF THE INFORMATION MATRIX.  THE SINGULARITY IS MOST LIKELY BECAUSE THE
+     MODEL IS NOT IDENTIFIED, OR BECAUSE OF EMPTY CELLS IN THE JOINT
+     DISTRIBUTION OF THE CATEGORICAL LATENT VARIABLES AND ANY INDEPENDENT
+     VARIABLES.  THE FOLLOWING PARAMETERS WERE FIXED:
+     Parameter 96, %BETWEEN%: C#1 ON BC#1
+     Parameter 108, %BETWEEN%: C#1 ON BC#3
+     Parameter 115, %BETWEEN%: C#2 ON BC#4
+     Parameter 112, %BETWEEN%: C#5 ON BC#3
+     Parameter 119, %BETWEEN%: C#6 ON BC#4
+     Parameter 120, %BETWEEN%: C#1 ON BC#5
+     Parameter 101, %BETWEEN%: C#6 ON BC#1
+
+
+THE MODEL ESTIMATION TERMINATED NORMALLY
+
+
+
+MODEL FIT INFORMATION
+
+Number of Free Parameters                      125
+
+Loglikelihood
+
+          H0 Value                      -12233.096
+          H0 Scaling Correction Factor      2.7056
+            for MLR
+
+Information Criteria
+
+          Akaike (AIC)                   24716.193
+          Bayesian (BIC)                 25393.915
+          Sample-Size Adjusted BIC       24996.808
+            (n* = (n + 2) / 24)
+
+
+
+MODEL RESULTS USE THE LATENT CLASS VARIABLE ORDER
+
+   BC  C
+
+
+FINAL CLASS COUNTS AND PROPORTIONS FOR THE LATENT CLASS PATTERNS
+BASED ON ESTIMATED POSTERIOR PROBABILITIES
+
+  Latent Class
+    Pattern
+
+    1  1          0.00000          0.00000
+    1  2        127.42049          0.07621
+    1  3         15.63172          0.00935
+    1  4          3.59541          0.00215
+    1  5          6.86171          0.00410
+    1  6          0.00000          0.00000
+    1  7         76.95999          0.04603
+    2  1          0.00000          0.00000
+    2  2          3.94793          0.00236
+    2  3         48.62260          0.02908
+    2  4         10.90876          0.00652
+    2  5          2.70264          0.00162
+    2  6        150.40814          0.08996
+    2  7         26.20112          0.01567
+    3  1          0.00000          0.00000
+    3  2          9.51848          0.00569
+    3  3         18.33875          0.01097
+    3  4         99.27122          0.05937
+    3  5          0.00000          0.00000
+    3  6          8.73081          0.00522
+    3  7          1.11467          0.00067
+    4  1        111.39217          0.06662
+    4  2          0.00000          0.00000
+    4  3        141.70571          0.08475
+    4  4         10.50869          0.00629
+    4  5         96.27646          0.05758
+    4  6          6.66694          0.00399
+    4  7          0.00000          0.00000
+    5  1        217.89900          0.13032
+    5  2          0.85131          0.00051
+    5  3          0.00003          0.00000
+    5  4         61.95663          0.03706
+    5  5         25.03092          0.01497
+    5  6         48.89696          0.02924
+    5  7          4.82993          0.00289
+    6  1          0.00000          0.00000
+    6  2         11.25157          0.00673
+    6  3          5.67772          0.00340
+    6  4         16.13370          0.00965
+    6  5         53.14549          0.03179
+    6  6          7.94102          0.00475
+    6  7        241.60132          0.14450
+
+
+FINAL CLASS COUNTS AND PROPORTIONS FOR EACH LATENT CLASS VARIABLE
+BASED ON ESTIMATED POSTERIOR PROBABILITIES
+
+  Latent Class
+    Variable    Class
+
+    BC             1       230.46933          0.13784
+                   2       242.79120          0.14521
+                   3       136.97392          0.08192
+                   4       366.54996          0.21923
+                   5       359.46475          0.21499
+                   6       335.75082          0.20081
+    C              1       329.29117          0.19694
+                   2       152.98978          0.09150
+                   3       229.97652          0.13755
+                   4       202.37440          0.12104
+                   5       184.01721          0.11006
+                   6       222.64388          0.13316
+                   7       350.70700          0.20975
+
+
+FINAL CLASS COUNTS AND PROPORTIONS FOR THE LATENT CLASS PATTERNS
+BASED ON THEIR MOST LIKELY LATENT CLASS PATTERN
+
+Class Counts and Proportions
+
+  Latent Class
+    Pattern
+
+    1  1                0          0.00000
+    1  2              125          0.07476
+    1  3               12          0.00718
+    1  4                3          0.00179
+    1  5                7          0.00419
+    1  6                0          0.00000
+    1  7               85          0.05084
+    2  1                0          0.00000
+    2  2                2          0.00120
+    2  3               48          0.02871
+    2  4               10          0.00598
+    2  5                2          0.00120
+    2  6              166          0.09928
+    2  7               23          0.01376
+    3  1                1          0.00060
+    3  2                7          0.00419
+    3  3               15          0.00897
+    3  4              106          0.06340
+    3  5                0          0.00000
+    3  6                7          0.00419
+    3  7                0          0.00000
+    4  1              114          0.06818
+    4  2                0          0.00000
+    4  3              138          0.08254
+    4  4                9          0.00538
+    4  5              110          0.06579
+    4  6                4          0.00239
+    4  7                0          0.00000
+    5  1              225          0.13457
+    5  2                1          0.00060
+    5  3                0          0.00000
+    5  4               53          0.03170
+    5  5               24          0.01435
+    5  6               40          0.02392
+    5  7                3          0.00179
+    6  1                0          0.00000
+    6  2                7          0.00419
+    6  3                3          0.00179
+    6  4               17          0.01017
+    6  5               56          0.03349
+    6  6                6          0.00359
+    6  7              243          0.14533
+
+
+FINAL CLASS COUNTS AND PROPORTIONS FOR EACH LATENT CLASS VARIABLE
+BASED ON THEIR MOST LIKELY LATENT CLASS PATTERN
+
+  Latent Class
+    Variable    Class
+
+    BC             1             232          0.13876
+                   2             251          0.15012
+                   3             136          0.08134
+                   4             375          0.22428
+                   5             346          0.20694
+                   6             332          0.19856
+    C              1             340          0.20335
+                   2             142          0.08493
+                   3             216          0.12919
+                   4             198          0.11842
+                   5             199          0.11902
+                   6             223          0.13337
+                   7             354          0.21172
+
+
+CLASSIFICATION QUALITY
+
+     Entropy                         0.874
+
+
+MODEL RESULTS
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+Within Level
+
+Latent Class Pattern 1 1
+
+ Means
+    ANALYTIC          -0.774      0.028    -27.487      0.000
+    CLOUT              0.385      0.081      4.759      0.000
+    AUTHENTIC         -0.102      0.298     -0.341      0.733
+    TONE              -0.136      0.378     -0.359      0.720
+    WC                 0.138      0.342      0.404      0.686
+    BIG_WORDS         -0.347      0.120     -2.893      0.004
+
+ Variances
+    ANALYTIC           0.067      0.019      3.454      0.001
+    CLOUT              0.160      0.030      5.369      0.000
+    AUTHENTIC          0.871      0.195      4.462      0.000
+    TONE               0.797      0.243      3.282      0.001
+    WC                 0.554      0.158      3.506      0.000
+    BIG_WORDS          0.639      0.165      3.878      0.000
+
+Latent Class Pattern 1 2
+
+ Means
+    ANALYTIC           1.349      0.227      5.937      0.000
+    CLOUT             -0.785      0.247     -3.175      0.002
+    AUTHENTIC          0.499      0.160      3.118      0.002
+    TONE              -0.294      0.160     -1.834      0.067
+    WC                 0.348      0.282      1.235      0.217
+    BIG_WORDS          0.975      0.264      3.690      0.000
+
+ Variances
+    ANALYTIC           1.246      0.185      6.735      0.000
+    CLOUT              0.882      0.127      6.945      0.000
+    AUTHENTIC          0.743      0.117      6.340      0.000
+    TONE               0.598      0.165      3.627      0.000
+    WC                 1.277      0.286      4.466      0.000
+    BIG_WORDS          1.110      0.361      3.075      0.002
+
+Latent Class Pattern 1 3
+
+ Means
+    ANALYTIC          -0.166      0.323     -0.515      0.606
+    CLOUT              0.029      0.286      0.101      0.919
+    AUTHENTIC         -0.280      0.706     -0.396      0.692
+    TONE               0.855      0.289      2.961      0.003
+    WC                -0.555      0.161     -3.459      0.001
+    BIG_WORDS         -0.588      0.148     -3.960      0.000
+
+ Variances
+    ANALYTIC           0.438      0.069      6.384      0.000
+    CLOUT              0.393      0.153      2.563      0.010
+    AUTHENTIC          0.740      0.465      1.593      0.111
+    TONE               1.139      0.622      1.830      0.067
+    WC                 0.235      0.067      3.484      0.000
+    BIG_WORDS          0.709      0.170      4.162      0.000
+
+Latent Class Pattern 1 4
+
+ Means
+    ANALYTIC          -0.640      0.155     -4.143      0.000
+    CLOUT             -1.473      0.421     -3.496      0.000
+    AUTHENTIC          1.020      0.164      6.210      0.000
+    TONE              -0.117      0.353     -0.331      0.741
+    WC                -0.159      0.326     -0.487      0.626
+    BIG_WORDS          0.152      0.273      0.556      0.578
+
+ Variances
+    ANALYTIC           0.173      0.083      2.097      0.036
+    CLOUT              1.695      0.266      6.365      0.000
+    AUTHENTIC          0.660      0.147      4.495      0.000
+    TONE               1.018      0.659      1.544      0.122
+    WC                 0.649      0.205      3.160      0.002
+    BIG_WORDS          1.299      0.289      4.494      0.000
+
+Latent Class Pattern 1 5
+
+ Means
+    ANALYTIC          -0.269      0.120     -2.244      0.025
+    CLOUT              0.926      0.071     12.986      0.000
+    AUTHENTIC         -0.738      0.185     -3.997      0.000
+    TONE               0.273      0.284      0.964      0.335
+    WC                -0.694      0.099     -7.002      0.000
+    BIG_WORDS         -0.177      0.126     -1.404      0.160
+
+ Variances
+    ANALYTIC           0.357      0.096      3.718      0.000
+    CLOUT              0.003      0.007      0.407      0.684
+    AUTHENTIC          0.794      0.275      2.891      0.004
+    TONE               1.312      0.184      7.115      0.000
+    WC                 0.312      0.091      3.428      0.001
+    BIG_WORDS          0.925      0.163      5.683      0.000
+
+Latent Class Pattern 1 6
+
+ Means
+    ANALYTIC          -0.096      0.122     -0.785      0.433
+    CLOUT             -0.356      0.195     -1.828      0.068
+    AUTHENTIC          0.130      0.146      0.891      0.373
+    TONE              -0.367      0.101     -3.627      0.000
+    WC                 1.203      0.201      5.995      0.000
+    BIG_WORDS         -0.094      0.111     -0.852      0.394
+
+ Variances
+    ANALYTIC           0.323      0.048      6.656      0.000
+    CLOUT              0.653      0.143      4.572      0.000
+    AUTHENTIC          0.637      0.099      6.450      0.000
+    TONE               0.408      0.074      5.478      0.000
+    WC                 1.508      0.245      6.153      0.000
+    BIG_WORDS          0.456      0.090      5.043      0.000
+
+Latent Class Pattern 1 7
+
+ Means
+    ANALYTIC           0.819      0.170      4.821      0.000
+    CLOUT              0.551      0.083      6.674      0.000
+    AUTHENTIC         -0.222      0.160     -1.391      0.164
+    TONE              -0.149      0.103     -1.440      0.150
+    WC                -0.225      0.154     -1.460      0.144
+    BIG_WORDS          0.351      0.090      3.912      0.000
+
+ Variances
+    ANALYTIC           1.058      0.123      8.629      0.000
+    CLOUT              0.085      0.024      3.564      0.000
+    AUTHENTIC          0.822      0.143      5.735      0.000
+    TONE               0.787      0.115      6.866      0.000
+    WC                 0.532      0.152      3.494      0.000
+    BIG_WORDS          0.780      0.117      6.641      0.000
+
+Latent Class Pattern 2 1
+
+ Means
+    ANALYTIC          -0.774      0.028    -27.487      0.000
+    CLOUT              0.385      0.081      4.759      0.000
+    AUTHENTIC         -0.102      0.298     -0.341      0.733
+    TONE              -0.136      0.378     -0.359      0.720
+    WC                 0.138      0.342      0.404      0.686
+    BIG_WORDS         -0.347      0.120     -2.893      0.004
+
+ Variances
+    ANALYTIC           0.067      0.019      3.454      0.001
+    CLOUT              0.160      0.030      5.369      0.000
+    AUTHENTIC          0.871      0.195      4.462      0.000
+    TONE               0.797      0.243      3.282      0.001
+    WC                 0.554      0.158      3.506      0.000
+    BIG_WORDS          0.639      0.165      3.878      0.000
+
+Latent Class Pattern 2 2
+
+ Means
+    ANALYTIC           1.349      0.227      5.937      0.000
+    CLOUT             -0.785      0.247     -3.175      0.002
+    AUTHENTIC          0.499      0.160      3.118      0.002
+    TONE              -0.294      0.160     -1.834      0.067
+    WC                 0.348      0.282      1.235      0.217
+    BIG_WORDS          0.975      0.264      3.690      0.000
+
+ Variances
+    ANALYTIC           1.246      0.185      6.735      0.000
+    CLOUT              0.882      0.127      6.945      0.000
+    AUTHENTIC          0.743      0.117      6.340      0.000
+    TONE               0.598      0.165      3.627      0.000
+    WC                 1.277      0.286      4.466      0.000
+    BIG_WORDS          1.110      0.361      3.075      0.002
+
+Latent Class Pattern 2 3
+
+ Means
+    ANALYTIC          -0.166      0.323     -0.515      0.606
+    CLOUT              0.029      0.286      0.101      0.919
+    AUTHENTIC         -0.280      0.706     -0.396      0.692
+    TONE               0.855      0.289      2.961      0.003
+    WC                -0.555      0.161     -3.459      0.001
+    BIG_WORDS         -0.588      0.148     -3.960      0.000
+
+ Variances
+    ANALYTIC           0.438      0.069      6.384      0.000
+    CLOUT              0.393      0.153      2.563      0.010
+    AUTHENTIC          0.740      0.465      1.593      0.111
+    TONE               1.139      0.622      1.830      0.067
+    WC                 0.235      0.067      3.484      0.000
+    BIG_WORDS          0.709      0.170      4.162      0.000
+
+Latent Class Pattern 2 4
+
+ Means
+    ANALYTIC          -0.640      0.155     -4.143      0.000
+    CLOUT             -1.473      0.421     -3.496      0.000
+    AUTHENTIC          1.020      0.164      6.210      0.000
+    TONE              -0.117      0.353     -0.331      0.741
+    WC                -0.159      0.326     -0.487      0.626
+    BIG_WORDS          0.152      0.273      0.556      0.578
+
+ Variances
+    ANALYTIC           0.173      0.083      2.097      0.036
+    CLOUT              1.695      0.266      6.365      0.000
+    AUTHENTIC          0.660      0.147      4.495      0.000
+    TONE               1.018      0.659      1.544      0.122
+    WC                 0.649      0.205      3.160      0.002
+    BIG_WORDS          1.299      0.289      4.494      0.000
+
+Latent Class Pattern 2 5
+
+ Means
+    ANALYTIC          -0.269      0.120     -2.244      0.025
+    CLOUT              0.926      0.071     12.986      0.000
+    AUTHENTIC         -0.738      0.185     -3.997      0.000
+    TONE               0.273      0.284      0.964      0.335
+    WC                -0.694      0.099     -7.002      0.000
+    BIG_WORDS         -0.177      0.126     -1.404      0.160
+
+ Variances
+    ANALYTIC           0.357      0.096      3.718      0.000
+    CLOUT              0.003      0.007      0.407      0.684
+    AUTHENTIC          0.794      0.275      2.891      0.004
+    TONE               1.312      0.184      7.115      0.000
+    WC                 0.312      0.091      3.428      0.001
+    BIG_WORDS          0.925      0.163      5.683      0.000
+
+Latent Class Pattern 2 6
+
+ Means
+    ANALYTIC          -0.096      0.122     -0.785      0.433
+    CLOUT             -0.356      0.195     -1.828      0.068
+    AUTHENTIC          0.130      0.146      0.891      0.373
+    TONE              -0.367      0.101     -3.627      0.000
+    WC                 1.203      0.201      5.995      0.000
+    BIG_WORDS         -0.094      0.111     -0.852      0.394
+
+ Variances
+    ANALYTIC           0.323      0.048      6.656      0.000
+    CLOUT              0.653      0.143      4.572      0.000
+    AUTHENTIC          0.637      0.099      6.450      0.000
+    TONE               0.408      0.074      5.478      0.000
+    WC                 1.508      0.245      6.153      0.000
+    BIG_WORDS          0.456      0.090      5.043      0.000
+
+Latent Class Pattern 2 7
+
+ Means
+    ANALYTIC           0.819      0.170      4.821      0.000
+    CLOUT              0.551      0.083      6.674      0.000
+    AUTHENTIC         -0.222      0.160     -1.391      0.164
+    TONE              -0.149      0.103     -1.440      0.150
+    WC                -0.225      0.154     -1.460      0.144
+    BIG_WORDS          0.351      0.090      3.912      0.000
+
+ Variances
+    ANALYTIC           1.058      0.123      8.629      0.000
+    CLOUT              0.085      0.024      3.564      0.000
+    AUTHENTIC          0.822      0.143      5.735      0.000
+    TONE               0.787      0.115      6.866      0.000
+    WC                 0.532      0.152      3.494      0.000
+    BIG_WORDS          0.780      0.117      6.641      0.000
+
+Latent Class Pattern 3 1
+
+ Means
+    ANALYTIC          -0.774      0.028    -27.487      0.000
+    CLOUT              0.385      0.081      4.759      0.000
+    AUTHENTIC         -0.102      0.298     -0.341      0.733
+    TONE              -0.136      0.378     -0.359      0.720
+    WC                 0.138      0.342      0.404      0.686
+    BIG_WORDS         -0.347      0.120     -2.893      0.004
+
+ Variances
+    ANALYTIC           0.067      0.019      3.454      0.001
+    CLOUT              0.160      0.030      5.369      0.000
+    AUTHENTIC          0.871      0.195      4.462      0.000
+    TONE               0.797      0.243      3.282      0.001
+    WC                 0.554      0.158      3.506      0.000
+    BIG_WORDS          0.639      0.165      3.878      0.000
+
+Latent Class Pattern 3 2
+
+ Means
+    ANALYTIC           1.349      0.227      5.937      0.000
+    CLOUT             -0.785      0.247     -3.175      0.002
+    AUTHENTIC          0.499      0.160      3.118      0.002
+    TONE              -0.294      0.160     -1.834      0.067
+    WC                 0.348      0.282      1.235      0.217
+    BIG_WORDS          0.975      0.264      3.690      0.000
+
+ Variances
+    ANALYTIC           1.246      0.185      6.735      0.000
+    CLOUT              0.882      0.127      6.945      0.000
+    AUTHENTIC          0.743      0.117      6.340      0.000
+    TONE               0.598      0.165      3.627      0.000
+    WC                 1.277      0.286      4.466      0.000
+    BIG_WORDS          1.110      0.361      3.075      0.002
+
+Latent Class Pattern 3 3
+
+ Means
+    ANALYTIC          -0.166      0.323     -0.515      0.606
+    CLOUT              0.029      0.286      0.101      0.919
+    AUTHENTIC         -0.280      0.706     -0.396      0.692
+    TONE               0.855      0.289      2.961      0.003
+    WC                -0.555      0.161     -3.459      0.001
+    BIG_WORDS         -0.588      0.148     -3.960      0.000
+
+ Variances
+    ANALYTIC           0.438      0.069      6.384      0.000
+    CLOUT              0.393      0.153      2.563      0.010
+    AUTHENTIC          0.740      0.465      1.593      0.111
+    TONE               1.139      0.622      1.830      0.067
+    WC                 0.235      0.067      3.484      0.000
+    BIG_WORDS          0.709      0.170      4.162      0.000
+
+Latent Class Pattern 3 4
+
+ Means
+    ANALYTIC          -0.640      0.155     -4.143      0.000
+    CLOUT             -1.473      0.421     -3.496      0.000
+    AUTHENTIC          1.020      0.164      6.210      0.000
+    TONE              -0.117      0.353     -0.331      0.741
+    WC                -0.159      0.326     -0.487      0.626
+    BIG_WORDS          0.152      0.273      0.556      0.578
+
+ Variances
+    ANALYTIC           0.173      0.083      2.097      0.036
+    CLOUT              1.695      0.266      6.365      0.000
+    AUTHENTIC          0.660      0.147      4.495      0.000
+    TONE               1.018      0.659      1.544      0.122
+    WC                 0.649      0.205      3.160      0.002
+    BIG_WORDS          1.299      0.289      4.494      0.000
+
+Latent Class Pattern 3 5
+
+ Means
+    ANALYTIC          -0.269      0.120     -2.244      0.025
+    CLOUT              0.926      0.071     12.986      0.000
+    AUTHENTIC         -0.738      0.185     -3.997      0.000
+    TONE               0.273      0.284      0.964      0.335
+    WC                -0.694      0.099     -7.002      0.000
+    BIG_WORDS         -0.177      0.126     -1.404      0.160
+
+ Variances
+    ANALYTIC           0.357      0.096      3.718      0.000
+    CLOUT              0.003      0.007      0.407      0.684
+    AUTHENTIC          0.794      0.275      2.891      0.004
+    TONE               1.312      0.184      7.115      0.000
+    WC                 0.312      0.091      3.428      0.001
+    BIG_WORDS          0.925      0.163      5.683      0.000
+
+Latent Class Pattern 3 6
+
+ Means
+    ANALYTIC          -0.096      0.122     -0.785      0.433
+    CLOUT             -0.356      0.195     -1.828      0.068
+    AUTHENTIC          0.130      0.146      0.891      0.373
+    TONE              -0.367      0.101     -3.627      0.000
+    WC                 1.203      0.201      5.995      0.000
+    BIG_WORDS         -0.094      0.111     -0.852      0.394
+
+ Variances
+    ANALYTIC           0.323      0.048      6.656      0.000
+    CLOUT              0.653      0.143      4.572      0.000
+    AUTHENTIC          0.637      0.099      6.450      0.000
+    TONE               0.408      0.074      5.478      0.000
+    WC                 1.508      0.245      6.153      0.000
+    BIG_WORDS          0.456      0.090      5.043      0.000
+
+Latent Class Pattern 3 7
+
+ Means
+    ANALYTIC           0.819      0.170      4.821      0.000
+    CLOUT              0.551      0.083      6.674      0.000
+    AUTHENTIC         -0.222      0.160     -1.391      0.164
+    TONE              -0.149      0.103     -1.440      0.150
+    WC                -0.225      0.154     -1.460      0.144
+    BIG_WORDS          0.351      0.090      3.912      0.000
+
+ Variances
+    ANALYTIC           1.058      0.123      8.629      0.000
+    CLOUT              0.085      0.024      3.564      0.000
+    AUTHENTIC          0.822      0.143      5.735      0.000
+    TONE               0.787      0.115      6.866      0.000
+    WC                 0.532      0.152      3.494      0.000
+    BIG_WORDS          0.780      0.117      6.641      0.000
+
+Latent Class Pattern 4 1
+
+ Means
+    ANALYTIC          -0.774      0.028    -27.487      0.000
+    CLOUT              0.385      0.081      4.759      0.000
+    AUTHENTIC         -0.102      0.298     -0.341      0.733
+    TONE              -0.136      0.378     -0.359      0.720
+    WC                 0.138      0.342      0.404      0.686
+    BIG_WORDS         -0.347      0.120     -2.893      0.004
+
+ Variances
+    ANALYTIC           0.067      0.019      3.454      0.001
+    CLOUT              0.160      0.030      5.369      0.000
+    AUTHENTIC          0.871      0.195      4.462      0.000
+    TONE               0.797      0.243      3.282      0.001
+    WC                 0.554      0.158      3.506      0.000
+    BIG_WORDS          0.639      0.165      3.878      0.000
+
+Latent Class Pattern 4 2
+
+ Means
+    ANALYTIC           1.349      0.227      5.937      0.000
+    CLOUT             -0.785      0.247     -3.175      0.002
+    AUTHENTIC          0.499      0.160      3.118      0.002
+    TONE              -0.294      0.160     -1.834      0.067
+    WC                 0.348      0.282      1.235      0.217
+    BIG_WORDS          0.975      0.264      3.690      0.000
+
+ Variances
+    ANALYTIC           1.246      0.185      6.735      0.000
+    CLOUT              0.882      0.127      6.945      0.000
+    AUTHENTIC          0.743      0.117      6.340      0.000
+    TONE               0.598      0.165      3.627      0.000
+    WC                 1.277      0.286      4.466      0.000
+    BIG_WORDS          1.110      0.361      3.075      0.002
+
+Latent Class Pattern 4 3
+
+ Means
+    ANALYTIC          -0.166      0.323     -0.515      0.606
+    CLOUT              0.029      0.286      0.101      0.919
+    AUTHENTIC         -0.280      0.706     -0.396      0.692
+    TONE               0.855      0.289      2.961      0.003
+    WC                -0.555      0.161     -3.459      0.001
+    BIG_WORDS         -0.588      0.148     -3.960      0.000
+
+ Variances
+    ANALYTIC           0.438      0.069      6.384      0.000
+    CLOUT              0.393      0.153      2.563      0.010
+    AUTHENTIC          0.740      0.465      1.593      0.111
+    TONE               1.139      0.622      1.830      0.067
+    WC                 0.235      0.067      3.484      0.000
+    BIG_WORDS          0.709      0.170      4.162      0.000
+
+Latent Class Pattern 4 4
+
+ Means
+    ANALYTIC          -0.640      0.155     -4.143      0.000
+    CLOUT             -1.473      0.421     -3.496      0.000
+    AUTHENTIC          1.020      0.164      6.210      0.000
+    TONE              -0.117      0.353     -0.331      0.741
+    WC                -0.159      0.326     -0.487      0.626
+    BIG_WORDS          0.152      0.273      0.556      0.578
+
+ Variances
+    ANALYTIC           0.173      0.083      2.097      0.036
+    CLOUT              1.695      0.266      6.365      0.000
+    AUTHENTIC          0.660      0.147      4.495      0.000
+    TONE               1.018      0.659      1.544      0.122
+    WC                 0.649      0.205      3.160      0.002
+    BIG_WORDS          1.299      0.289      4.494      0.000
+
+Latent Class Pattern 4 5
+
+ Means
+    ANALYTIC          -0.269      0.120     -2.244      0.025
+    CLOUT              0.926      0.071     12.986      0.000
+    AUTHENTIC         -0.738      0.185     -3.997      0.000
+    TONE               0.273      0.284      0.964      0.335
+    WC                -0.694      0.099     -7.002      0.000
+    BIG_WORDS         -0.177      0.126     -1.404      0.160
+
+ Variances
+    ANALYTIC           0.357      0.096      3.718      0.000
+    CLOUT              0.003      0.007      0.407      0.684
+    AUTHENTIC          0.794      0.275      2.891      0.004
+    TONE               1.312      0.184      7.115      0.000
+    WC                 0.312      0.091      3.428      0.001
+    BIG_WORDS          0.925      0.163      5.683      0.000
+
+Latent Class Pattern 4 6
+
+ Means
+    ANALYTIC          -0.096      0.122     -0.785      0.433
+    CLOUT             -0.356      0.195     -1.828      0.068
+    AUTHENTIC          0.130      0.146      0.891      0.373
+    TONE              -0.367      0.101     -3.627      0.000
+    WC                 1.203      0.201      5.995      0.000
+    BIG_WORDS         -0.094      0.111     -0.852      0.394
+
+ Variances
+    ANALYTIC           0.323      0.048      6.656      0.000
+    CLOUT              0.653      0.143      4.572      0.000
+    AUTHENTIC          0.637      0.099      6.450      0.000
+    TONE               0.408      0.074      5.478      0.000
+    WC                 1.508      0.245      6.153      0.000
+    BIG_WORDS          0.456      0.090      5.043      0.000
+
+Latent Class Pattern 4 7
+
+ Means
+    ANALYTIC           0.819      0.170      4.821      0.000
+    CLOUT              0.551      0.083      6.674      0.000
+    AUTHENTIC         -0.222      0.160     -1.391      0.164
+    TONE              -0.149      0.103     -1.440      0.150
+    WC                -0.225      0.154     -1.460      0.144
+    BIG_WORDS          0.351      0.090      3.912      0.000
+
+ Variances
+    ANALYTIC           1.058      0.123      8.629      0.000
+    CLOUT              0.085      0.024      3.564      0.000
+    AUTHENTIC          0.822      0.143      5.735      0.000
+    TONE               0.787      0.115      6.866      0.000
+    WC                 0.532      0.152      3.494      0.000
+    BIG_WORDS          0.780      0.117      6.641      0.000
+
+Latent Class Pattern 5 1
+
+ Means
+    ANALYTIC          -0.774      0.028    -27.487      0.000
+    CLOUT              0.385      0.081      4.759      0.000
+    AUTHENTIC         -0.102      0.298     -0.341      0.733
+    TONE              -0.136      0.378     -0.359      0.720
+    WC                 0.138      0.342      0.404      0.686
+    BIG_WORDS         -0.347      0.120     -2.893      0.004
+
+ Variances
+    ANALYTIC           0.067      0.019      3.454      0.001
+    CLOUT              0.160      0.030      5.369      0.000
+    AUTHENTIC          0.871      0.195      4.462      0.000
+    TONE               0.797      0.243      3.282      0.001
+    WC                 0.554      0.158      3.506      0.000
+    BIG_WORDS          0.639      0.165      3.878      0.000
+
+Latent Class Pattern 5 2
+
+ Means
+    ANALYTIC           1.349      0.227      5.937      0.000
+    CLOUT             -0.785      0.247     -3.175      0.002
+    AUTHENTIC          0.499      0.160      3.118      0.002
+    TONE              -0.294      0.160     -1.834      0.067
+    WC                 0.348      0.282      1.235      0.217
+    BIG_WORDS          0.975      0.264      3.690      0.000
+
+ Variances
+    ANALYTIC           1.246      0.185      6.735      0.000
+    CLOUT              0.882      0.127      6.945      0.000
+    AUTHENTIC          0.743      0.117      6.340      0.000
+    TONE               0.598      0.165      3.627      0.000
+    WC                 1.277      0.286      4.466      0.000
+    BIG_WORDS          1.110      0.361      3.075      0.002
+
+Latent Class Pattern 5 3
+
+ Means
+    ANALYTIC          -0.166      0.323     -0.515      0.606
+    CLOUT              0.029      0.286      0.101      0.919
+    AUTHENTIC         -0.280      0.706     -0.396      0.692
+    TONE               0.855      0.289      2.961      0.003
+    WC                -0.555      0.161     -3.459      0.001
+    BIG_WORDS         -0.588      0.148     -3.960      0.000
+
+ Variances
+    ANALYTIC           0.438      0.069      6.384      0.000
+    CLOUT              0.393      0.153      2.563      0.010
+    AUTHENTIC          0.740      0.465      1.593      0.111
+    TONE               1.139      0.622      1.830      0.067
+    WC                 0.235      0.067      3.484      0.000
+    BIG_WORDS          0.709      0.170      4.162      0.000
+
+Latent Class Pattern 5 4
+
+ Means
+    ANALYTIC          -0.640      0.155     -4.143      0.000
+    CLOUT             -1.473      0.421     -3.496      0.000
+    AUTHENTIC          1.020      0.164      6.210      0.000
+    TONE              -0.117      0.353     -0.331      0.741
+    WC                -0.159      0.326     -0.487      0.626
+    BIG_WORDS          0.152      0.273      0.556      0.578
+
+ Variances
+    ANALYTIC           0.173      0.083      2.097      0.036
+    CLOUT              1.695      0.266      6.365      0.000
+    AUTHENTIC          0.660      0.147      4.495      0.000
+    TONE               1.018      0.659      1.544      0.122
+    WC                 0.649      0.205      3.160      0.002
+    BIG_WORDS          1.299      0.289      4.494      0.000
+
+Latent Class Pattern 5 5
+
+ Means
+    ANALYTIC          -0.269      0.120     -2.244      0.025
+    CLOUT              0.926      0.071     12.986      0.000
+    AUTHENTIC         -0.738      0.185     -3.997      0.000
+    TONE               0.273      0.284      0.964      0.335
+    WC                -0.694      0.099     -7.002      0.000
+    BIG_WORDS         -0.177      0.126     -1.404      0.160
+
+ Variances
+    ANALYTIC           0.357      0.096      3.718      0.000
+    CLOUT              0.003      0.007      0.407      0.684
+    AUTHENTIC          0.794      0.275      2.891      0.004
+    TONE               1.312      0.184      7.115      0.000
+    WC                 0.312      0.091      3.428      0.001
+    BIG_WORDS          0.925      0.163      5.683      0.000
+
+Latent Class Pattern 5 6
+
+ Means
+    ANALYTIC          -0.096      0.122     -0.785      0.433
+    CLOUT             -0.356      0.195     -1.828      0.068
+    AUTHENTIC          0.130      0.146      0.891      0.373
+    TONE              -0.367      0.101     -3.627      0.000
+    WC                 1.203      0.201      5.995      0.000
+    BIG_WORDS         -0.094      0.111     -0.852      0.394
+
+ Variances
+    ANALYTIC           0.323      0.048      6.656      0.000
+    CLOUT              0.653      0.143      4.572      0.000
+    AUTHENTIC          0.637      0.099      6.450      0.000
+    TONE               0.408      0.074      5.478      0.000
+    WC                 1.508      0.245      6.153      0.000
+    BIG_WORDS          0.456      0.090      5.043      0.000
+
+Latent Class Pattern 5 7
+
+ Means
+    ANALYTIC           0.819      0.170      4.821      0.000
+    CLOUT              0.551      0.083      6.674      0.000
+    AUTHENTIC         -0.222      0.160     -1.391      0.164
+    TONE              -0.149      0.103     -1.440      0.150
+    WC                -0.225      0.154     -1.460      0.144
+    BIG_WORDS          0.351      0.090      3.912      0.000
+
+ Variances
+    ANALYTIC           1.058      0.123      8.629      0.000
+    CLOUT              0.085      0.024      3.564      0.000
+    AUTHENTIC          0.822      0.143      5.735      0.000
+    TONE               0.787      0.115      6.866      0.000
+    WC                 0.532      0.152      3.494      0.000
+    BIG_WORDS          0.780      0.117      6.641      0.000
+
+Latent Class Pattern 6 1
+
+ Means
+    ANALYTIC          -0.774      0.028    -27.487      0.000
+    CLOUT              0.385      0.081      4.759      0.000
+    AUTHENTIC         -0.102      0.298     -0.341      0.733
+    TONE              -0.136      0.378     -0.359      0.720
+    WC                 0.138      0.342      0.404      0.686
+    BIG_WORDS         -0.347      0.120     -2.893      0.004
+
+ Variances
+    ANALYTIC           0.067      0.019      3.454      0.001
+    CLOUT              0.160      0.030      5.369      0.000
+    AUTHENTIC          0.871      0.195      4.462      0.000
+    TONE               0.797      0.243      3.282      0.001
+    WC                 0.554      0.158      3.506      0.000
+    BIG_WORDS          0.639      0.165      3.878      0.000
+
+Latent Class Pattern 6 2
+
+ Means
+    ANALYTIC           1.349      0.227      5.937      0.000
+    CLOUT             -0.785      0.247     -3.175      0.002
+    AUTHENTIC          0.499      0.160      3.118      0.002
+    TONE              -0.294      0.160     -1.834      0.067
+    WC                 0.348      0.282      1.235      0.217
+    BIG_WORDS          0.975      0.264      3.690      0.000
+
+ Variances
+    ANALYTIC           1.246      0.185      6.735      0.000
+    CLOUT              0.882      0.127      6.945      0.000
+    AUTHENTIC          0.743      0.117      6.340      0.000
+    TONE               0.598      0.165      3.627      0.000
+    WC                 1.277      0.286      4.466      0.000
+    BIG_WORDS          1.110      0.361      3.075      0.002
+
+Latent Class Pattern 6 3
+
+ Means
+    ANALYTIC          -0.166      0.323     -0.515      0.606
+    CLOUT              0.029      0.286      0.101      0.919
+    AUTHENTIC         -0.280      0.706     -0.396      0.692
+    TONE               0.855      0.289      2.961      0.003
+    WC                -0.555      0.161     -3.459      0.001
+    BIG_WORDS         -0.588      0.148     -3.960      0.000
+
+ Variances
+    ANALYTIC           0.438      0.069      6.384      0.000
+    CLOUT              0.393      0.153      2.563      0.010
+    AUTHENTIC          0.740      0.465      1.593      0.111
+    TONE               1.139      0.622      1.830      0.067
+    WC                 0.235      0.067      3.484      0.000
+    BIG_WORDS          0.709      0.170      4.162      0.000
+
+Latent Class Pattern 6 4
+
+ Means
+    ANALYTIC          -0.640      0.155     -4.143      0.000
+    CLOUT             -1.473      0.421     -3.496      0.000
+    AUTHENTIC          1.020      0.164      6.210      0.000
+    TONE              -0.117      0.353     -0.331      0.741
+    WC                -0.159      0.326     -0.487      0.626
+    BIG_WORDS          0.152      0.273      0.556      0.578
+
+ Variances
+    ANALYTIC           0.173      0.083      2.097      0.036
+    CLOUT              1.695      0.266      6.365      0.000
+    AUTHENTIC          0.660      0.147      4.495      0.000
+    TONE               1.018      0.659      1.544      0.122
+    WC                 0.649      0.205      3.160      0.002
+    BIG_WORDS          1.299      0.289      4.494      0.000
+
+Latent Class Pattern 6 5
+
+ Means
+    ANALYTIC          -0.269      0.120     -2.244      0.025
+    CLOUT              0.926      0.071     12.986      0.000
+    AUTHENTIC         -0.738      0.185     -3.997      0.000
+    TONE               0.273      0.284      0.964      0.335
+    WC                -0.694      0.099     -7.002      0.000
+    BIG_WORDS         -0.177      0.126     -1.404      0.160
+
+ Variances
+    ANALYTIC           0.357      0.096      3.718      0.000
+    CLOUT              0.003      0.007      0.407      0.684
+    AUTHENTIC          0.794      0.275      2.891      0.004
+    TONE               1.312      0.184      7.115      0.000
+    WC                 0.312      0.091      3.428      0.001
+    BIG_WORDS          0.925      0.163      5.683      0.000
+
+Latent Class Pattern 6 6
+
+ Means
+    ANALYTIC          -0.096      0.122     -0.785      0.433
+    CLOUT             -0.356      0.195     -1.828      0.068
+    AUTHENTIC          0.130      0.146      0.891      0.373
+    TONE              -0.367      0.101     -3.627      0.000
+    WC                 1.203      0.201      5.995      0.000
+    BIG_WORDS         -0.094      0.111     -0.852      0.394
+
+ Variances
+    ANALYTIC           0.323      0.048      6.656      0.000
+    CLOUT              0.653      0.143      4.572      0.000
+    AUTHENTIC          0.637      0.099      6.450      0.000
+    TONE               0.408      0.074      5.478      0.000
+    WC                 1.508      0.245      6.153      0.000
+    BIG_WORDS          0.456      0.090      5.043      0.000
+
+Latent Class Pattern 6 7
+
+ Means
+    ANALYTIC           0.819      0.170      4.821      0.000
+    CLOUT              0.551      0.083      6.674      0.000
+    AUTHENTIC         -0.222      0.160     -1.391      0.164
+    TONE              -0.149      0.103     -1.440      0.150
+    WC                -0.225      0.154     -1.460      0.144
+    BIG_WORDS          0.351      0.090      3.912      0.000
+
+ Variances
+    ANALYTIC           1.058      0.123      8.629      0.000
+    CLOUT              0.085      0.024      3.564      0.000
+    AUTHENTIC          0.822      0.143      5.735      0.000
+    TONE               0.787      0.115      6.866      0.000
+    WC                 0.532      0.152      3.494      0.000
+    BIG_WORDS          0.780      0.117      6.641      0.000
+
+Between Level
+
+Categorical Latent Variables
+
+Within Level
+
+ Intercepts
+    C#1              -28.596      1.037    -27.569      0.000
+    C#2               -3.067      0.992     -3.093      0.002
+    C#3               -3.751      1.608     -2.332      0.020
+    C#4               -2.706      0.612     -4.425      0.000
+    C#5               -1.514      0.824     -1.836      0.066
+    C#6               -3.415      1.289     -2.650      0.008
+
+Between Level
+
+ C#1        ON
+    BC#1              -9.138      0.000    999.000    999.000
+    BC#2              10.127      1.579      6.415      0.000
+    BC#3              -8.281      0.000    999.000    999.000
+    BC#4              56.515      2.503     22.580      0.000
+    BC#5              32.405      0.000    999.000    999.000
+
+ C#2        ON
+    BC#1               3.571      0.875      4.081      0.000
+    BC#2               1.174      2.458      0.477      0.633
+    BC#3               5.211     12.347      0.422      0.673
+    BC#4             -17.206      0.000    999.000    999.000
+    BC#5               1.332      2.494      0.534      0.593
+
+ C#3        ON
+    BC#1               2.157      1.103      1.955      0.051
+    BC#2               4.369      1.783      2.450      0.014
+    BC#3               6.551     13.552      0.483      0.629
+    BC#4              31.910      2.439     13.086      0.000
+    BC#5              -8.184      1.759     -4.653      0.000
+
+ C#4        ON
+    BC#1              -0.357      1.627     -0.220      0.826
+    BC#2               1.830      1.194      1.533      0.125
+    BC#3               7.195     12.197      0.590      0.555
+    BC#4              28.265      1.925     14.685      0.000
+    BC#5               5.258      1.166      4.512      0.000
+
+ C#5        ON
+    BC#1              -0.903      0.870     -1.039      0.299
+    BC#2              -0.758      2.107     -0.360      0.719
+    BC#3             -22.721      0.000    999.000    999.000
+    BC#4              29.287      1.981     14.787      0.000
+    BC#5               3.160      1.773      1.782      0.075
+
+ C#6        ON
+    BC#1             -19.611      0.000    999.000    999.000
+    BC#2               5.163      1.186      4.354      0.000
+    BC#3               5.473     12.099      0.452      0.651
+    BC#4              28.519      0.000    999.000    999.000
+    BC#5               5.731      2.032      2.820      0.005
+
+ Means
+    BC#1              -0.282      0.362     -0.779      0.436
+    BC#2              -0.105      0.318     -0.330      0.742
+    BC#3              -0.803      0.498     -1.612      0.107
+    BC#4              -0.202      0.491     -0.412      0.680
+    BC#5              -0.397      0.590     -0.672      0.502
+
+
+QUALITY OF NUMERICAL RESULTS
+
+     Condition Number for the Information Matrix              0.127E-09
+       (ratio of smallest to largest eigenvalue)
+
+
+C-SPECIFIC CLASSIFICATION RESULTS
+
+Classification Quality for BC
+
+     Entropy                         0.948
+
+Average Latent Class Probabilities for Most Likely Latent Class Membership (Row)
+by Latent Class (Column)
+
+           1        2        3        4        5        6
+
+    1   0.957    0.004    0.000    0.000    0.000    0.039
+    2   0.006    0.955    0.016    0.008    0.014    0.001
+    3   0.002    0.005    0.957    0.000    0.037    0.000
+    4   0.000    0.002    0.000    0.955    0.035    0.008
+    5   0.000    0.002    0.008    0.017    0.974    0.000
+    6   0.020    0.001    0.000    0.002    0.002    0.975
+
+
+Classification Probabilities for the Most Likely Latent Class Membership (Column)
+by Latent Class (Row)
+
+           1        2        3        4        5        6
+
+    1   0.963    0.006    0.001    0.000    0.000    0.029
+    2   0.004    0.988    0.003    0.003    0.002    0.001
+    3   0.001    0.029    0.950    0.000    0.019    0.000
+    4   0.000    0.006    0.000    0.977    0.016    0.002
+    5   0.000    0.010    0.014    0.037    0.938    0.002
+    6   0.027    0.000    0.000    0.009    0.000    0.964
+
+
+Logits for the Classification Probabilities for the Most Likely Latent Class Membership (Column)
+by Latent Class (Row)
+
+              1        2        3        4        5        6
+
+    1      3.486   -1.573   -3.364   -6.132  -10.292    0.000
+    2      0.970    6.603    0.634    0.691    0.575    0.000
+    3      2.183    5.880    9.358    1.646    5.463    0.000
+    4     -7.494    1.127   -4.696    6.299    2.170    0.000
+    5     -3.405    1.697    2.018    2.982    6.227    0.000
+    6     -3.581   -7.770  -13.778   -4.660  -12.614    0.000
+
+Classification Quality for C
+
+     Entropy                         0.793
+
+Average Latent Class Probabilities for Most Likely Latent Class Membership (Row)
+by Latent Class (Column)
+
+           1        2        3        4        5        6        7
+
+    1   0.850    0.000    0.053    0.039    0.021    0.033    0.003
+    2   0.000    0.894    0.020    0.012    0.000    0.009    0.065
+    3   0.083    0.006    0.810    0.028    0.008    0.034    0.031
+    4   0.025    0.021    0.039    0.849    0.001    0.060    0.005
+    5   0.056    0.000    0.044    0.003    0.825    0.004    0.068
+    6   0.026    0.021    0.043    0.044    0.002    0.823    0.042
+    7   0.001    0.045    0.023    0.008    0.030    0.018    0.875
+
+
+Classification Probabilities for the Most Likely Latent Class Membership (Column)
+by Latent Class (Row)
+
+           1        2        3        4        5        6        7
+
+    1   0.878    0.000    0.054    0.015    0.034    0.018    0.001
+    2   0.000    0.830    0.008    0.027    0.000    0.030    0.104
+    3   0.079    0.012    0.761    0.033    0.038    0.041    0.036
+    4   0.066    0.008    0.030    0.830    0.003    0.048    0.014
+    5   0.038    0.000    0.009    0.001    0.892    0.002    0.057
+    6   0.050    0.005    0.033    0.053    0.004    0.825    0.029
+    7   0.003    0.026    0.019    0.003    0.039    0.027    0.883
+
+
+Logits for the Classification Probabilities for the Most Likely Latent Class Membership (Column)
+by Latent Class (Row)
+
+              1        2        3        4        5        6        7
+
+    1      6.431   -7.255    3.645    2.363    3.172    2.517    0.000
+    2     -6.263    2.079   -2.545   -1.334   -5.694   -1.244    0.000
+    3      0.793   -1.064    3.061   -0.065    0.059    0.151    0.000
+    4      1.555   -0.516    0.775    4.092   -1.463    1.249    0.000
+    5     -0.393  -10.951   -1.809   -3.970    2.751   -3.193    0.000
+    6      0.544   -1.675    0.122    0.597   -2.027    3.337    0.000
+    7     -5.629   -3.509   -3.819   -5.664   -3.131   -3.505    0.000
+
+
+SAMPLE STATISTICS FOR ESTIMATED FACTOR SCORES
+
+
+     SAMPLE STATISTICS
+
+
+           Means
+              BC#1          BC#2          BC#3          BC#4          BC#5
+              ________      ________      ________      ________      ________
+               -0.282        -0.105        -0.803        -0.202        -0.397
+
+
+           Means
+              C#1           C#2           C#3           C#4           C#5
+              ________      ________      ________      ________      ________
+              -28.596        -3.067        -3.751        -2.706        -1.514
+
+
+           Means
+              C#6           C_BC#1        C_BC#2        C_BC#3        C_BC#4
+              ________      ________      ________      ________      ________
+               -3.415        -0.282        -0.105        -0.803        -0.202
+
+
+           Means
+              C_BC#5        C_C#1         C_C#2         C_C#3         C_C#4
+              ________      ________      ________      ________      ________
+               -0.397       -28.596        -3.067        -3.751        -2.706
+
+
+           Means
+              C_C#5         C_C#6
+              ________      ________
+               -1.514        -3.415
+
+
+           Covariances
+              BC#1          BC#2          BC#3          BC#4          BC#5
+              ________      ________      ________      ________      ________
+ BC#1           0.000
+ BC#2           0.000         0.000
+ BC#3           0.000         0.000         0.000
+ BC#4           0.000         0.000         0.000         0.000
+ BC#5           0.000         0.000         0.000         0.000         0.000
+ C#1            0.000         0.000         0.000         0.000         0.000
+ C#2            0.000         0.000         0.000         0.000         0.000
+ C#3            0.000         0.000         0.000         0.000         0.000
+ C#4            0.000         0.000         0.000         0.000         0.000
+ C#5            0.000         0.000         0.000         0.000         0.000
+ C#6            0.000         0.000         0.000         0.000         0.000
+ C_BC#1         0.000         0.000         0.000         0.000         0.000
+ C_BC#2         0.000         0.000         0.000         0.000         0.000
+ C_BC#3         0.000         0.000         0.000         0.000         0.000
+ C_BC#4         0.000         0.000         0.000         0.000         0.000
+ C_BC#5         0.000         0.000         0.000         0.000         0.000
+ C_C#1          0.000         0.000         0.000         0.000         0.000
+ C_C#2          0.000         0.000         0.000         0.000         0.000
+ C_C#3          0.000         0.000         0.000         0.000         0.000
+ C_C#4          0.000         0.000         0.000         0.000         0.000
+ C_C#5          0.000         0.000         0.000         0.000         0.000
+ C_C#6          0.000         0.000         0.000         0.000         0.000
+
+
+           Covariances
+              C#1           C#2           C#3           C#4           C#5
+              ________      ________      ________      ________      ________
+ C#1            0.000
+ C#2            0.000         0.000
+ C#3            0.000         0.000         0.000
+ C#4            0.000         0.000         0.000         0.000
+ C#5            0.000         0.000         0.000         0.000         0.000
+ C#6            0.000         0.000         0.000         0.000         0.000
+ C_BC#1         0.000         0.000         0.000         0.000         0.000
+ C_BC#2         0.000         0.000         0.000         0.000         0.000
+ C_BC#3         0.000         0.000         0.000         0.000         0.000
+ C_BC#4         0.000         0.000         0.000         0.000         0.000
+ C_BC#5         0.000         0.000         0.000         0.000         0.000
+ C_C#1          0.000         0.000         0.000         0.000         0.000
+ C_C#2          0.000         0.000         0.000         0.000         0.000
+ C_C#3          0.000         0.000         0.000         0.000         0.000
+ C_C#4          0.000         0.000         0.000         0.000         0.000
+ C_C#5          0.000         0.000         0.000         0.000         0.000
+ C_C#6          0.000         0.000         0.000         0.000         0.000
+
+
+           Covariances
+              C#6           C_BC#1        C_BC#2        C_BC#3        C_BC#4
+              ________      ________      ________      ________      ________
+ C#6            0.000
+ C_BC#1         0.000         0.000
+ C_BC#2         0.000         0.000         0.000
+ C_BC#3         0.000         0.000         0.000         0.000
+ C_BC#4         0.000         0.000         0.000         0.000         0.000
+ C_BC#5         0.000         0.000         0.000         0.000         0.000
+ C_C#1          0.000         0.000         0.000         0.000         0.000
+ C_C#2          0.000         0.000         0.000         0.000         0.000
+ C_C#3          0.000         0.000         0.000         0.000         0.000
+ C_C#4          0.000         0.000         0.000         0.000         0.000
+ C_C#5          0.000         0.000         0.000         0.000         0.000
+ C_C#6          0.000         0.000         0.000         0.000         0.000
+
+
+           Covariances
+              C_BC#5        C_C#1         C_C#2         C_C#3         C_C#4
+              ________      ________      ________      ________      ________
+ C_BC#5         0.000
+ C_C#1          0.000         0.000
+ C_C#2          0.000         0.000         0.000
+ C_C#3          0.000         0.000         0.000         0.000
+ C_C#4          0.000         0.000         0.000         0.000         0.000
+ C_C#5          0.000         0.000         0.000         0.000         0.000
+ C_C#6          0.000         0.000         0.000         0.000         0.000
+
+
+           Covariances
+              C_C#5         C_C#6
+              ________      ________
+ C_C#5          0.000
+ C_C#6          0.000         0.000
+
+
+           Correlations
+              BC#1          BC#2          BC#3          BC#4          BC#5
+              ________      ________      ________      ________      ________
+ BC#1           1.000
+ BC#2         999.000         1.000
+ BC#3         999.000       999.000         1.000
+ BC#4         999.000       999.000       999.000         1.000
+ BC#5         999.000       999.000       999.000       999.000         1.000
+ C#1          999.000       999.000       999.000       999.000       999.000
+ C#2          999.000       999.000       999.000       999.000       999.000
+ C#3          999.000       999.000       999.000       999.000       999.000
+ C#4          999.000       999.000       999.000       999.000       999.000
+ C#5          999.000       999.000       999.000       999.000       999.000
+ C#6          999.000       999.000       999.000       999.000       999.000
+ C_BC#1       999.000       999.000       999.000       999.000       999.000
+ C_BC#2       999.000       999.000       999.000       999.000       999.000
+ C_BC#3       999.000       999.000       999.000       999.000       999.000
+ C_BC#4       999.000       999.000       999.000       999.000       999.000
+ C_BC#5       999.000       999.000       999.000       999.000       999.000
+ C_C#1        999.000       999.000       999.000       999.000       999.000
+ C_C#2        999.000       999.000       999.000       999.000       999.000
+ C_C#3        999.000       999.000       999.000       999.000       999.000
+ C_C#4        999.000       999.000       999.000       999.000       999.000
+ C_C#5        999.000       999.000       999.000       999.000       999.000
+ C_C#6        999.000       999.000       999.000       999.000       999.000
+
+
+           Correlations
+              C#1           C#2           C#3           C#4           C#5
+              ________      ________      ________      ________      ________
+ C#1            1.000
+ C#2          999.000         1.000
+ C#3          999.000       999.000         1.000
+ C#4          999.000       999.000       999.000         1.000
+ C#5          999.000       999.000       999.000       999.000         1.000
+ C#6          999.000       999.000       999.000       999.000       999.000
+ C_BC#1       999.000       999.000       999.000       999.000       999.000
+ C_BC#2       999.000       999.000       999.000       999.000       999.000
+ C_BC#3       999.000       999.000       999.000       999.000       999.000
+ C_BC#4       999.000       999.000       999.000       999.000       999.000
+ C_BC#5       999.000       999.000       999.000       999.000       999.000
+ C_C#1        999.000       999.000       999.000       999.000       999.000
+ C_C#2        999.000       999.000       999.000       999.000       999.000
+ C_C#3        999.000       999.000       999.000       999.000       999.000
+ C_C#4        999.000       999.000       999.000       999.000       999.000
+ C_C#5        999.000       999.000       999.000       999.000       999.000
+ C_C#6        999.000       999.000       999.000       999.000       999.000
+
+
+           Correlations
+              C#6           C_BC#1        C_BC#2        C_BC#3        C_BC#4
+              ________      ________      ________      ________      ________
+ C#6            1.000
+ C_BC#1       999.000         1.000
+ C_BC#2       999.000       999.000         1.000
+ C_BC#3       999.000       999.000       999.000         1.000
+ C_BC#4       999.000       999.000       999.000       999.000         1.000
+ C_BC#5       999.000       999.000       999.000       999.000       999.000
+ C_C#1        999.000       999.000       999.000       999.000       999.000
+ C_C#2        999.000       999.000       999.000       999.000       999.000
+ C_C#3        999.000       999.000       999.000       999.000       999.000
+ C_C#4        999.000       999.000       999.000       999.000       999.000
+ C_C#5        999.000       999.000       999.000       999.000       999.000
+ C_C#6        999.000       999.000       999.000       999.000       999.000
+
+
+           Correlations
+              C_BC#5        C_C#1         C_C#2         C_C#3         C_C#4
+              ________      ________      ________      ________      ________
+ C_BC#5         1.000
+ C_C#1        999.000         1.000
+ C_C#2        999.000       999.000         1.000
+ C_C#3        999.000       999.000       999.000         1.000
+ C_C#4        999.000       999.000       999.000       999.000         1.000
+ C_C#5        999.000       999.000       999.000       999.000       999.000
+ C_C#6        999.000       999.000       999.000       999.000       999.000
+
+
+           Correlations
+              C_C#5         C_C#6
+              ________      ________
+ C_C#5          1.000
+ C_C#6        999.000         1.000
+
+
+PLOT INFORMATION
+
+The following plots are available:
+
+  Histograms (sample values, estimated factor scores)
+  Scatterplots (sample values, estimated factor scores)
+  Latent variable distribution plots
+
+SAVEDATA INFORMATION
+
+
+  Save file
+    mlLpa_L2_6_L1_7.dat
+
+  Order and format of variables
+
+    ANALYTIC       F10.3
+    CLOUT          F10.3
+    AUTHENTI       F10.3
+    TONE           F10.3
+    WC             F10.3
+    BIG_WORD       F10.3
+    BC#1           F10.3
+    BC#2           F10.3
+    BC#3           F10.3
+    BC#4           F10.3
+    BC#5           F10.3
+    C#1            F10.3
+    C#2            F10.3
+    C#3            F10.3
+    C#4            F10.3
+    C#5            F10.3
+    C#6            F10.3
+    C_BC#1         F10.3
+    C_BC#2         F10.3
+    C_BC#3         F10.3
+    C_BC#4         F10.3
+    C_BC#5         F10.3
+    C_C#1          F10.3
+    C_C#2          F10.3
+    C_C#3          F10.3
+    C_C#4          F10.3
+    C_C#5          F10.3
+    C_C#6          F10.3
+    CPROB1         F10.3
+    CPROB2         F10.3
+    CPROB3         F10.3
+    CPROB4         F10.3
+    CPROB5         F10.3
+    CPROB6         F10.3
+    CPROB7         F10.3
+    CPROB8         F10.3
+    CPROB9         F10.3
+    CPROB10        F10.3
+    CPROB11        F10.3
+    CPROB12        F10.3
+    CPROB13        F10.3
+    CPROB14        F10.3
+    CPROB15        F10.3
+    CPROB16        F10.3
+    CPROB17        F10.3
+    CPROB18        F10.3
+    CPROB19        F10.3
+    CPROB20        F10.3
+    CPROB21        F10.3
+    CPROB22        F10.3
+    CPROB23        F10.3
+    CPROB24        F10.3
+    CPROB25        F10.3
+    CPROB26        F10.3
+    CPROB27        F10.3
+    CPROB28        F10.3
+    CPROB29        F10.3
+    CPROB30        F10.3
+    CPROB31        F10.3
+    CPROB32        F10.3
+    CPROB33        F10.3
+    CPROB34        F10.3
+    CPROB35        F10.3
+    CPROB36        F10.3
+    CPROB37        F10.3
+    CPROB38        F10.3
+    CPROB39        F10.3
+    CPROB40        F10.3
+    CPROB41        F10.3
+    CPROB42        F10.3
+    BC             F10.3
+    C              F10.3
+    MLCJOINT       F10.3
+    PCP_ID         I4
+
+  Save file format
+    73F10.3 I4
+
+  Save file record length    10000
+
+  Save missing symbol        *
+
+
+  Estimated Means and Covariance Matrix for the Latent Variables
+
+  Save file
+    tech4.dat
+  Save format      Free
+
+     Beginning Time:  10:37:35
+        Ending Time:  10:46:10
+       Elapsed Time:  00:08:35
+
+
+
+MUTHEN & MUTHEN
+3463 Stoner Ave.
+Los Angeles, CA  90066
+
+Tel: (310) 391-9971
+Fax: (310) 391-8971
+Web: www.StatModel.com
+Support: Support@StatModel.com
+
+Copyright (c) 1998-2023 Muthen & Muthen

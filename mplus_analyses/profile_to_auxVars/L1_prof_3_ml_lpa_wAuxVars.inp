@@ -1,0 +1,36 @@
+TITLE:
+L1_P_3_auxVars;
+DATA:
+FILE = "mplus_analyses/profile_to_AuxVars/profile_to_auxVars.dat";
+ 
+VARIABLE:
+NAMES = PCP_ID row_num wc drives cognition affect social big_words tot_wc listen
+     und_stnd respect spnd_tm; 
+ USEVARIABLES = drives cognition affect social wc big_words und_stnd;
+ !CATEGORICAL = respect;
+ AUXILIARY = und_stnd(bch);
+ MISSING=.;
+ CLASSES = c(3);
+DEFINE:
+STANDARDIZE drives cognition affect social wc big_words;
+ANALYSIS:
+TYPE = MIXTURE;
+    ESTIMATOR=MLR;
+    STARTS=1000 50;
+    STITERATIONS=50;
+    LRTSTARTS=1000 50 1000 50;
+    PROCESSORS=4;
+MODEL:
+%OVERALL%
+%C#1%
+[drives cognition affect social wc big_words];
+drives cognition affect social wc big_words;
+%C#2%
+[drives cognition affect social wc big_words];
+drives cognition affect social wc big_words;
+%C#3%
+[drives cognition affect social wc big_words];
+drives cognition affect social wc big_words;
+SAVEDATA:
+!save=bchweights;
+file=prof_aux.dat;

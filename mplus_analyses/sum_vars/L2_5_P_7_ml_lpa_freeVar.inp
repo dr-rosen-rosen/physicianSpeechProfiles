@@ -1,0 +1,54 @@
+TITLE:
+L2_5_P_7_lpa_freeVar;
+DATA:
+FILE = "mplus_analyses/sum_vars/L2_5_P_7_ml_lpa_freeVar.dat";
+ 
+VARIABLE:
+NAMES = analytic clout authentic tone wc big_words PCP_ID; 
+ MISSING=.;
+ CLASSES = BC(5) c(7);
+CLUSTER IS PCP_ID;
+WITHIN ARE analytic clout authentic tone wc big_words;
+BETWEEN ARE BC;
+DEFINE:
+STANDARDIZE analytic clout authentic tone wc big_words;
+ANALYSIS:
+TYPE = MIXTURE TWOLEVEL;
+    ESTIMATOR=MLR;
+    STARTS=1000 200;
+    STITERATIONS=50;
+    LRTSTARTS=1000 50 1000 50;
+    PROCESSORS=4;
+MODEL:
+%WITHIN%
+%OVERALL%
+%BETWEEN%
+%OVERALL%
+c ON BC;
+MODEL c:
+%WITHIN%
+%C#1%
+[analytic clout authentic tone wc big_words];
+analytic clout authentic tone wc big_words;
+%C#2%
+[analytic clout authentic tone wc big_words];
+analytic clout authentic tone wc big_words;
+%C#3%
+[analytic clout authentic tone wc big_words];
+analytic clout authentic tone wc big_words;
+%C#4%
+[analytic clout authentic tone wc big_words];
+analytic clout authentic tone wc big_words;
+%C#5%
+[analytic clout authentic tone wc big_words];
+analytic clout authentic tone wc big_words;
+%C#6%
+[analytic clout authentic tone wc big_words];
+analytic clout authentic tone wc big_words;
+%C#7%
+[analytic clout authentic tone wc big_words];
+analytic clout authentic tone wc big_words;
+SAVEDATA:
+file=mlLpa_L2_5_L1_7.dat; save=cprob; TECH4 IS tech4.dat;
+PLOT:
+type = plot3;

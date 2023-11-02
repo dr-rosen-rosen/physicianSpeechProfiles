@@ -1,0 +1,32 @@
+TITLE: ML-LPA - 2 classes mean no var
+DATA: FILE = "mplus_analyses/MD_profile_cmb_mPlus.dat";
+VARIABLE: 
+NAMES = drives cognition affect social wc big_words wps provider_id; 
+MISSING=.;
+CLASSES = BC(3) c(2);
+CLUSTER IS provider_id;
+WITHIN ARE drives cognition affect social wc big_words wps;
+BETWEEN ARE BC;
+DEFINE:
+STANDARDIZE drives cognition affect social wc wps big_words;
+ANALYSIS:
+TYPE = MIXTURE TWOLEVEL;
+ESTIMATOR=MLR;
+STARTS = 1000 200;
+PROCESSORS = 4;
+MODEL:
+%WITHIN%
+%OVERALL%
+%BETWEEN%
+%OVERALL%
+c ON BC;
+MODEL c:
+%WITHIN%
+%c#1%
+[drives cognition affect social wc big_words];
+!drives cognition affect social wc big_words;
+%c#2%
+[drives cognition affect social wc big_words];
+!drives cognition affect social wc big_words;
+OUTPUT:
+SAVEDATA: file=mlLPA2.dat; save=cprob; TECH4 IS tech4.dat;

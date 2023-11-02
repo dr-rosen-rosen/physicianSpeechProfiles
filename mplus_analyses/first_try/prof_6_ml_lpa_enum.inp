@@ -1,0 +1,40 @@
+TITLE:
+P6_lpa_enum;
+DATA:
+FILE = "mplus_analyses/prof_6_ml_lpa_enum.dat";
+ 
+VARIABLE:
+NAMES = drives cognition affect social wc big_words wps provider_id; 
+ MISSING=.;
+ CLASSES = c(6);
+DEFINE:
+STANDARDIZE drives cognition affect social wc wps big_words;
+ANALYSIS:
+TYPE = MIXTURE;
+    ESTIMATOR=MLR;
+    STARTS=1000 50;
+    STITERATIONS=50;
+    LRTSTARTS=1000 50 1000 50;
+    PROCESSORS=4;
+MODEL:
+%OVERALL%
+%C#1%
+[drives cognition affect social wc wps big_words];
+!drives cognition affect social wc wps big_words;
+%C#2%
+[drives cognition affect social wc wps big_words];
+!drives cognition affect social wc wps big_words;
+%C#3%
+[drives cognition affect social wc wps big_words];
+!drives cognition affect social wc wps big_words;
+%C#4%
+[drives cognition affect social wc wps big_words];
+!drives cognition affect social wc wps big_words;
+%C#5%
+[drives cognition affect social wc wps big_words];
+!drives cognition affect social wc wps big_words;
+%C#6%
+[drives cognition affect social wc wps big_words];
+!drives cognition affect social wc wps big_words;
+PLOT:
+type = plot3;

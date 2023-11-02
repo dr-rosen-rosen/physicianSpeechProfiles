@@ -1,0 +1,45 @@
+TITLE:
+L2_2_P_3_lpa_freeVar;
+DATA:
+FILE = "mplus_analyses/psych_processV2_WPS/L2_2_P_3_ml_lpa_freeVar.dat";
+ 
+VARIABLE:
+NAMES = drives cognition affect social big_words wps PCP_ID row_num; 
+ MISSING=.;
+ IDVARIABLE IS row_num;
+CLASSES = BC(2) c(3);
+CLUSTER IS PCP_ID;
+WITHIN ARE drives cognition affect social big_words wps;
+BETWEEN ARE BC;
+DEFINE:
+STANDARDIZE drives cognition affect social big_words wps;
+ANALYSIS:
+TYPE = MIXTURE TWOLEVEL;
+    ESTIMATOR=MLR;
+    STARTS=1000 200;
+    STITERATIONS=50;
+    LRTSTARTS=1000 50 1000 50;
+    PROCESSORS=4;
+MODEL:
+%WITHIN%
+%OVERALL%
+%BETWEEN%
+%OVERALL%
+c ON BC;
+MODEL c:
+%WITHIN%
+%C#1%
+[drives cognition affect social big_words wps];
+drives cognition affect social big_words wps;
+%C#2%
+[drives cognition affect social big_words wps];
+drives cognition affect social big_words wps;
+%C#3%
+[drives cognition affect social big_words wps];
+drives cognition affect social big_words wps;
+SAVEDATA:
+file=mlLpa_L2_2_L1_3.dat;
+save=cprob;
+TECH4 IS tech4.dat;
+PLOT:
+type = plot3;

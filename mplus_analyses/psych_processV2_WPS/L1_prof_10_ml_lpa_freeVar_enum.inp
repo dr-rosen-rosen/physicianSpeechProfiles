@@ -1,0 +1,52 @@
+TITLE:
+L1_P_10_lpa_freeVar;
+DATA:
+FILE = "mplus_analyses/psych_processV2_WPS/L1_prof_10_ml_lpa_freeVar_enum.dat";
+ 
+VARIABLE:
+NAMES = drives cognition affect social big_words wps PCP_ID row_num; 
+ MISSING=.;
+ CLASSES = c(10);
+DEFINE:
+STANDARDIZE drives cognition affect social big_words wps;
+ANALYSIS:
+TYPE = MIXTURE;
+    ESTIMATOR=MLR;
+    STARTS=1000 50;
+    STITERATIONS=50;
+    LRTSTARTS=1000 50 1000 50;
+    PROCESSORS=4;
+MODEL:
+%OVERALL%
+%C#1%
+[drives cognition affect social big_words wps];
+drives cognition affect social big_words wps;
+%C#2%
+[drives cognition affect social big_words wps];
+drives cognition affect social big_words wps;
+%C#3%
+[drives cognition affect social big_words wps];
+drives cognition affect social big_words wps;
+%C#4%
+[drives cognition affect social big_words wps];
+drives cognition affect social big_words wps;
+%C#5%
+[drives cognition affect social big_words wps];
+drives cognition affect social big_words wps;
+%C#6%
+[drives cognition affect social big_words wps];
+drives cognition affect social big_words wps;
+%C#7%
+[drives cognition affect social big_words wps];
+drives cognition affect social big_words wps;
+%C#8%
+[drives cognition affect social big_words wps];
+drives cognition affect social big_words wps;
+%C#9%
+[drives cognition affect social big_words wps];
+drives cognition affect social big_words wps;
+%C#10%
+[drives cognition affect social big_words wps];
+drives cognition affect social big_words wps;
+PLOT:
+type = plot3;

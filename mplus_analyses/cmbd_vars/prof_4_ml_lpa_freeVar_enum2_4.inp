@@ -1,0 +1,45 @@
+TITLE:
+L24_P4_lpa__freeVarenum_L2;
+DATA:
+FILE = "mplus_analyses/cmbd_vars/prof_4_ml_lpa_freeVar_enumL2_4.dat";
+ 
+VARIABLE:
+NAMES = drives cognition affect analytic clout authentic wc big_words PCP_ID; 
+ MISSING=.;
+ CLASSES = BC(4) c(4);
+CLUSTER IS PCP_ID;
+WITHIN ARE drives, cognition, affect, analytic, clout, authentic, wc, big_words;
+BETWEEN ARE BC;
+DEFINE:
+STANDARDIZE drives, cognition, affect, analytic, clout, authentic, wc, big_words;
+ANALYSIS:
+TYPE = MIXTURE TWOLEVEL;
+    ESTIMATOR=MLR;
+    STARTS=1000 200;
+    STITERATIONS=50;
+    LRTSTARTS=1000 50 1000 50;
+    PROCESSORS=4;
+MODEL:
+%WITHIN%
+%OVERALL%
+%BETWEEN%
+%OVERALL%
+c ON BC;
+MODEL c:
+%WITHIN%
+%C#1%
+[drives, cognition, affect, analytic, clout, authentic, wc, big_words];
+drives, cognition, affect, analytic, clout, authentic, wc, big_words;
+%C#2%
+[drives, cognition, affect, analytic, clout, authentic, wc, big_words];
+drives, cognition, affect, analytic, clout, authentic, wc, big_words;
+%C#3%
+[drives, cognition, affect, analytic, clout, authentic, wc, big_words];
+drives, cognition, affect, analytic, clout, authentic, wc, big_words;
+%C#4%
+[drives, cognition, affect, analytic, clout, authentic, wc, big_words];
+drives, cognition, affect, analytic, clout, authentic, wc, big_words;
+SAVEDATA:
+file=mlLpa_4L1_4L2.dat; save=cprob; TECH4 IS tech4.dat;
+PLOT:
+type = plot3;

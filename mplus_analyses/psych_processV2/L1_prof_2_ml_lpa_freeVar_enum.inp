@@ -1,0 +1,28 @@
+TITLE:
+L1_P_2_lpa_freeVar;
+DATA:
+FILE = "mplus_analyses/psych_processV2/L1_prof_2_ml_lpa_freeVar_enum.dat";
+ 
+VARIABLE:
+NAMES = drives cognition affect social big_words pcp_to_pt_wc PCP_ID row_num; 
+ MISSING=.;
+ CLASSES = c(2);
+DEFINE:
+STANDARDIZE drives cognition affect social big_words pcp_to_pt_wc;
+ANALYSIS:
+TYPE = MIXTURE;
+    ESTIMATOR=MLR;
+    STARTS=1000 50;
+    STITERATIONS=50;
+    LRTSTARTS=1000 50 1000 50;
+    PROCESSORS=4;
+MODEL:
+%OVERALL%
+%C#1%
+[drives cognition affect social big_words pcp_to_pt_wc];
+drives cognition affect social big_words pcp_to_pt_wc;
+%C#2%
+[drives cognition affect social big_words pcp_to_pt_wc];
+drives cognition affect social big_words pcp_to_pt_wc;
+PLOT:
+type = plot3;

@@ -1,0 +1,614 @@
+Mplus VERSION 8.9 (Mac)
+MUTHEN & MUTHEN
+05/26/2023   9:50 AM
+
+INPUT INSTRUCTIONS
+
+  TITLE:
+  L2_1_P_3_lpa_freeVar;
+  DATA:
+  FILE = "mplus_analyses/sum_vars/L2_1_P_3_ml_lpa_freeVar.dat";
+
+  VARIABLE:
+  NAMES = analytic clout authentic tone wc big_words PCP_ID;
+   MISSING=.;
+   CLASSES = BC(1) c(3);
+  CLUSTER IS PCP_ID;
+  WITHIN ARE analytic clout authentic tone wc big_words;
+  BETWEEN ARE BC;
+  DEFINE:
+  STANDARDIZE analytic clout authentic tone wc big_words;
+  ANALYSIS:
+  TYPE = MIXTURE TWOLEVEL;
+      ESTIMATOR=MLR;
+      STARTS=1000 200;
+      STITERATIONS=50;
+      LRTSTARTS=1000 50 1000 50;
+      PROCESSORS=4;
+  MODEL:
+  %WITHIN%
+  %OVERALL%
+  %BETWEEN%
+  %OVERALL%
+  c ON BC;
+  MODEL c:
+  %WITHIN%
+  %C#1%
+  [analytic clout authentic tone wc big_words];
+  analytic clout authentic tone wc big_words;
+  %C#2%
+  [analytic clout authentic tone wc big_words];
+  analytic clout authentic tone wc big_words;
+  %C#3%
+  [analytic clout authentic tone wc big_words];
+  analytic clout authentic tone wc big_words;
+  SAVEDATA:
+  file=mlLpa_L2_1_L1_3.dat; save=cprob; TECH4 IS tech4.dat;
+  PLOT:
+  type = plot3;
+
+
+
+*** WARNING in VARIABLE command
+  Note that only the first 8 characters of variable names are used in the output.
+  Shorten variable names to avoid any confusion.
+*** WARNING in MODEL command
+  Variable is uncorrelated with all other variables within class: ANALYTIC
+*** WARNING in MODEL command
+  Variable is uncorrelated with all other variables within class: CLOUT
+*** WARNING in MODEL command
+  Variable is uncorrelated with all other variables within class: AUTHENTIC
+*** WARNING in MODEL command
+  Variable is uncorrelated with all other variables within class: TONE
+*** WARNING in MODEL command
+  Variable is uncorrelated with all other variables within class: WC
+*** WARNING in MODEL command
+  Variable is uncorrelated with all other variables within class: BIG_WORDS
+*** WARNING in MODEL command
+  At least one variable is uncorrelated with all other variables within class.
+  Check that this is what is intended.
+*** WARNING in PLOT command
+  Note that only the first 8 characters of variable names are used in plots.
+  If variable names are not unique within the first 8 characters, problems
+  may occur.
+   9 WARNING(S) FOUND IN THE INPUT INSTRUCTIONS
+
+
+
+
+L2_1_P_3_lpa_freeVar;
+
+SUMMARY OF ANALYSIS
+
+Number of groups                                                 1
+Number of observations                                        1672
+
+Number of dependent variables                                    6
+Number of independent variables                                  0
+Number of continuous latent variables                            0
+Number of categorical latent variables                           2
+
+Observed dependent variables
+
+  Continuous
+   ANALYTIC    CLOUT       AUTHENTIC   TONE        WC          BIG_WORDS
+
+Categorical latent variables
+   BC          C
+
+Variables with special functions
+
+  Cluster variable      PCP_ID
+
+  Within variables
+   ANALYTIC    CLOUT       AUTHENTI    TONE        WC          BIG_WORD
+
+
+Estimator                                                      MLR
+Information matrix                                        OBSERVED
+Optimization Specifications for the Quasi-Newton Algorithm for
+Continuous Outcomes
+  Maximum number of iterations                                 100
+  Convergence criterion                                  0.100D-05
+Optimization Specifications for the EM Algorithm
+  Maximum number of iterations                                 500
+  Convergence criteria
+    Loglikelihood change                                 0.100D-02
+    Relative loglikelihood change                        0.100D-05
+    Derivative                                           0.100D-02
+Optimization Specifications for the M step of the EM Algorithm for
+Categorical Latent variables
+  Number of M step iterations                                    1
+  M step convergence criterion                           0.100D-02
+  Basis for M step termination                           ITERATION
+Optimization Specifications for the M step of the EM Algorithm for
+Censored, Binary or Ordered Categorical (Ordinal), Unordered
+Categorical (Nominal) and Count Outcomes
+  Number of M step iterations                                    1
+  M step convergence criterion                           0.100D-02
+  Basis for M step termination                           ITERATION
+  Maximum value for logit thresholds                            15
+  Minimum value for logit thresholds                           -15
+  Minimum expected cell size for chi-square              0.100D-01
+Maximum number of iterations for H1                           2000
+Convergence criterion for H1                             0.100D-03
+Optimization algorithm                                         EMA
+Integration Specifications
+  Type                                                    STANDARD
+  Number of integration points                                  15
+  Dimensions of numerical integration                            0
+  Adaptive quadrature                                           ON
+Random Starts Specifications
+  Number of initial stage random starts                       1000
+  Number of final stage optimizations                          200
+  Number of initial stage iterations                            50
+  Initial stage convergence criterion                    0.100D+01
+  Random starts scale                                    0.500D+01
+  Random seed for generating random starts                       0
+Parameterization                                             LOGIT
+Cholesky                                                       OFF
+
+Input data file(s)
+  mplus_analyses/sum_vars/L2_1_P_3_ml_lpa_freeVar.dat
+Input data format  FREE
+
+
+SUMMARY OF DATA
+
+     Number of missing data patterns             1
+     Number of y missing data patterns           1
+     Number of u missing data patterns           0
+     Number of clusters                        116
+
+
+
+COVARIANCE COVERAGE OF DATA
+
+Minimum covariance coverage value   0.100
+
+
+     PROPORTION OF DATA PRESENT FOR Y
+
+
+           Covariance Coverage
+              ANALYTIC      CLOUT         AUTHENTI      TONE          WC
+              ________      ________      ________      ________      ________
+ ANALYTIC       1.000
+ CLOUT          1.000         1.000
+ AUTHENTI       1.000         1.000         1.000
+ TONE           1.000         1.000         1.000         1.000
+ WC             1.000         1.000         1.000         1.000         1.000
+ BIG_WORD       1.000         1.000         1.000         1.000         1.000
+
+
+           Covariance Coverage
+              BIG_WORD
+              ________
+ BIG_WORD       1.000
+
+
+
+UNIVARIATE SAMPLE STATISTICS
+
+
+     UNIVARIATE HIGHER-ORDER MOMENT DESCRIPTIVE STATISTICS
+
+         Variable/         Mean/     Skewness/   Minimum/ % with                Percentiles
+        Sample Size      Variance    Kurtosis    Maximum  Min/Max      20%/60%    40%/80%    Median
+
+     ANALYTIC              0.000       1.350      -1.279    1.67%      -0.818     -0.476     -0.258
+            1672.000       1.000       2.045       5.202    0.06%      -0.029      0.703
+     CLOUT                 0.000      -1.716      -5.773    0.06%      -0.610      0.087      0.305
+            1672.000       1.000       3.556       0.973    6.88%       0.502      0.791
+     AUTHENTIC             0.000       0.159      -2.584    0.06%      -0.867     -0.326     -0.042
+            1672.000       1.000      -0.318       3.354    0.06%       0.245      0.889
+     TONE                  0.000       0.515      -2.462    0.06%      -0.872     -0.362     -0.127
+            1672.000       1.000      -0.083       3.099    0.06%       0.147      0.848
+     WC                    0.000       1.215      -2.015    0.06%      -0.800     -0.370     -0.169
+            1672.000       1.000       2.403       4.875    0.06%       0.057      0.716
+     BIG_WORDS             0.000       0.356      -3.516    0.06%      -0.841     -0.290     -0.060
+            1672.000       1.000       0.509       4.567    0.06%       0.183      0.842
+
+RANDOM STARTS RESULTS RANKED FROM THE BEST TO THE WORST LOGLIKELIHOOD VALUES
+
+Final stage loglikelihood values at local maxima, seeds, and initial stage start numbers:
+
+          -13322.335  865906           641
+          -13322.336  113138           585
+          -13322.336  762461           425
+          -13322.336  576726           280
+          -13322.337  43523            297
+          -13322.337  900268           327
+          -13322.337  173440           328
+          -13322.337  501995           791
+          -13322.337  440395           917
+          -13322.337  641794           591
+          -13322.337  132336           362
+          -13322.337  80438            246
+          -13322.337  391368           802
+          -13322.337  686482           215
+          -13322.337  72344            897
+          -13322.337  264935           281
+          -13322.337  413564           535
+          -13322.338  153053           378
+          -13322.338  805768           879
+          -13322.338  79212            517
+          -13322.338  570782           193
+          -13322.338  427006           839
+          -13322.338  81117            305
+          -13322.338  783102           433
+          -13322.338  790452           303
+          -13322.338  992389           77
+          -13322.338  602797           336
+          -13322.338  166851           638
+          -13322.338  669639           699
+          -13322.339  824126           287
+          -13322.339  11397            944
+          -13322.339  576220           115
+          -13322.339  565819           65
+          -13322.339  791678           974
+          -13322.339  425149           878
+          -13322.339  231281           542
+          -13322.339  319575           499
+          -13322.339  749635           420
+          -13322.340  538872           949
+          -13322.340  12477            155
+          -13322.340  781190           219
+          -13322.340  823392           479
+          -13322.340  772131           407
+          -13322.340  882750           646
+          -13322.340  440368           797
+          -13322.340  888905           444
+          -13322.340  81951            907
+          -13322.340  710154           831
+          -13322.340  369602           146
+          -13322.340  228459           947
+          -13322.341  92091            649
+          -13322.341  995648           936
+          -13322.341  871722           355
+          -13322.341  178031           720
+          -13322.341  752769           253
+          -13322.341  655497           376
+          -13327.621  78862            529
+          -13327.622  177936           726
+          -13327.622  944186           541
+          -13327.623  319144           176
+          -13327.623  263268           165
+          -13327.623  793487           595
+          -13327.623  461687           833
+          -13327.624  441191           361
+          -13327.624  420910           928
+          -13327.624  721392           768
+          -13327.625  475419           987
+          -13327.625  735928           916
+          -13327.625  411615           171
+          -13328.091  372176           23
+          -13328.093  760531           550
+          -13328.094  378393           509
+
+128 perturbed starting value run(s) did not converge or were rejected in the third stage.
+
+
+
+THE BEST LOGLIKELIHOOD VALUE HAS BEEN REPLICATED.  RERUN WITH AT LEAST TWICE THE
+RANDOM STARTS TO CHECK THAT THE BEST LOGLIKELIHOOD IS STILL OBTAINED AND REPLICATED.
+
+
+THE MODEL ESTIMATION TERMINATED NORMALLY
+
+
+
+MODEL FIT INFORMATION
+
+Number of Free Parameters                       38
+
+Loglikelihood
+
+          H0 Value                      -13322.335
+          H0 Scaling Correction Factor      4.5398
+            for MLR
+
+Information Criteria
+
+          Akaike (AIC)                   26720.670
+          Bayesian (BIC)                 26926.698
+          Sample-Size Adjusted BIC       26805.977
+            (n* = (n + 2) / 24)
+
+
+
+MODEL RESULTS USE THE LATENT CLASS VARIABLE ORDER
+
+   BC  C
+
+
+FINAL CLASS COUNTS AND PROPORTIONS FOR THE LATENT CLASS PATTERNS
+BASED ON ESTIMATED POSTERIOR PROBABILITIES
+
+  Latent Class
+    Pattern
+
+    1  1        617.13023          0.36910
+    1  2        491.34390          0.29387
+    1  3        563.52586          0.33704
+
+
+FINAL CLASS COUNTS AND PROPORTIONS FOR EACH LATENT CLASS VARIABLE
+BASED ON ESTIMATED POSTERIOR PROBABILITIES
+
+  Latent Class
+    Variable    Class
+
+    BC             1      1672.00000          1.00000
+    C              1       617.13025          0.36910
+                   2       491.34390          0.29387
+                   3       563.52588          0.33704
+
+
+FINAL CLASS COUNTS AND PROPORTIONS FOR THE LATENT CLASS PATTERNS
+BASED ON THEIR MOST LIKELY LATENT CLASS PATTERN
+
+Class Counts and Proportions
+
+  Latent Class
+    Pattern
+
+    1  1              636          0.38038
+    1  2              530          0.31699
+    1  3              506          0.30263
+
+
+FINAL CLASS COUNTS AND PROPORTIONS FOR EACH LATENT CLASS VARIABLE
+BASED ON THEIR MOST LIKELY LATENT CLASS PATTERN
+
+  Latent Class
+    Variable    Class
+
+    BC             1            1672          1.00000
+    C              1             636          0.38038
+                   2             530          0.31699
+                   3             506          0.30263
+
+
+CLASSIFICATION QUALITY
+
+     Entropy                         0.624
+
+
+MODEL RESULTS
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+Within Level
+
+Latent Class Pattern 1 1
+
+ Means
+    ANALYTIC          -0.526      0.171     -3.082      0.002
+    CLOUT              0.227      0.180      1.261      0.207
+    AUTHENTIC         -0.007      0.139     -0.049      0.961
+    TONE               0.037      0.175      0.209      0.835
+    WC                 0.067      0.130      0.520      0.603
+    BIG_WORDS         -0.323      0.154     -2.091      0.037
+
+ Variances
+    ANALYTIC           0.193      0.116      1.670      0.095
+    CLOUT              0.256      0.125      2.049      0.040
+    AUTHENTIC          0.857      0.099      8.676      0.000
+    TONE               0.998      0.150      6.639      0.000
+    WC                 0.672      0.092      7.316      0.000
+    BIG_WORDS          0.650      0.081      8.047      0.000
+
+Latent Class Pattern 1 2
+
+ Means
+    ANALYTIC           0.306      0.269      1.138      0.255
+    CLOUT              0.725      0.074      9.763      0.000
+    AUTHENTIC         -0.507      0.125     -4.048      0.000
+    TONE               0.201      0.162      1.240      0.215
+    WC                -0.561      0.122     -4.596      0.000
+    BIG_WORDS         -0.021      0.191     -0.112      0.911
+
+ Variances
+    ANALYTIC           1.166      0.258      4.513      0.000
+    CLOUT              0.048      0.023      2.085      0.037
+    AUTHENTIC          0.856      0.096      8.958      0.000
+    TONE               1.221      0.140      8.750      0.000
+    WC                 0.305      0.061      5.005      0.000
+    BIG_WORDS          1.071      0.091     11.754      0.000
+
+Latent Class Pattern 1 3
+
+ Means
+    ANALYTIC           0.309      0.212      1.455      0.146
+    CLOUT             -0.881      0.162     -5.426      0.000
+    AUTHENTIC          0.450      0.112      4.007      0.000
+    TONE              -0.215      0.126     -1.705      0.088
+    WC                 0.415      0.155      2.671      0.008
+    BIG_WORDS          0.372      0.128      2.906      0.004
+
+ Variances
+    ANALYTIC           1.259      0.389      3.237      0.001
+    CLOUT              1.354      0.248      5.465      0.000
+    AUTHENTIC          0.856      0.065     13.262      0.000
+    TONE               0.727      0.160      4.530      0.000
+    WC                 1.514      0.201      7.541      0.000
+    BIG_WORDS          1.069      0.134      7.989      0.000
+
+Between Level
+
+Categorical Latent Variables
+
+Within Level
+
+ Means
+    C#1                0.091      0.304      0.299      0.765
+    C#2               -0.137      0.324     -0.422      0.673
+
+Between Level
+
+
+QUALITY OF NUMERICAL RESULTS
+
+     Condition Number for the Information Matrix              0.114E-04
+       (ratio of smallest to largest eigenvalue)
+
+
+C-SPECIFIC CLASSIFICATION RESULTS
+
+Classification Quality for BC
+
+     Entropy                     -Infinity
+
+Average Latent Class Probabilities for Most Likely Latent Class Membership (Row)
+by Latent Class (Column)
+
+           1
+
+    1   1.000
+
+
+Classification Probabilities for the Most Likely Latent Class Membership (Column)
+by Latent Class (Row)
+
+           1
+
+    1   1.000
+
+
+Logits for the Classification Probabilities for the Most Likely Latent Class Membership (Column)
+by Latent Class (Row)
+
+              1
+
+    1      0.000
+
+Classification Quality for C
+
+     Entropy                         0.624
+
+Average Latent Class Probabilities for Most Likely Latent Class Membership (Row)
+by Latent Class (Column)
+
+           1        2        3
+
+    1   0.784    0.102    0.114
+    2   0.148    0.789    0.063
+    3   0.080    0.016    0.904
+
+
+Classification Probabilities for the Most Likely Latent Class Membership (Column)
+by Latent Class (Row)
+
+           1        2        3
+
+    1   0.808    0.127    0.065
+    2   0.133    0.851    0.017
+    3   0.128    0.060    0.812
+
+
+Logits for the Classification Probabilities for the Most Likely Latent Class Membership (Column)
+by Latent Class (Row)
+
+              1        2        3
+
+    1      2.516    0.666    0.000
+    2      2.083    3.942    0.000
+    3     -1.844   -2.613    0.000
+
+
+SAMPLE STATISTICS FOR ESTIMATED FACTOR SCORES
+
+
+     SAMPLE STATISTICS
+
+
+           Means
+              C#1           C#2           C_C#1         C_C#2
+              ________      ________      ________      ________
+                0.091        -0.137         0.091        -0.137
+
+
+           Covariances
+              C#1           C#2           C_C#1         C_C#2
+              ________      ________      ________      ________
+ C#1            0.000
+ C#2            0.000         0.000
+ C_C#1          0.000         0.000         0.000
+ C_C#2          0.000         0.000         0.000         0.000
+
+
+           Correlations
+              C#1           C#2           C_C#1         C_C#2
+              ________      ________      ________      ________
+ C#1            1.000
+ C#2          999.000         1.000
+ C_C#1        999.000       999.000         1.000
+ C_C#2        999.000       999.000       999.000         1.000
+
+
+PLOT INFORMATION
+
+The following plots are available:
+
+  Histograms (sample values, estimated factor scores)
+  Scatterplots (sample values, estimated factor scores)
+  Latent variable distribution plots
+
+SAVEDATA INFORMATION
+
+
+  Save file
+    mlLpa_L2_1_L1_3.dat
+
+  Order and format of variables
+
+    ANALYTIC       F10.3
+    CLOUT          F10.3
+    AUTHENTI       F10.3
+    TONE           F10.3
+    WC             F10.3
+    BIG_WORD       F10.3
+    C#1            F10.3
+    C#2            F10.3
+    C_C#1          F10.3
+    C_C#2          F10.3
+    CPROB1         F10.3
+    CPROB2         F10.3
+    CPROB3         F10.3
+    BC             F10.3
+    C              F10.3
+    MLCJOINT       F10.3
+    PCP_ID         I4
+
+  Save file format
+    16F10.3 I4
+
+  Save file record length    10000
+
+  Save missing symbol        *
+
+
+  Estimated Means and Covariance Matrix for the Latent Variables
+
+  Save file
+    tech4.dat
+  Save format      Free
+
+     Beginning Time:  09:50:46
+        Ending Time:  09:51:15
+       Elapsed Time:  00:00:29
+
+
+
+MUTHEN & MUTHEN
+3463 Stoner Ave.
+Los Angeles, CA  90066
+
+Tel: (310) 391-9971
+Fax: (310) 391-8971
+Web: www.StatModel.com
+Support: Support@StatModel.com
+
+Copyright (c) 1998-2023 Muthen & Muthen

@@ -1,0 +1,4530 @@
+Mplus VERSION 8.9 (Mac)
+MUTHEN & MUTHEN
+10/25/2023   4:59 PM
+
+INPUT INSTRUCTIONS
+
+  TITLE:
+  L2_9_P_4_lpa_freeVar;
+  DATA:
+  FILE = "mplus_analyses/FINAL_Runs/L2_9_P_4_ml_lpa_freeVar.dat";
+
+  VARIABLE:
+  NAMES = drives cognition affect social big_words wc row_num PCP_ID;
+   MISSING=.;
+   IDVARIABLE IS row_num;
+  CLASSES = BC(9) c(4);
+  CLUSTER IS PCP_ID;
+  WITHIN ARE drives cognition affect social big_words wc;
+  BETWEEN ARE BC;
+  DEFINE:
+  STANDARDIZE drives cognition affect social big_words wc;
+  ANALYSIS:
+  TYPE = MIXTURE TWOLEVEL;
+      ESTIMATOR=MLR;
+      STARTS=1000 200;
+      STITERATIONS=50;
+      LRTSTARTS=1000 50 1000 50;
+      PROCESSORS=4;
+  MODEL:
+  %WITHIN%
+  %OVERALL%
+  %BETWEEN%
+  %OVERALL%
+  c ON BC;
+  MODEL c:
+  %WITHIN%
+  %C#1%
+  [drives cognition affect social big_words wc];
+  drives cognition affect social big_words wc;
+  %C#2%
+  [drives cognition affect social big_words wc];
+  drives cognition affect social big_words wc;
+  %C#3%
+  [drives cognition affect social big_words wc];
+  drives cognition affect social big_words wc;
+  %C#4%
+  [drives cognition affect social big_words wc];
+  drives cognition affect social big_words wc;
+  OUTPUT:
+  SAMPSTAT STANDARDIZED MOD (5.00) TECH7 TECH11 TECH13 TECH14;
+  SAVEDATA:
+  file=mlLpa_L2_9_L1_4.dat;
+  save=cprob;
+  TECH4 IS tech4.dat;
+
+
+
+*** WARNING in VARIABLE command
+  Note that only the first 8 characters of variable names are used in the output.
+  Shorten variable names to avoid any confusion.
+*** WARNING in MODEL command
+  Variable is uncorrelated with all other variables within class: DRIVES
+*** WARNING in MODEL command
+  Variable is uncorrelated with all other variables within class: COGNITION
+*** WARNING in MODEL command
+  Variable is uncorrelated with all other variables within class: AFFECT
+*** WARNING in MODEL command
+  Variable is uncorrelated with all other variables within class: SOCIAL
+*** WARNING in MODEL command
+  Variable is uncorrelated with all other variables within class: BIG_WORDS
+*** WARNING in MODEL command
+  Variable is uncorrelated with all other variables within class: WC
+*** WARNING in MODEL command
+  At least one variable is uncorrelated with all other variables within class.
+  Check that this is what is intended.
+*** WARNING in OUTPUT command
+  MODINDICES option is not available for TYPE=TWOLEVEL MIXTURE.
+  Request for MODINDICES is ignored.
+*** WARNING in OUTPUT command
+  TECH11 option is not available for TYPE=MIXTURE with more than one
+  categorical latent variable.  Request for TECH11 is ignored.
+*** WARNING in OUTPUT command
+  TECH13 option is not available for TYPE=TWOLEVEL MIXTURE.
+  Request for TECH13 is ignored.
+*** WARNING in OUTPUT command
+  TECH14 option is not available for TYPE=MIXTURE with more than one
+  categorical latent variable.  Request for TECH14 is ignored.
+  12 WARNING(S) FOUND IN THE INPUT INSTRUCTIONS
+
+
+
+
+L2_9_P_4_lpa_freeVar;
+
+SUMMARY OF ANALYSIS
+
+Number of groups                                                 1
+Number of observations                                        1822
+
+Number of dependent variables                                    6
+Number of independent variables                                  0
+Number of continuous latent variables                            0
+Number of categorical latent variables                           2
+
+Observed dependent variables
+
+  Continuous
+   DRIVES      COGNITION   AFFECT      SOCIAL      BIG_WORDS   WC
+
+Categorical latent variables
+   BC          C
+
+Variables with special functions
+
+  Cluster variable      PCP_ID
+  ID variable           ROW_NUM
+
+  Within variables
+   DRIVES      COGNITIO    AFFECT      SOCIAL      BIG_WORD    WC
+
+
+Estimator                                                      MLR
+Information matrix                                        OBSERVED
+Optimization Specifications for the Quasi-Newton Algorithm for
+Continuous Outcomes
+  Maximum number of iterations                                 100
+  Convergence criterion                                  0.100D-05
+Optimization Specifications for the EM Algorithm
+  Maximum number of iterations                                 500
+  Convergence criteria
+    Loglikelihood change                                 0.100D-02
+    Relative loglikelihood change                        0.100D-05
+    Derivative                                           0.100D-02
+Optimization Specifications for the M step of the EM Algorithm for
+Categorical Latent variables
+  Number of M step iterations                                    1
+  M step convergence criterion                           0.100D-02
+  Basis for M step termination                           ITERATION
+Optimization Specifications for the M step of the EM Algorithm for
+Censored, Binary or Ordered Categorical (Ordinal), Unordered
+Categorical (Nominal) and Count Outcomes
+  Number of M step iterations                                    1
+  M step convergence criterion                           0.100D-02
+  Basis for M step termination                           ITERATION
+  Maximum value for logit thresholds                            15
+  Minimum value for logit thresholds                           -15
+  Minimum expected cell size for chi-square              0.100D-01
+Maximum number of iterations for H1                           2000
+Convergence criterion for H1                             0.100D-03
+Optimization algorithm                                         EMA
+Integration Specifications
+  Type                                                    STANDARD
+  Number of integration points                                  15
+  Dimensions of numerical integration                            0
+  Adaptive quadrature                                           ON
+Random Starts Specifications
+  Number of initial stage random starts                       1000
+  Number of final stage optimizations                          200
+  Number of initial stage iterations                            50
+  Initial stage convergence criterion                    0.100D+01
+  Random starts scale                                    0.500D+01
+  Random seed for generating random starts                       0
+Parameterization                                             LOGIT
+Cholesky                                                       OFF
+
+Input data file(s)
+  mplus_analyses/FINAL_Runs/L2_9_P_4_ml_lpa_freeVar.dat
+Input data format  FREE
+
+
+SUMMARY OF DATA
+
+     Number of missing data patterns             1
+     Number of y missing data patterns           1
+     Number of u missing data patterns           0
+     Number of clusters                        119
+
+
+
+COVARIANCE COVERAGE OF DATA
+
+Minimum covariance coverage value   0.100
+
+
+     PROPORTION OF DATA PRESENT FOR Y
+
+
+           Covariance Coverage
+              DRIVES        COGNITIO      AFFECT        SOCIAL        BIG_WORD
+              ________      ________      ________      ________      ________
+ DRIVES         1.000
+ COGNITIO       1.000         1.000
+ AFFECT         1.000         1.000         1.000
+ SOCIAL         1.000         1.000         1.000         1.000
+ BIG_WORD       1.000         1.000         1.000         1.000         1.000
+ WC             1.000         1.000         1.000         1.000         1.000
+
+
+           Covariance Coverage
+              WC
+              ________
+ WC             1.000
+
+
+SAMPLE STATISTICS
+
+
+     ESTIMATED SAMPLE STATISTICS
+
+
+           Means
+              DRIVES        COGNITIO      AFFECT        SOCIAL        BIG_WORD
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           Means
+              WC
+              ________
+                0.000
+
+
+           Covariances
+              DRIVES        COGNITIO      AFFECT        SOCIAL        BIG_WORD
+              ________      ________      ________      ________      ________
+ DRIVES         1.000
+ COGNITIO       0.029         1.000
+ AFFECT         0.128         0.009         1.000
+ SOCIAL         0.191        -0.134        -0.031         1.000
+ BIG_WORD      -0.023         0.066        -0.123        -0.161         1.000
+ WC             0.043         0.194        -0.206        -0.096         0.065
+
+
+           Covariances
+              WC
+              ________
+ WC             1.000
+
+
+           Correlations
+              DRIVES        COGNITIO      AFFECT        SOCIAL        BIG_WORD
+              ________      ________      ________      ________      ________
+ DRIVES         1.000
+ COGNITIO       0.029         1.000
+ AFFECT         0.128         0.009         1.000
+ SOCIAL         0.191        -0.134        -0.031         1.000
+ BIG_WORD      -0.023         0.066        -0.123        -0.161         1.000
+ WC             0.043         0.194        -0.206        -0.096         0.065
+
+
+           Correlations
+              WC
+              ________
+ WC             1.000
+
+
+     MAXIMUM LOG-LIKELIHOOD VALUE FOR THE UNRESTRICTED (H1) MODEL IS -15308.650
+
+
+UNIVARIATE SAMPLE STATISTICS
+
+
+     UNIVARIATE HIGHER-ORDER MOMENT DESCRIPTIVE STATISTICS
+
+         Variable/         Mean/     Skewness/   Minimum/ % with                Percentiles
+        Sample Size      Variance    Kurtosis    Maximum  Min/Max      20%/60%    40%/80%    Median
+
+     DRIVES                0.000       0.379      -2.732    0.05%      -0.843     -0.297     -0.045
+            1822.000       1.000       0.285       3.960    0.05%       0.195      0.807
+     COGNITION             0.000       0.236      -3.272    0.05%      -0.820     -0.293     -0.056
+            1822.000       1.000       0.544       4.861    0.05%       0.224      0.816
+     AFFECT                0.000       0.711      -2.888    0.05%      -0.825     -0.309     -0.089
+            1822.000       1.000       1.245       4.401    0.05%       0.131      0.732
+     SOCIAL                0.000       0.462      -2.551    0.05%      -0.844     -0.315     -0.076
+            1822.000       1.000       0.346       4.137    0.05%       0.168      0.803
+     BIG_WORDS             0.000       0.308      -3.468    0.05%      -0.833     -0.294     -0.050
+            1822.000       1.000       0.379       4.550    0.05%       0.200      0.826
+     WC                    0.000       1.130      -1.936    0.05%      -0.801     -0.373     -0.158
+            1822.000       1.000       2.133       4.950    0.05%       0.067      0.730
+
+RANDOM STARTS RESULTS RANKED FROM THE BEST TO THE WORST LOGLIKELIHOOD VALUES
+
+
+5 perturbed starting value run(s) did not converge or were rejected in the third stage.
+Final stage loglikelihood values at local maxima, seeds, and initial stage start numbers:
+
+          -14584.583  700349           401
+          -14584.593  462662           872
+          -14584.631  545140           278
+          -14584.669  781190           219
+          -14584.736  265218           924
+          -14584.738  415502           194
+          -14584.762  276696           676
+          -14585.727  595759           997
+          -14585.729  213532           503
+          -14585.730  891347           504
+          -14586.062  57226            208
+          -14586.964  402699           604
+          -14587.019  876943           650
+          -14587.090  97158            205
+          -14587.186  840031           276
+          -14587.193  67009            564
+          -14587.757  467339           66
+          -14587.757  931874           141
+          -14590.087  284109           82
+          -14593.286  349562           359
+          -14593.350  699810           571
+          -14598.892  173191           422
+          -14598.894  392751           480
+          -14601.634  377584           630
+          -14602.747  497522           502
+          -14604.003  473942           574
+
+174 perturbed starting value run(s) did not converge or were rejected in the third stage.
+
+
+
+THE BEST LOGLIKELIHOOD VALUE HAS BEEN REPLICATED.  RERUN WITH AT LEAST TWICE THE
+RANDOM STARTS TO CHECK THAT THE BEST LOGLIKELIHOOD IS STILL OBTAINED AND REPLICATED.
+
+     THE STANDARD ERRORS OF THE MODEL PARAMETER ESTIMATES MAY NOT BE
+     TRUSTWORTHY FOR SOME PARAMETERS DUE TO A NON-POSITIVE DEFINITE
+     FIRST-ORDER DERIVATIVE PRODUCT MATRIX.  THIS MAY BE DUE TO THE STARTING
+     VALUES BUT MAY ALSO BE AN INDICATION OF MODEL NONIDENTIFICATION.  THE
+     CONDITION NUMBER IS       0.199D-18.  PROBLEM INVOLVING THE FOLLOWING PARAMETER:
+     Parameter 61, %BETWEEN%: C#2 ON BC#1
+
+     ONE OR MORE MULTINOMIAL LOGIT PARAMETERS WERE FIXED TO AVOID SINGULARITY
+     OF THE INFORMATION MATRIX.  THE SINGULARITY IS MOST LIKELY BECAUSE THE
+     MODEL IS NOT IDENTIFIED, OR BECAUSE OF EMPTY CELLS IN THE JOINT
+     DISTRIBUTION OF THE CATEGORICAL LATENT VARIABLES AND ANY INDEPENDENT
+     VARIABLES.  THE FOLLOWING PARAMETERS WERE FIXED:
+     Parameter 62, %BETWEEN%: C#3 ON BC#1
+     Parameter 83, %BETWEEN%: C#3 ON BC#8
+     Parameter 75, %BETWEEN%: C#1 ON BC#6
+     Parameter 63, %BETWEEN%: C#1 ON BC#2
+     Parameter 81, %BETWEEN%: C#1 ON BC#8
+
+
+THE MODEL ESTIMATION TERMINATED NORMALLY
+
+
+
+MODEL FIT INFORMATION
+
+Number of Free Parameters                       83
+
+Loglikelihood
+
+          H0 Value                      -14584.583
+          H0 Scaling Correction Factor      2.8937
+            for MLR
+
+Information Criteria
+
+          Akaike (AIC)                   29335.165
+          Bayesian (BIC)                 29792.303
+          Sample-Size Adjusted BIC       29528.616
+            (n* = (n + 2) / 24)
+
+
+
+MODEL RESULTS USE THE LATENT CLASS VARIABLE ORDER
+
+   BC  C
+
+
+FINAL CLASS COUNTS AND PROPORTIONS FOR THE LATENT CLASS PATTERNS
+BASED ON ESTIMATED POSTERIOR PROBABILITIES
+
+  Latent Class
+    Pattern
+
+    1  1         51.92620          0.02850
+    1  2          0.00000          0.00000
+    1  3         48.63880          0.02670
+    1  4          0.00000          0.00000
+    2  1          0.00000          0.00000
+    2  2         27.37953          0.01503
+    2  3          4.05955          0.00223
+    2  4        256.45017          0.14075
+    3  1          0.00000          0.00000
+    3  2        166.27376          0.09126
+    3  3        125.93088          0.06912
+    3  4          5.96181          0.00327
+    4  1        203.19637          0.11152
+    4  2          2.91317          0.00160
+    4  3          2.27560          0.00125
+    4  4          0.01685          0.00001
+    5  1          6.13900          0.00337
+    5  2        157.36447          0.08637
+    5  3          2.07285          0.00114
+    5  4          0.36841          0.00020
+    6  1          0.00000          0.00000
+    6  2         11.82713          0.00649
+    6  3        250.13750          0.13729
+    6  4         24.98471          0.01371
+    7  1         46.76617          0.02567
+    7  2         13.98628          0.00768
+    7  3          0.00015          0.00000
+    7  4         41.78481          0.02293
+    8  1          0.00000          0.00000
+    8  2         31.19027          0.01712
+    8  3         87.89503          0.04824
+    8  4         86.13194          0.04727
+    9  1        106.03575          0.05820
+    9  2         24.58964          0.01350
+    9  3         35.70316          0.01960
+    9  4          0.00000          0.00000
+
+
+FINAL CLASS COUNTS AND PROPORTIONS FOR EACH LATENT CLASS VARIABLE
+BASED ON ESTIMATED POSTERIOR PROBABILITIES
+
+  Latent Class
+    Variable    Class
+
+    BC             1       100.56500          0.05519
+                   2       287.88925          0.15801
+                   3       298.16647          0.16365
+                   4       208.40201          0.11438
+                   5       165.94473          0.09108
+                   6       286.94934          0.15749
+                   7       102.53742          0.05628
+                   8       205.21725          0.11263
+                   9       166.32855          0.09129
+    C              1       414.06351          0.22726
+                   2       435.52426          0.23904
+                   3       556.71356          0.30555
+                   4       415.69873          0.22816
+
+
+FINAL CLASS COUNTS AND PROPORTIONS FOR THE LATENT CLASS PATTERNS
+BASED ON THEIR MOST LIKELY LATENT CLASS PATTERN
+
+Class Counts and Proportions
+
+  Latent Class
+    Pattern
+
+    1  1               47          0.02580
+    1  2                0          0.00000
+    1  3               42          0.02305
+    1  4                0          0.00000
+    2  1                0          0.00000
+    2  2               21          0.01153
+    2  3                2          0.00110
+    2  4              275          0.15093
+    3  1                0          0.00000
+    3  2              154          0.08452
+    3  3              118          0.06476
+    3  4                2          0.00110
+    4  1              226          0.12404
+    4  2                3          0.00165
+    4  3                1          0.00055
+    4  4                0          0.00000
+    5  1                1          0.00055
+    5  2              164          0.09001
+    5  3                2          0.00110
+    5  4                0          0.00000
+    6  1                0          0.00000
+    6  2                5          0.00274
+    6  3              274          0.15038
+    6  4               19          0.01043
+    7  1               52          0.02854
+    7  2               14          0.00768
+    7  3                1          0.00055
+    7  4               38          0.02086
+    8  1                4          0.00220
+    8  2               28          0.01537
+    8  3               99          0.05434
+    8  4               82          0.04501
+    9  1               98          0.05379
+    9  2               18          0.00988
+    9  3               32          0.01756
+    9  4                0          0.00000
+
+
+FINAL CLASS COUNTS AND PROPORTIONS FOR EACH LATENT CLASS VARIABLE
+BASED ON THEIR MOST LIKELY LATENT CLASS PATTERN
+
+  Latent Class
+    Variable    Class
+
+    BC             1              89          0.04885
+                   2             298          0.16356
+                   3             274          0.15038
+                   4             230          0.12623
+                   5             167          0.09166
+                   6             298          0.16356
+                   7             105          0.05763
+                   8             213          0.11690
+                   9             148          0.08123
+    C              1             428          0.23491
+                   2             407          0.22338
+                   3             571          0.31339
+                   4             416          0.22832
+
+
+CLASSIFICATION QUALITY
+
+     Entropy                         0.830
+
+
+MODEL RESULTS
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+Within Level
+
+Latent Class Pattern 1 1
+
+ Means
+    DRIVES            -0.411      0.209     -1.964      0.050
+    COGNITION         -0.259      0.244     -1.062      0.288
+    AFFECT            -0.847      0.156     -5.438      0.000
+    SOCIAL             0.312      0.216      1.445      0.149
+    BIG_WORDS          0.254      0.233      1.088      0.276
+    WC                -0.250      0.308     -0.810      0.418
+
+ Variances
+    DRIVES             0.948      0.421      2.251      0.024
+    COGNITION          1.037      0.141      7.342      0.000
+    AFFECT             0.437      0.116      3.784      0.000
+    SOCIAL             1.332      0.209      6.379      0.000
+    BIG_WORDS          1.120      0.168      6.654      0.000
+    WC                 0.526      0.072      7.258      0.000
+
+Latent Class Pattern 1 2
+
+ Means
+    DRIVES             0.307      0.145      2.118      0.034
+    COGNITION         -0.216      0.564     -0.384      0.701
+    AFFECT             0.611      0.288      2.123      0.034
+    SOCIAL             0.620      0.179      3.471      0.001
+    BIG_WORDS         -0.479      0.333     -1.437      0.151
+    WC                -0.523      0.365     -1.433      0.152
+
+ Variances
+    DRIVES             1.235      0.312      3.960      0.000
+    COGNITION          0.842      0.214      3.937      0.000
+    AFFECT             1.244      0.242      5.140      0.000
+    SOCIAL             0.776      0.108      7.207      0.000
+    BIG_WORDS          0.708      0.448      1.581      0.114
+    WC                 0.322      0.203      1.587      0.112
+
+Latent Class Pattern 1 3
+
+ Means
+    DRIVES             0.107      0.154      0.696      0.486
+    COGNITION          0.331      0.151      2.191      0.028
+    AFFECT            -0.191      0.183     -1.047      0.295
+    SOCIAL            -0.190      0.274     -0.691      0.490
+    BIG_WORDS         -0.004      0.155     -0.024      0.981
+    WC                 0.918      0.252      3.646      0.000
+
+ Variances
+    DRIVES             0.699      0.069     10.076      0.000
+    COGNITION          0.661      0.167      3.965      0.000
+    AFFECT             0.378      0.096      3.951      0.000
+    SOCIAL             0.568      0.072      7.898      0.000
+    BIG_WORDS          0.660      0.104      6.378      0.000
+    WC                 1.116      0.148      7.525      0.000
+
+Latent Class Pattern 1 4
+
+ Means
+    DRIVES            -0.056      0.328     -0.172      0.864
+    COGNITION          0.041      0.527      0.078      0.938
+    AFFECT             0.459      0.134      3.418      0.001
+    SOCIAL            -0.707      0.547     -1.293      0.196
+    BIG_WORDS          0.254      0.187      1.361      0.174
+    WC                -0.432      0.094     -4.581      0.000
+
+ Variances
+    DRIVES             0.923      0.196      4.704      0.000
+    COGNITION          1.318      0.301      4.373      0.000
+    AFFECT             0.774      0.406      1.904      0.057
+    SOCIAL             0.434      0.321      1.354      0.176
+    BIG_WORDS          1.272      0.198      6.441      0.000
+    WC                 0.365      0.143      2.554      0.011
+
+Latent Class Pattern 2 1
+
+ Means
+    DRIVES            -0.411      0.209     -1.964      0.050
+    COGNITION         -0.259      0.244     -1.062      0.288
+    AFFECT            -0.847      0.156     -5.438      0.000
+    SOCIAL             0.312      0.216      1.445      0.149
+    BIG_WORDS          0.254      0.233      1.088      0.276
+    WC                -0.250      0.308     -0.810      0.418
+
+ Variances
+    DRIVES             0.948      0.421      2.251      0.024
+    COGNITION          1.037      0.141      7.342      0.000
+    AFFECT             0.437      0.116      3.784      0.000
+    SOCIAL             1.332      0.209      6.379      0.000
+    BIG_WORDS          1.120      0.168      6.654      0.000
+    WC                 0.526      0.072      7.258      0.000
+
+Latent Class Pattern 2 2
+
+ Means
+    DRIVES             0.307      0.145      2.118      0.034
+    COGNITION         -0.216      0.564     -0.384      0.701
+    AFFECT             0.611      0.288      2.123      0.034
+    SOCIAL             0.620      0.179      3.471      0.001
+    BIG_WORDS         -0.479      0.333     -1.437      0.151
+    WC                -0.523      0.365     -1.433      0.152
+
+ Variances
+    DRIVES             1.235      0.312      3.960      0.000
+    COGNITION          0.842      0.214      3.937      0.000
+    AFFECT             1.244      0.242      5.140      0.000
+    SOCIAL             0.776      0.108      7.207      0.000
+    BIG_WORDS          0.708      0.448      1.581      0.114
+    WC                 0.322      0.203      1.587      0.112
+
+Latent Class Pattern 2 3
+
+ Means
+    DRIVES             0.107      0.154      0.696      0.486
+    COGNITION          0.331      0.151      2.191      0.028
+    AFFECT            -0.191      0.183     -1.047      0.295
+    SOCIAL            -0.190      0.274     -0.691      0.490
+    BIG_WORDS         -0.004      0.155     -0.024      0.981
+    WC                 0.918      0.252      3.646      0.000
+
+ Variances
+    DRIVES             0.699      0.069     10.076      0.000
+    COGNITION          0.661      0.167      3.965      0.000
+    AFFECT             0.378      0.096      3.951      0.000
+    SOCIAL             0.568      0.072      7.898      0.000
+    BIG_WORDS          0.660      0.104      6.378      0.000
+    WC                 1.116      0.148      7.525      0.000
+
+Latent Class Pattern 2 4
+
+ Means
+    DRIVES            -0.056      0.328     -0.172      0.864
+    COGNITION          0.041      0.527      0.078      0.938
+    AFFECT             0.459      0.134      3.418      0.001
+    SOCIAL            -0.707      0.547     -1.293      0.196
+    BIG_WORDS          0.254      0.187      1.361      0.174
+    WC                -0.432      0.094     -4.581      0.000
+
+ Variances
+    DRIVES             0.923      0.196      4.704      0.000
+    COGNITION          1.318      0.301      4.373      0.000
+    AFFECT             0.774      0.406      1.904      0.057
+    SOCIAL             0.434      0.321      1.354      0.176
+    BIG_WORDS          1.272      0.198      6.441      0.000
+    WC                 0.365      0.143      2.554      0.011
+
+Latent Class Pattern 3 1
+
+ Means
+    DRIVES            -0.411      0.209     -1.964      0.050
+    COGNITION         -0.259      0.244     -1.062      0.288
+    AFFECT            -0.847      0.156     -5.438      0.000
+    SOCIAL             0.312      0.216      1.445      0.149
+    BIG_WORDS          0.254      0.233      1.088      0.276
+    WC                -0.250      0.308     -0.810      0.418
+
+ Variances
+    DRIVES             0.948      0.421      2.251      0.024
+    COGNITION          1.037      0.141      7.342      0.000
+    AFFECT             0.437      0.116      3.784      0.000
+    SOCIAL             1.332      0.209      6.379      0.000
+    BIG_WORDS          1.120      0.168      6.654      0.000
+    WC                 0.526      0.072      7.258      0.000
+
+Latent Class Pattern 3 2
+
+ Means
+    DRIVES             0.307      0.145      2.118      0.034
+    COGNITION         -0.216      0.564     -0.384      0.701
+    AFFECT             0.611      0.288      2.123      0.034
+    SOCIAL             0.620      0.179      3.471      0.001
+    BIG_WORDS         -0.479      0.333     -1.437      0.151
+    WC                -0.523      0.365     -1.433      0.152
+
+ Variances
+    DRIVES             1.235      0.312      3.960      0.000
+    COGNITION          0.842      0.214      3.937      0.000
+    AFFECT             1.244      0.242      5.140      0.000
+    SOCIAL             0.776      0.108      7.207      0.000
+    BIG_WORDS          0.708      0.448      1.581      0.114
+    WC                 0.322      0.203      1.587      0.112
+
+Latent Class Pattern 3 3
+
+ Means
+    DRIVES             0.107      0.154      0.696      0.486
+    COGNITION          0.331      0.151      2.191      0.028
+    AFFECT            -0.191      0.183     -1.047      0.295
+    SOCIAL            -0.190      0.274     -0.691      0.490
+    BIG_WORDS         -0.004      0.155     -0.024      0.981
+    WC                 0.918      0.252      3.646      0.000
+
+ Variances
+    DRIVES             0.699      0.069     10.076      0.000
+    COGNITION          0.661      0.167      3.965      0.000
+    AFFECT             0.378      0.096      3.951      0.000
+    SOCIAL             0.568      0.072      7.898      0.000
+    BIG_WORDS          0.660      0.104      6.378      0.000
+    WC                 1.116      0.148      7.525      0.000
+
+Latent Class Pattern 3 4
+
+ Means
+    DRIVES            -0.056      0.328     -0.172      0.864
+    COGNITION          0.041      0.527      0.078      0.938
+    AFFECT             0.459      0.134      3.418      0.001
+    SOCIAL            -0.707      0.547     -1.293      0.196
+    BIG_WORDS          0.254      0.187      1.361      0.174
+    WC                -0.432      0.094     -4.581      0.000
+
+ Variances
+    DRIVES             0.923      0.196      4.704      0.000
+    COGNITION          1.318      0.301      4.373      0.000
+    AFFECT             0.774      0.406      1.904      0.057
+    SOCIAL             0.434      0.321      1.354      0.176
+    BIG_WORDS          1.272      0.198      6.441      0.000
+    WC                 0.365      0.143      2.554      0.011
+
+Latent Class Pattern 4 1
+
+ Means
+    DRIVES            -0.411      0.209     -1.964      0.050
+    COGNITION         -0.259      0.244     -1.062      0.288
+    AFFECT            -0.847      0.156     -5.438      0.000
+    SOCIAL             0.312      0.216      1.445      0.149
+    BIG_WORDS          0.254      0.233      1.088      0.276
+    WC                -0.250      0.308     -0.810      0.418
+
+ Variances
+    DRIVES             0.948      0.421      2.251      0.024
+    COGNITION          1.037      0.141      7.342      0.000
+    AFFECT             0.437      0.116      3.784      0.000
+    SOCIAL             1.332      0.209      6.379      0.000
+    BIG_WORDS          1.120      0.168      6.654      0.000
+    WC                 0.526      0.072      7.258      0.000
+
+Latent Class Pattern 4 2
+
+ Means
+    DRIVES             0.307      0.145      2.118      0.034
+    COGNITION         -0.216      0.564     -0.384      0.701
+    AFFECT             0.611      0.288      2.123      0.034
+    SOCIAL             0.620      0.179      3.471      0.001
+    BIG_WORDS         -0.479      0.333     -1.437      0.151
+    WC                -0.523      0.365     -1.433      0.152
+
+ Variances
+    DRIVES             1.235      0.312      3.960      0.000
+    COGNITION          0.842      0.214      3.937      0.000
+    AFFECT             1.244      0.242      5.140      0.000
+    SOCIAL             0.776      0.108      7.207      0.000
+    BIG_WORDS          0.708      0.448      1.581      0.114
+    WC                 0.322      0.203      1.587      0.112
+
+Latent Class Pattern 4 3
+
+ Means
+    DRIVES             0.107      0.154      0.696      0.486
+    COGNITION          0.331      0.151      2.191      0.028
+    AFFECT            -0.191      0.183     -1.047      0.295
+    SOCIAL            -0.190      0.274     -0.691      0.490
+    BIG_WORDS         -0.004      0.155     -0.024      0.981
+    WC                 0.918      0.252      3.646      0.000
+
+ Variances
+    DRIVES             0.699      0.069     10.076      0.000
+    COGNITION          0.661      0.167      3.965      0.000
+    AFFECT             0.378      0.096      3.951      0.000
+    SOCIAL             0.568      0.072      7.898      0.000
+    BIG_WORDS          0.660      0.104      6.378      0.000
+    WC                 1.116      0.148      7.525      0.000
+
+Latent Class Pattern 4 4
+
+ Means
+    DRIVES            -0.056      0.328     -0.172      0.864
+    COGNITION          0.041      0.527      0.078      0.938
+    AFFECT             0.459      0.134      3.418      0.001
+    SOCIAL            -0.707      0.547     -1.293      0.196
+    BIG_WORDS          0.254      0.187      1.361      0.174
+    WC                -0.432      0.094     -4.581      0.000
+
+ Variances
+    DRIVES             0.923      0.196      4.704      0.000
+    COGNITION          1.318      0.301      4.373      0.000
+    AFFECT             0.774      0.406      1.904      0.057
+    SOCIAL             0.434      0.321      1.354      0.176
+    BIG_WORDS          1.272      0.198      6.441      0.000
+    WC                 0.365      0.143      2.554      0.011
+
+Latent Class Pattern 5 1
+
+ Means
+    DRIVES            -0.411      0.209     -1.964      0.050
+    COGNITION         -0.259      0.244     -1.062      0.288
+    AFFECT            -0.847      0.156     -5.438      0.000
+    SOCIAL             0.312      0.216      1.445      0.149
+    BIG_WORDS          0.254      0.233      1.088      0.276
+    WC                -0.250      0.308     -0.810      0.418
+
+ Variances
+    DRIVES             0.948      0.421      2.251      0.024
+    COGNITION          1.037      0.141      7.342      0.000
+    AFFECT             0.437      0.116      3.784      0.000
+    SOCIAL             1.332      0.209      6.379      0.000
+    BIG_WORDS          1.120      0.168      6.654      0.000
+    WC                 0.526      0.072      7.258      0.000
+
+Latent Class Pattern 5 2
+
+ Means
+    DRIVES             0.307      0.145      2.118      0.034
+    COGNITION         -0.216      0.564     -0.384      0.701
+    AFFECT             0.611      0.288      2.123      0.034
+    SOCIAL             0.620      0.179      3.471      0.001
+    BIG_WORDS         -0.479      0.333     -1.437      0.151
+    WC                -0.523      0.365     -1.433      0.152
+
+ Variances
+    DRIVES             1.235      0.312      3.960      0.000
+    COGNITION          0.842      0.214      3.937      0.000
+    AFFECT             1.244      0.242      5.140      0.000
+    SOCIAL             0.776      0.108      7.207      0.000
+    BIG_WORDS          0.708      0.448      1.581      0.114
+    WC                 0.322      0.203      1.587      0.112
+
+Latent Class Pattern 5 3
+
+ Means
+    DRIVES             0.107      0.154      0.696      0.486
+    COGNITION          0.331      0.151      2.191      0.028
+    AFFECT            -0.191      0.183     -1.047      0.295
+    SOCIAL            -0.190      0.274     -0.691      0.490
+    BIG_WORDS         -0.004      0.155     -0.024      0.981
+    WC                 0.918      0.252      3.646      0.000
+
+ Variances
+    DRIVES             0.699      0.069     10.076      0.000
+    COGNITION          0.661      0.167      3.965      0.000
+    AFFECT             0.378      0.096      3.951      0.000
+    SOCIAL             0.568      0.072      7.898      0.000
+    BIG_WORDS          0.660      0.104      6.378      0.000
+    WC                 1.116      0.148      7.525      0.000
+
+Latent Class Pattern 5 4
+
+ Means
+    DRIVES            -0.056      0.328     -0.172      0.864
+    COGNITION          0.041      0.527      0.078      0.938
+    AFFECT             0.459      0.134      3.418      0.001
+    SOCIAL            -0.707      0.547     -1.293      0.196
+    BIG_WORDS          0.254      0.187      1.361      0.174
+    WC                -0.432      0.094     -4.581      0.000
+
+ Variances
+    DRIVES             0.923      0.196      4.704      0.000
+    COGNITION          1.318      0.301      4.373      0.000
+    AFFECT             0.774      0.406      1.904      0.057
+    SOCIAL             0.434      0.321      1.354      0.176
+    BIG_WORDS          1.272      0.198      6.441      0.000
+    WC                 0.365      0.143      2.554      0.011
+
+Latent Class Pattern 6 1
+
+ Means
+    DRIVES            -0.411      0.209     -1.964      0.050
+    COGNITION         -0.259      0.244     -1.062      0.288
+    AFFECT            -0.847      0.156     -5.438      0.000
+    SOCIAL             0.312      0.216      1.445      0.149
+    BIG_WORDS          0.254      0.233      1.088      0.276
+    WC                -0.250      0.308     -0.810      0.418
+
+ Variances
+    DRIVES             0.948      0.421      2.251      0.024
+    COGNITION          1.037      0.141      7.342      0.000
+    AFFECT             0.437      0.116      3.784      0.000
+    SOCIAL             1.332      0.209      6.379      0.000
+    BIG_WORDS          1.120      0.168      6.654      0.000
+    WC                 0.526      0.072      7.258      0.000
+
+Latent Class Pattern 6 2
+
+ Means
+    DRIVES             0.307      0.145      2.118      0.034
+    COGNITION         -0.216      0.564     -0.384      0.701
+    AFFECT             0.611      0.288      2.123      0.034
+    SOCIAL             0.620      0.179      3.471      0.001
+    BIG_WORDS         -0.479      0.333     -1.437      0.151
+    WC                -0.523      0.365     -1.433      0.152
+
+ Variances
+    DRIVES             1.235      0.312      3.960      0.000
+    COGNITION          0.842      0.214      3.937      0.000
+    AFFECT             1.244      0.242      5.140      0.000
+    SOCIAL             0.776      0.108      7.207      0.000
+    BIG_WORDS          0.708      0.448      1.581      0.114
+    WC                 0.322      0.203      1.587      0.112
+
+Latent Class Pattern 6 3
+
+ Means
+    DRIVES             0.107      0.154      0.696      0.486
+    COGNITION          0.331      0.151      2.191      0.028
+    AFFECT            -0.191      0.183     -1.047      0.295
+    SOCIAL            -0.190      0.274     -0.691      0.490
+    BIG_WORDS         -0.004      0.155     -0.024      0.981
+    WC                 0.918      0.252      3.646      0.000
+
+ Variances
+    DRIVES             0.699      0.069     10.076      0.000
+    COGNITION          0.661      0.167      3.965      0.000
+    AFFECT             0.378      0.096      3.951      0.000
+    SOCIAL             0.568      0.072      7.898      0.000
+    BIG_WORDS          0.660      0.104      6.378      0.000
+    WC                 1.116      0.148      7.525      0.000
+
+Latent Class Pattern 6 4
+
+ Means
+    DRIVES            -0.056      0.328     -0.172      0.864
+    COGNITION          0.041      0.527      0.078      0.938
+    AFFECT             0.459      0.134      3.418      0.001
+    SOCIAL            -0.707      0.547     -1.293      0.196
+    BIG_WORDS          0.254      0.187      1.361      0.174
+    WC                -0.432      0.094     -4.581      0.000
+
+ Variances
+    DRIVES             0.923      0.196      4.704      0.000
+    COGNITION          1.318      0.301      4.373      0.000
+    AFFECT             0.774      0.406      1.904      0.057
+    SOCIAL             0.434      0.321      1.354      0.176
+    BIG_WORDS          1.272      0.198      6.441      0.000
+    WC                 0.365      0.143      2.554      0.011
+
+Latent Class Pattern 7 1
+
+ Means
+    DRIVES            -0.411      0.209     -1.964      0.050
+    COGNITION         -0.259      0.244     -1.062      0.288
+    AFFECT            -0.847      0.156     -5.438      0.000
+    SOCIAL             0.312      0.216      1.445      0.149
+    BIG_WORDS          0.254      0.233      1.088      0.276
+    WC                -0.250      0.308     -0.810      0.418
+
+ Variances
+    DRIVES             0.948      0.421      2.251      0.024
+    COGNITION          1.037      0.141      7.342      0.000
+    AFFECT             0.437      0.116      3.784      0.000
+    SOCIAL             1.332      0.209      6.379      0.000
+    BIG_WORDS          1.120      0.168      6.654      0.000
+    WC                 0.526      0.072      7.258      0.000
+
+Latent Class Pattern 7 2
+
+ Means
+    DRIVES             0.307      0.145      2.118      0.034
+    COGNITION         -0.216      0.564     -0.384      0.701
+    AFFECT             0.611      0.288      2.123      0.034
+    SOCIAL             0.620      0.179      3.471      0.001
+    BIG_WORDS         -0.479      0.333     -1.437      0.151
+    WC                -0.523      0.365     -1.433      0.152
+
+ Variances
+    DRIVES             1.235      0.312      3.960      0.000
+    COGNITION          0.842      0.214      3.937      0.000
+    AFFECT             1.244      0.242      5.140      0.000
+    SOCIAL             0.776      0.108      7.207      0.000
+    BIG_WORDS          0.708      0.448      1.581      0.114
+    WC                 0.322      0.203      1.587      0.112
+
+Latent Class Pattern 7 3
+
+ Means
+    DRIVES             0.107      0.154      0.696      0.486
+    COGNITION          0.331      0.151      2.191      0.028
+    AFFECT            -0.191      0.183     -1.047      0.295
+    SOCIAL            -0.190      0.274     -0.691      0.490
+    BIG_WORDS         -0.004      0.155     -0.024      0.981
+    WC                 0.918      0.252      3.646      0.000
+
+ Variances
+    DRIVES             0.699      0.069     10.076      0.000
+    COGNITION          0.661      0.167      3.965      0.000
+    AFFECT             0.378      0.096      3.951      0.000
+    SOCIAL             0.568      0.072      7.898      0.000
+    BIG_WORDS          0.660      0.104      6.378      0.000
+    WC                 1.116      0.148      7.525      0.000
+
+Latent Class Pattern 7 4
+
+ Means
+    DRIVES            -0.056      0.328     -0.172      0.864
+    COGNITION          0.041      0.527      0.078      0.938
+    AFFECT             0.459      0.134      3.418      0.001
+    SOCIAL            -0.707      0.547     -1.293      0.196
+    BIG_WORDS          0.254      0.187      1.361      0.174
+    WC                -0.432      0.094     -4.581      0.000
+
+ Variances
+    DRIVES             0.923      0.196      4.704      0.000
+    COGNITION          1.318      0.301      4.373      0.000
+    AFFECT             0.774      0.406      1.904      0.057
+    SOCIAL             0.434      0.321      1.354      0.176
+    BIG_WORDS          1.272      0.198      6.441      0.000
+    WC                 0.365      0.143      2.554      0.011
+
+Latent Class Pattern 8 1
+
+ Means
+    DRIVES            -0.411      0.209     -1.964      0.050
+    COGNITION         -0.259      0.244     -1.062      0.288
+    AFFECT            -0.847      0.156     -5.438      0.000
+    SOCIAL             0.312      0.216      1.445      0.149
+    BIG_WORDS          0.254      0.233      1.088      0.276
+    WC                -0.250      0.308     -0.810      0.418
+
+ Variances
+    DRIVES             0.948      0.421      2.251      0.024
+    COGNITION          1.037      0.141      7.342      0.000
+    AFFECT             0.437      0.116      3.784      0.000
+    SOCIAL             1.332      0.209      6.379      0.000
+    BIG_WORDS          1.120      0.168      6.654      0.000
+    WC                 0.526      0.072      7.258      0.000
+
+Latent Class Pattern 8 2
+
+ Means
+    DRIVES             0.307      0.145      2.118      0.034
+    COGNITION         -0.216      0.564     -0.384      0.701
+    AFFECT             0.611      0.288      2.123      0.034
+    SOCIAL             0.620      0.179      3.471      0.001
+    BIG_WORDS         -0.479      0.333     -1.437      0.151
+    WC                -0.523      0.365     -1.433      0.152
+
+ Variances
+    DRIVES             1.235      0.312      3.960      0.000
+    COGNITION          0.842      0.214      3.937      0.000
+    AFFECT             1.244      0.242      5.140      0.000
+    SOCIAL             0.776      0.108      7.207      0.000
+    BIG_WORDS          0.708      0.448      1.581      0.114
+    WC                 0.322      0.203      1.587      0.112
+
+Latent Class Pattern 8 3
+
+ Means
+    DRIVES             0.107      0.154      0.696      0.486
+    COGNITION          0.331      0.151      2.191      0.028
+    AFFECT            -0.191      0.183     -1.047      0.295
+    SOCIAL            -0.190      0.274     -0.691      0.490
+    BIG_WORDS         -0.004      0.155     -0.024      0.981
+    WC                 0.918      0.252      3.646      0.000
+
+ Variances
+    DRIVES             0.699      0.069     10.076      0.000
+    COGNITION          0.661      0.167      3.965      0.000
+    AFFECT             0.378      0.096      3.951      0.000
+    SOCIAL             0.568      0.072      7.898      0.000
+    BIG_WORDS          0.660      0.104      6.378      0.000
+    WC                 1.116      0.148      7.525      0.000
+
+Latent Class Pattern 8 4
+
+ Means
+    DRIVES            -0.056      0.328     -0.172      0.864
+    COGNITION          0.041      0.527      0.078      0.938
+    AFFECT             0.459      0.134      3.418      0.001
+    SOCIAL            -0.707      0.547     -1.293      0.196
+    BIG_WORDS          0.254      0.187      1.361      0.174
+    WC                -0.432      0.094     -4.581      0.000
+
+ Variances
+    DRIVES             0.923      0.196      4.704      0.000
+    COGNITION          1.318      0.301      4.373      0.000
+    AFFECT             0.774      0.406      1.904      0.057
+    SOCIAL             0.434      0.321      1.354      0.176
+    BIG_WORDS          1.272      0.198      6.441      0.000
+    WC                 0.365      0.143      2.554      0.011
+
+Latent Class Pattern 9 1
+
+ Means
+    DRIVES            -0.411      0.209     -1.964      0.050
+    COGNITION         -0.259      0.244     -1.062      0.288
+    AFFECT            -0.847      0.156     -5.438      0.000
+    SOCIAL             0.312      0.216      1.445      0.149
+    BIG_WORDS          0.254      0.233      1.088      0.276
+    WC                -0.250      0.308     -0.810      0.418
+
+ Variances
+    DRIVES             0.948      0.421      2.251      0.024
+    COGNITION          1.037      0.141      7.342      0.000
+    AFFECT             0.437      0.116      3.784      0.000
+    SOCIAL             1.332      0.209      6.379      0.000
+    BIG_WORDS          1.120      0.168      6.654      0.000
+    WC                 0.526      0.072      7.258      0.000
+
+Latent Class Pattern 9 2
+
+ Means
+    DRIVES             0.307      0.145      2.118      0.034
+    COGNITION         -0.216      0.564     -0.384      0.701
+    AFFECT             0.611      0.288      2.123      0.034
+    SOCIAL             0.620      0.179      3.471      0.001
+    BIG_WORDS         -0.479      0.333     -1.437      0.151
+    WC                -0.523      0.365     -1.433      0.152
+
+ Variances
+    DRIVES             1.235      0.312      3.960      0.000
+    COGNITION          0.842      0.214      3.937      0.000
+    AFFECT             1.244      0.242      5.140      0.000
+    SOCIAL             0.776      0.108      7.207      0.000
+    BIG_WORDS          0.708      0.448      1.581      0.114
+    WC                 0.322      0.203      1.587      0.112
+
+Latent Class Pattern 9 3
+
+ Means
+    DRIVES             0.107      0.154      0.696      0.486
+    COGNITION          0.331      0.151      2.191      0.028
+    AFFECT            -0.191      0.183     -1.047      0.295
+    SOCIAL            -0.190      0.274     -0.691      0.490
+    BIG_WORDS         -0.004      0.155     -0.024      0.981
+    WC                 0.918      0.252      3.646      0.000
+
+ Variances
+    DRIVES             0.699      0.069     10.076      0.000
+    COGNITION          0.661      0.167      3.965      0.000
+    AFFECT             0.378      0.096      3.951      0.000
+    SOCIAL             0.568      0.072      7.898      0.000
+    BIG_WORDS          0.660      0.104      6.378      0.000
+    WC                 1.116      0.148      7.525      0.000
+
+Latent Class Pattern 9 4
+
+ Means
+    DRIVES            -0.056      0.328     -0.172      0.864
+    COGNITION          0.041      0.527      0.078      0.938
+    AFFECT             0.459      0.134      3.418      0.001
+    SOCIAL            -0.707      0.547     -1.293      0.196
+    BIG_WORDS          0.254      0.187      1.361      0.174
+    WC                -0.432      0.094     -4.581      0.000
+
+ Variances
+    DRIVES             0.923      0.196      4.704      0.000
+    COGNITION          1.318      0.301      4.373      0.000
+    AFFECT             0.774      0.406      1.904      0.057
+    SOCIAL             0.434      0.321      1.354      0.176
+    BIG_WORDS          1.272      0.198      6.441      0.000
+    WC                 0.365      0.143      2.554      0.011
+
+Between Level
+
+Categorical Latent Variables
+
+Within Level
+
+ Intercepts
+    C#1               28.259      0.696     40.600      0.000
+    C#2               26.798      1.163     23.048      0.000
+    C#3               27.170      1.145     23.735      0.000
+
+Between Level
+
+ C#1        ON
+    BC#1              -1.092      1.252     -0.872      0.383
+    BC#2             -57.437      0.000    999.000    999.000
+    BC#3             -47.889      1.830    -26.163      0.000
+    BC#4             -18.961      7.371     -2.572      0.010
+    BC#5             -25.487      7.022     -3.630      0.000
+    BC#6             -55.180      0.000    999.000    999.000
+    BC#7             -28.147      1.132    -24.867      0.000
+    BC#8             -56.174      0.000    999.000    999.000
+
+ C#2        ON
+    BC#1             -16.414      1.916     -8.564      0.000
+    BC#2             -29.036      1.857    -15.639      0.000
+    BC#3             -23.470      2.353     -9.973      0.000
+    BC#4             -21.745      4.447     -4.889      0.000
+    BC#5             -20.780      9.325     -2.228      0.026
+    BC#6             -27.546      2.112    -13.041      0.000
+    BC#7             -27.891      9.681     -2.881      0.004
+    BC#8             -27.813      1.072    -25.953      0.000
+
+ C#3        ON
+    BC#1              -0.069      0.000    999.000    999.000
+    BC#2             -31.316      2.388    -13.116      0.000
+    BC#3             -24.120      1.871    -12.892      0.000
+    BC#4             -22.365      8.001     -2.795      0.005
+    BC#5             -25.482      9.371     -2.719      0.007
+    BC#6             -24.867      0.782    -31.802      0.000
+    BC#7             -39.671      5.387     -7.365      0.000
+    BC#8             -27.150      0.000    999.000    999.000
+
+ Means
+    BC#1               0.217      0.948      0.229      0.819
+    BC#2               1.546      0.789      1.958      0.050
+    BC#3               0.987      0.978      1.009      0.313
+    BC#4               1.071      0.958      1.118      0.264
+    BC#5               0.788      0.931      0.847      0.397
+    BC#6               1.581      1.014      1.558      0.119
+    BC#7               0.477      2.221      0.215      0.830
+    BC#8               0.798      0.994      0.803      0.422
+
+
+QUALITY OF NUMERICAL RESULTS
+
+     Condition Number for the Information Matrix              0.414E-09
+       (ratio of smallest to largest eigenvalue)
+
+
+C-SPECIFIC CLASSIFICATION RESULTS
+
+Classification Quality for BC
+
+     Entropy                         0.866
+
+Average Latent Class Probabilities for Most Likely Latent Class Membership (Row)
+by Latent Class (Column)
+
+           1        2        3        4        5        6        7        8        9
+
+    1   0.931    0.000    0.006    0.002    0.000    0.018    0.000    0.005    0.038
+    2   0.000    0.929    0.002    0.000    0.003    0.004    0.034    0.027    0.000
+    3   0.000    0.000    0.957    0.000    0.012    0.018    0.000    0.009    0.003
+    4   0.018    0.000    0.002    0.888    0.004    0.000    0.040    0.000    0.048
+    5   0.000    0.001    0.061    0.000    0.937    0.000    0.001    0.000    0.000
+    6   0.027    0.000    0.020    0.002    0.000    0.862    0.005    0.076    0.007
+    7   0.026    0.041    0.003    0.025    0.036    0.005    0.767    0.020    0.077
+    8   0.013    0.030    0.050    0.003    0.000    0.101    0.002    0.794    0.006
+    9   0.001    0.000    0.049    0.002    0.002    0.002    0.001    0.000    0.943
+
+
+
+Classification Probabilities for the Most Likely Latent Class Membership (Column)
+by Latent Class (Row)
+
+           1        2        3        4        5        6        7        8        9
+
+    1   0.824    0.000    0.000    0.040    0.000    0.079    0.027    0.028    0.001
+    2   0.000    0.962    0.000    0.000    0.000    0.000    0.015    0.022    0.000
+    3   0.002    0.002    0.879    0.002    0.034    0.020    0.001    0.036    0.024
+    4   0.001    0.000    0.000    0.980    0.000    0.002    0.012    0.003    0.001
+    5   0.000    0.006    0.020    0.005    0.943    0.001    0.023    0.000    0.002
+    6   0.006    0.004    0.018    0.000    0.000    0.895    0.002    0.075    0.001
+    7   0.000    0.099    0.001    0.090    0.001    0.016    0.785    0.005    0.002
+    8   0.002    0.040    0.012    0.000    0.000    0.111    0.010    0.824    0.000
+    9   0.020    0.001    0.005    0.066    0.000    0.013    0.049    0.008    0.839
+
+
+
+Logits for the Classification Probabilities for the Most Likely Latent Class Membership (Column)
+by Latent Class (Row)
+
+              1        2        3        4        5        6        7        8        9
+
+    1      6.960   -0.527   -4.513    3.946   -6.662    4.618    3.528    3.591    0.000
+    2      3.484   13.776    3.921    5.518    6.083    5.771    9.615   10.015    0.000
+    3     -2.671   -2.646    3.588   -2.581    0.339   -0.205   -3.090    0.392    0.000
+    4     -0.351   -1.351   -2.995    6.713   -7.082    0.733    2.343    0.971    0.000
+    5     -7.016    1.168    2.411    1.051    6.252   -0.831    2.532   -3.624    0.000
+    6      1.493    1.134    2.652   -2.809   -7.125    6.580    0.441    4.095    0.000
+    7     -1.651    4.092   -0.917    3.997   -0.285    2.262    6.158    1.134    0.000
+    8      1.970    4.857    3.649    0.073   -0.512    5.880    3.522    7.887    0.000
+    9     -3.721   -7.204   -5.094   -2.546  -10.400   -4.168   -2.848   -4.698    0.000
+
+
+Classification Quality for C
+
+     Entropy                         0.732
+
+Average Latent Class Probabilities for Most Likely Latent Class Membership (Row)
+by Latent Class (Column)
+
+           1        2        3        4
+
+    1   0.863    0.044    0.058    0.034
+    2   0.033    0.857    0.071    0.039
+    3   0.034    0.063    0.841    0.062
+    4   0.028    0.077    0.054    0.841
+
+
+Classification Probabilities for the Most Likely Latent Class Membership (Column)
+by Latent Class (Row)
+
+           1        2        3        4
+
+    1   0.892    0.032    0.048    0.028
+    2   0.043    0.801    0.082    0.074
+    3   0.045    0.052    0.863    0.040
+    4   0.035    0.038    0.084    0.842
+
+
+Logits for the Classification Probabilities for the Most Likely Latent Class Membership (Column)
+by Latent Class (Row)
+
+              1        2        3        4
+
+    1      3.467    0.152    0.534    0.000
+    2     -0.533    2.385    0.111    0.000
+    3      0.104    0.250    3.061    0.000
+    4     -3.167   -3.087   -2.299    0.000
+
+
+STANDARDIZED MODEL RESULTS
+
+
+STDYX Standardization
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+Within Level
+
+Latent Class Pattern 1 1
+
+ Means
+    DRIVES            -0.422      0.299     -1.410      0.159
+    COGNITION         -0.254      0.239     -1.065      0.287
+    AFFECT            -1.280      0.392     -3.264      0.001
+    SOCIAL             0.270      0.194      1.397      0.163
+    BIG_WORDS          0.240      0.225      1.064      0.287
+    WC                -0.344      0.427     -0.807      0.420
+
+ Variances
+    DRIVES             1.000      0.000    999.000    999.000
+    COGNITION          1.000      0.000    999.000    999.000
+    AFFECT             1.000      0.000    999.000    999.000
+    SOCIAL             1.000      0.000    999.000    999.000
+    BIG_WORDS          1.000      0.000    999.000    999.000
+    WC                 1.000      0.000    999.000    999.000
+
+Latent Class Pattern 1 2
+
+ Means
+    DRIVES             0.276      0.137      2.011      0.044
+    COGNITION         -0.236      0.589     -0.400      0.689
+    AFFECT             0.548      0.217      2.523      0.012
+    SOCIAL             0.704      0.229      3.077      0.002
+    BIG_WORDS         -0.569      0.571     -0.996      0.319
+    WC                -0.921      0.928     -0.992      0.321
+
+ Variances
+    DRIVES             1.000      0.000    999.000    999.000
+    COGNITION          1.000      0.000    999.000    999.000
+    AFFECT             1.000      0.000    999.000    999.000
+    SOCIAL             1.000      0.000    999.000    999.000
+    BIG_WORDS          1.000      0.000    999.000    999.000
+    WC                 1.000      0.000    999.000    999.000
+
+Latent Class Pattern 1 3
+
+ Means
+    DRIVES             0.128      0.182      0.707      0.480
+    COGNITION          0.407      0.151      2.703      0.007
+    AFFECT            -0.311      0.330     -0.943      0.346
+    SOCIAL            -0.252      0.367     -0.685      0.494
+    BIG_WORDS         -0.005      0.191     -0.024      0.981
+    WC                 0.869      0.212      4.094      0.000
+
+ Variances
+    DRIVES             1.000      0.000    999.000    999.000
+    COGNITION          1.000      0.000    999.000    999.000
+    AFFECT             1.000      0.000    999.000    999.000
+    SOCIAL             1.000      0.000    999.000    999.000
+    BIG_WORDS          1.000      0.000    999.000    999.000
+    WC                 1.000      0.000    999.000    999.000
+
+Latent Class Pattern 1 4
+
+ Means
+    DRIVES            -0.059      0.346     -0.169      0.866
+    COGNITION          0.036      0.456      0.078      0.938
+    AFFECT             0.521      0.251      2.075      0.038
+    SOCIAL            -1.073      1.223     -0.877      0.381
+    BIG_WORDS          0.225      0.166      1.356      0.175
+    WC                -0.716      0.229     -3.124      0.002
+
+ Variances
+    DRIVES             1.000      0.000    999.000    999.000
+    COGNITION          1.000      0.000    999.000    999.000
+    AFFECT             1.000      0.000    999.000    999.000
+    SOCIAL             1.000      0.000    999.000    999.000
+    BIG_WORDS          1.000      0.000    999.000    999.000
+    WC                 1.000      0.000    999.000    999.000
+
+Latent Class Pattern 2 1
+
+ Means
+    DRIVES            -0.422      0.299     -1.410      0.159
+    COGNITION         -0.254      0.239     -1.065      0.287
+    AFFECT            -1.280      0.392     -3.264      0.001
+    SOCIAL             0.270      0.194      1.397      0.163
+    BIG_WORDS          0.240      0.225      1.064      0.287
+    WC                -0.344      0.427     -0.807      0.420
+
+ Variances
+    DRIVES             1.000      0.000    999.000    999.000
+    COGNITION          1.000      0.000    999.000    999.000
+    AFFECT             1.000      0.000    999.000    999.000
+    SOCIAL             1.000      0.000    999.000    999.000
+    BIG_WORDS          1.000      0.000    999.000    999.000
+    WC                 1.000      0.000    999.000    999.000
+
+Latent Class Pattern 2 2
+
+ Means
+    DRIVES             0.276      0.137      2.011      0.044
+    COGNITION         -0.236      0.589     -0.400      0.689
+    AFFECT             0.548      0.217      2.523      0.012
+    SOCIAL             0.704      0.229      3.077      0.002
+    BIG_WORDS         -0.569      0.571     -0.996      0.319
+    WC                -0.921      0.928     -0.992      0.321
+
+ Variances
+    DRIVES             1.000      0.000    999.000    999.000
+    COGNITION          1.000      0.000    999.000    999.000
+    AFFECT             1.000      0.000    999.000    999.000
+    SOCIAL             1.000      0.000    999.000    999.000
+    BIG_WORDS          1.000      0.000    999.000    999.000
+    WC                 1.000      0.000    999.000    999.000
+
+Latent Class Pattern 2 3
+
+ Means
+    DRIVES             0.128      0.182      0.707      0.480
+    COGNITION          0.407      0.151      2.703      0.007
+    AFFECT            -0.311      0.330     -0.943      0.346
+    SOCIAL            -0.252      0.367     -0.685      0.494
+    BIG_WORDS         -0.005      0.191     -0.024      0.981
+    WC                 0.869      0.212      4.094      0.000
+
+ Variances
+    DRIVES             1.000      0.000    999.000    999.000
+    COGNITION          1.000      0.000    999.000    999.000
+    AFFECT             1.000      0.000    999.000    999.000
+    SOCIAL             1.000      0.000    999.000    999.000
+    BIG_WORDS          1.000      0.000    999.000    999.000
+    WC                 1.000      0.000    999.000    999.000
+
+Latent Class Pattern 2 4
+
+ Means
+    DRIVES            -0.059      0.346     -0.169      0.866
+    COGNITION          0.036      0.456      0.078      0.938
+    AFFECT             0.521      0.251      2.075      0.038
+    SOCIAL            -1.073      1.223     -0.877      0.381
+    BIG_WORDS          0.225      0.166      1.356      0.175
+    WC                -0.716      0.229     -3.124      0.002
+
+ Variances
+    DRIVES             1.000      0.000    999.000    999.000
+    COGNITION          1.000      0.000    999.000    999.000
+    AFFECT             1.000      0.000    999.000    999.000
+    SOCIAL             1.000      0.000    999.000    999.000
+    BIG_WORDS          1.000      0.000    999.000    999.000
+    WC                 1.000      0.000    999.000    999.000
+
+Latent Class Pattern 3 1
+
+ Means
+    DRIVES            -0.422      0.299     -1.410      0.159
+    COGNITION         -0.254      0.239     -1.065      0.287
+    AFFECT            -1.280      0.392     -3.264      0.001
+    SOCIAL             0.270      0.194      1.397      0.163
+    BIG_WORDS          0.240      0.225      1.064      0.287
+    WC                -0.344      0.427     -0.807      0.420
+
+ Variances
+    DRIVES             1.000      0.000    999.000    999.000
+    COGNITION          1.000      0.000    999.000    999.000
+    AFFECT             1.000      0.000    999.000    999.000
+    SOCIAL             1.000      0.000    999.000    999.000
+    BIG_WORDS          1.000      0.000    999.000    999.000
+    WC                 1.000      0.000    999.000    999.000
+
+Latent Class Pattern 3 2
+
+ Means
+    DRIVES             0.276      0.137      2.011      0.044
+    COGNITION         -0.236      0.589     -0.400      0.689
+    AFFECT             0.548      0.217      2.523      0.012
+    SOCIAL             0.704      0.229      3.077      0.002
+    BIG_WORDS         -0.569      0.571     -0.996      0.319
+    WC                -0.921      0.928     -0.992      0.321
+
+ Variances
+    DRIVES             1.000      0.000    999.000    999.000
+    COGNITION          1.000      0.000    999.000    999.000
+    AFFECT             1.000      0.000    999.000    999.000
+    SOCIAL             1.000      0.000    999.000    999.000
+    BIG_WORDS          1.000      0.000    999.000    999.000
+    WC                 1.000      0.000    999.000    999.000
+
+Latent Class Pattern 3 3
+
+ Means
+    DRIVES             0.128      0.182      0.707      0.480
+    COGNITION          0.407      0.151      2.703      0.007
+    AFFECT            -0.311      0.330     -0.943      0.346
+    SOCIAL            -0.252      0.367     -0.685      0.494
+    BIG_WORDS         -0.005      0.191     -0.024      0.981
+    WC                 0.869      0.212      4.094      0.000
+
+ Variances
+    DRIVES             1.000      0.000    999.000    999.000
+    COGNITION          1.000      0.000    999.000    999.000
+    AFFECT             1.000      0.000    999.000    999.000
+    SOCIAL             1.000      0.000    999.000    999.000
+    BIG_WORDS          1.000      0.000    999.000    999.000
+    WC                 1.000      0.000    999.000    999.000
+
+Latent Class Pattern 3 4
+
+ Means
+    DRIVES            -0.059      0.346     -0.169      0.866
+    COGNITION          0.036      0.456      0.078      0.938
+    AFFECT             0.521      0.251      2.075      0.038
+    SOCIAL            -1.073      1.223     -0.877      0.381
+    BIG_WORDS          0.225      0.166      1.356      0.175
+    WC                -0.716      0.229     -3.124      0.002
+
+ Variances
+    DRIVES             1.000      0.000    999.000    999.000
+    COGNITION          1.000      0.000    999.000    999.000
+    AFFECT             1.000      0.000    999.000    999.000
+    SOCIAL             1.000      0.000    999.000    999.000
+    BIG_WORDS          1.000      0.000    999.000    999.000
+    WC                 1.000      0.000    999.000    999.000
+
+Latent Class Pattern 4 1
+
+ Means
+    DRIVES            -0.422      0.299     -1.410      0.159
+    COGNITION         -0.254      0.239     -1.065      0.287
+    AFFECT            -1.280      0.392     -3.264      0.001
+    SOCIAL             0.270      0.194      1.397      0.163
+    BIG_WORDS          0.240      0.225      1.064      0.287
+    WC                -0.344      0.427     -0.807      0.420
+
+ Variances
+    DRIVES             1.000      0.000    999.000    999.000
+    COGNITION          1.000      0.000    999.000    999.000
+    AFFECT             1.000      0.000    999.000    999.000
+    SOCIAL             1.000      0.000    999.000    999.000
+    BIG_WORDS          1.000      0.000    999.000    999.000
+    WC                 1.000      0.000    999.000    999.000
+
+Latent Class Pattern 4 2
+
+ Means
+    DRIVES             0.276      0.137      2.011      0.044
+    COGNITION         -0.236      0.589     -0.400      0.689
+    AFFECT             0.548      0.217      2.523      0.012
+    SOCIAL             0.704      0.229      3.077      0.002
+    BIG_WORDS         -0.569      0.571     -0.996      0.319
+    WC                -0.921      0.928     -0.992      0.321
+
+ Variances
+    DRIVES             1.000      0.000    999.000    999.000
+    COGNITION          1.000      0.000    999.000    999.000
+    AFFECT             1.000      0.000    999.000    999.000
+    SOCIAL             1.000      0.000    999.000    999.000
+    BIG_WORDS          1.000      0.000    999.000    999.000
+    WC                 1.000      0.000    999.000    999.000
+
+Latent Class Pattern 4 3
+
+ Means
+    DRIVES             0.128      0.182      0.707      0.480
+    COGNITION          0.407      0.151      2.703      0.007
+    AFFECT            -0.311      0.330     -0.943      0.346
+    SOCIAL            -0.252      0.367     -0.685      0.494
+    BIG_WORDS         -0.005      0.191     -0.024      0.981
+    WC                 0.869      0.212      4.094      0.000
+
+ Variances
+    DRIVES             1.000      0.000    999.000    999.000
+    COGNITION          1.000      0.000    999.000    999.000
+    AFFECT             1.000      0.000    999.000    999.000
+    SOCIAL             1.000      0.000    999.000    999.000
+    BIG_WORDS          1.000      0.000    999.000    999.000
+    WC                 1.000      0.000    999.000    999.000
+
+Latent Class Pattern 4 4
+
+ Means
+    DRIVES            -0.059      0.346     -0.169      0.866
+    COGNITION          0.036      0.456      0.078      0.938
+    AFFECT             0.521      0.251      2.075      0.038
+    SOCIAL            -1.073      1.223     -0.877      0.381
+    BIG_WORDS          0.225      0.166      1.356      0.175
+    WC                -0.716      0.229     -3.124      0.002
+
+ Variances
+    DRIVES             1.000      0.000    999.000    999.000
+    COGNITION          1.000      0.000    999.000    999.000
+    AFFECT             1.000      0.000    999.000    999.000
+    SOCIAL             1.000      0.000    999.000    999.000
+    BIG_WORDS          1.000      0.000    999.000    999.000
+    WC                 1.000      0.000    999.000    999.000
+
+Latent Class Pattern 5 1
+
+ Means
+    DRIVES            -0.422      0.299     -1.410      0.159
+    COGNITION         -0.254      0.239     -1.065      0.287
+    AFFECT            -1.280      0.392     -3.264      0.001
+    SOCIAL             0.270      0.194      1.397      0.163
+    BIG_WORDS          0.240      0.225      1.064      0.287
+    WC                -0.344      0.427     -0.807      0.420
+
+ Variances
+    DRIVES             1.000      0.000    999.000    999.000
+    COGNITION          1.000      0.000    999.000    999.000
+    AFFECT             1.000      0.000    999.000    999.000
+    SOCIAL             1.000      0.000    999.000    999.000
+    BIG_WORDS          1.000      0.000    999.000    999.000
+    WC                 1.000      0.000    999.000    999.000
+
+Latent Class Pattern 5 2
+
+ Means
+    DRIVES             0.276      0.137      2.011      0.044
+    COGNITION         -0.236      0.589     -0.400      0.689
+    AFFECT             0.548      0.217      2.523      0.012
+    SOCIAL             0.704      0.229      3.077      0.002
+    BIG_WORDS         -0.569      0.571     -0.996      0.319
+    WC                -0.921      0.928     -0.992      0.321
+
+ Variances
+    DRIVES             1.000      0.000    999.000    999.000
+    COGNITION          1.000      0.000    999.000    999.000
+    AFFECT             1.000      0.000    999.000    999.000
+    SOCIAL             1.000      0.000    999.000    999.000
+    BIG_WORDS          1.000      0.000    999.000    999.000
+    WC                 1.000      0.000    999.000    999.000
+
+Latent Class Pattern 5 3
+
+ Means
+    DRIVES             0.128      0.182      0.707      0.480
+    COGNITION          0.407      0.151      2.703      0.007
+    AFFECT            -0.311      0.330     -0.943      0.346
+    SOCIAL            -0.252      0.367     -0.685      0.494
+    BIG_WORDS         -0.005      0.191     -0.024      0.981
+    WC                 0.869      0.212      4.094      0.000
+
+ Variances
+    DRIVES             1.000      0.000    999.000    999.000
+    COGNITION          1.000      0.000    999.000    999.000
+    AFFECT             1.000      0.000    999.000    999.000
+    SOCIAL             1.000      0.000    999.000    999.000
+    BIG_WORDS          1.000      0.000    999.000    999.000
+    WC                 1.000      0.000    999.000    999.000
+
+Latent Class Pattern 5 4
+
+ Means
+    DRIVES            -0.059      0.346     -0.169      0.866
+    COGNITION          0.036      0.456      0.078      0.938
+    AFFECT             0.521      0.251      2.075      0.038
+    SOCIAL            -1.073      1.223     -0.877      0.381
+    BIG_WORDS          0.225      0.166      1.356      0.175
+    WC                -0.716      0.229     -3.124      0.002
+
+ Variances
+    DRIVES             1.000      0.000    999.000    999.000
+    COGNITION          1.000      0.000    999.000    999.000
+    AFFECT             1.000      0.000    999.000    999.000
+    SOCIAL             1.000      0.000    999.000    999.000
+    BIG_WORDS          1.000      0.000    999.000    999.000
+    WC                 1.000      0.000    999.000    999.000
+
+Latent Class Pattern 6 1
+
+ Means
+    DRIVES            -0.422      0.299     -1.410      0.159
+    COGNITION         -0.254      0.239     -1.065      0.287
+    AFFECT            -1.280      0.392     -3.264      0.001
+    SOCIAL             0.270      0.194      1.397      0.163
+    BIG_WORDS          0.240      0.225      1.064      0.287
+    WC                -0.344      0.427     -0.807      0.420
+
+ Variances
+    DRIVES             1.000      0.000    999.000    999.000
+    COGNITION          1.000      0.000    999.000    999.000
+    AFFECT             1.000      0.000    999.000    999.000
+    SOCIAL             1.000      0.000    999.000    999.000
+    BIG_WORDS          1.000      0.000    999.000    999.000
+    WC                 1.000      0.000    999.000    999.000
+
+Latent Class Pattern 6 2
+
+ Means
+    DRIVES             0.276      0.137      2.011      0.044
+    COGNITION         -0.236      0.589     -0.400      0.689
+    AFFECT             0.548      0.217      2.523      0.012
+    SOCIAL             0.704      0.229      3.077      0.002
+    BIG_WORDS         -0.569      0.571     -0.996      0.319
+    WC                -0.921      0.928     -0.992      0.321
+
+ Variances
+    DRIVES             1.000      0.000    999.000    999.000
+    COGNITION          1.000      0.000    999.000    999.000
+    AFFECT             1.000      0.000    999.000    999.000
+    SOCIAL             1.000      0.000    999.000    999.000
+    BIG_WORDS          1.000      0.000    999.000    999.000
+    WC                 1.000      0.000    999.000    999.000
+
+Latent Class Pattern 6 3
+
+ Means
+    DRIVES             0.128      0.182      0.707      0.480
+    COGNITION          0.407      0.151      2.703      0.007
+    AFFECT            -0.311      0.330     -0.943      0.346
+    SOCIAL            -0.252      0.367     -0.685      0.494
+    BIG_WORDS         -0.005      0.191     -0.024      0.981
+    WC                 0.869      0.212      4.094      0.000
+
+ Variances
+    DRIVES             1.000      0.000    999.000    999.000
+    COGNITION          1.000      0.000    999.000    999.000
+    AFFECT             1.000      0.000    999.000    999.000
+    SOCIAL             1.000      0.000    999.000    999.000
+    BIG_WORDS          1.000      0.000    999.000    999.000
+    WC                 1.000      0.000    999.000    999.000
+
+Latent Class Pattern 6 4
+
+ Means
+    DRIVES            -0.059      0.346     -0.169      0.866
+    COGNITION          0.036      0.456      0.078      0.938
+    AFFECT             0.521      0.251      2.075      0.038
+    SOCIAL            -1.073      1.223     -0.877      0.381
+    BIG_WORDS          0.225      0.166      1.356      0.175
+    WC                -0.716      0.229     -3.124      0.002
+
+ Variances
+    DRIVES             1.000      0.000    999.000    999.000
+    COGNITION          1.000      0.000    999.000    999.000
+    AFFECT             1.000      0.000    999.000    999.000
+    SOCIAL             1.000      0.000    999.000    999.000
+    BIG_WORDS          1.000      0.000    999.000    999.000
+    WC                 1.000      0.000    999.000    999.000
+
+Latent Class Pattern 7 1
+
+ Means
+    DRIVES            -0.422      0.299     -1.410      0.159
+    COGNITION         -0.254      0.239     -1.065      0.287
+    AFFECT            -1.280      0.392     -3.264      0.001
+    SOCIAL             0.270      0.194      1.397      0.163
+    BIG_WORDS          0.240      0.225      1.064      0.287
+    WC                -0.344      0.427     -0.807      0.420
+
+ Variances
+    DRIVES             1.000      0.000    999.000    999.000
+    COGNITION          1.000      0.000    999.000    999.000
+    AFFECT             1.000      0.000    999.000    999.000
+    SOCIAL             1.000      0.000    999.000    999.000
+    BIG_WORDS          1.000      0.000    999.000    999.000
+    WC                 1.000      0.000    999.000    999.000
+
+Latent Class Pattern 7 2
+
+ Means
+    DRIVES             0.276      0.137      2.011      0.044
+    COGNITION         -0.236      0.589     -0.400      0.689
+    AFFECT             0.548      0.217      2.523      0.012
+    SOCIAL             0.704      0.229      3.077      0.002
+    BIG_WORDS         -0.569      0.571     -0.996      0.319
+    WC                -0.921      0.928     -0.992      0.321
+
+ Variances
+    DRIVES             1.000      0.000    999.000    999.000
+    COGNITION          1.000      0.000    999.000    999.000
+    AFFECT             1.000      0.000    999.000    999.000
+    SOCIAL             1.000      0.000    999.000    999.000
+    BIG_WORDS          1.000      0.000    999.000    999.000
+    WC                 1.000      0.000    999.000    999.000
+
+Latent Class Pattern 7 3
+
+ Means
+    DRIVES             0.128      0.182      0.707      0.480
+    COGNITION          0.407      0.151      2.703      0.007
+    AFFECT            -0.311      0.330     -0.943      0.346
+    SOCIAL            -0.252      0.367     -0.685      0.494
+    BIG_WORDS         -0.005      0.191     -0.024      0.981
+    WC                 0.869      0.212      4.094      0.000
+
+ Variances
+    DRIVES             1.000      0.000    999.000    999.000
+    COGNITION          1.000      0.000    999.000    999.000
+    AFFECT             1.000      0.000    999.000    999.000
+    SOCIAL             1.000      0.000    999.000    999.000
+    BIG_WORDS          1.000      0.000    999.000    999.000
+    WC                 1.000      0.000    999.000    999.000
+
+Latent Class Pattern 7 4
+
+ Means
+    DRIVES            -0.059      0.346     -0.169      0.866
+    COGNITION          0.036      0.456      0.078      0.938
+    AFFECT             0.521      0.251      2.075      0.038
+    SOCIAL            -1.073      1.223     -0.877      0.381
+    BIG_WORDS          0.225      0.166      1.356      0.175
+    WC                -0.716      0.229     -3.124      0.002
+
+ Variances
+    DRIVES             1.000      0.000    999.000    999.000
+    COGNITION          1.000      0.000    999.000    999.000
+    AFFECT             1.000      0.000    999.000    999.000
+    SOCIAL             1.000      0.000    999.000    999.000
+    BIG_WORDS          1.000      0.000    999.000    999.000
+    WC                 1.000      0.000    999.000    999.000
+
+Latent Class Pattern 8 1
+
+ Means
+    DRIVES            -0.422      0.299     -1.410      0.159
+    COGNITION         -0.254      0.239     -1.065      0.287
+    AFFECT            -1.280      0.392     -3.264      0.001
+    SOCIAL             0.270      0.194      1.397      0.163
+    BIG_WORDS          0.240      0.225      1.064      0.287
+    WC                -0.344      0.427     -0.807      0.420
+
+ Variances
+    DRIVES             1.000      0.000    999.000    999.000
+    COGNITION          1.000      0.000    999.000    999.000
+    AFFECT             1.000      0.000    999.000    999.000
+    SOCIAL             1.000      0.000    999.000    999.000
+    BIG_WORDS          1.000      0.000    999.000    999.000
+    WC                 1.000      0.000    999.000    999.000
+
+Latent Class Pattern 8 2
+
+ Means
+    DRIVES             0.276      0.137      2.011      0.044
+    COGNITION         -0.236      0.589     -0.400      0.689
+    AFFECT             0.548      0.217      2.523      0.012
+    SOCIAL             0.704      0.229      3.077      0.002
+    BIG_WORDS         -0.569      0.571     -0.996      0.319
+    WC                -0.921      0.928     -0.992      0.321
+
+ Variances
+    DRIVES             1.000      0.000    999.000    999.000
+    COGNITION          1.000      0.000    999.000    999.000
+    AFFECT             1.000      0.000    999.000    999.000
+    SOCIAL             1.000      0.000    999.000    999.000
+    BIG_WORDS          1.000      0.000    999.000    999.000
+    WC                 1.000      0.000    999.000    999.000
+
+Latent Class Pattern 8 3
+
+ Means
+    DRIVES             0.128      0.182      0.707      0.480
+    COGNITION          0.407      0.151      2.703      0.007
+    AFFECT            -0.311      0.330     -0.943      0.346
+    SOCIAL            -0.252      0.367     -0.685      0.494
+    BIG_WORDS         -0.005      0.191     -0.024      0.981
+    WC                 0.869      0.212      4.094      0.000
+
+ Variances
+    DRIVES             1.000      0.000    999.000    999.000
+    COGNITION          1.000      0.000    999.000    999.000
+    AFFECT             1.000      0.000    999.000    999.000
+    SOCIAL             1.000      0.000    999.000    999.000
+    BIG_WORDS          1.000      0.000    999.000    999.000
+    WC                 1.000      0.000    999.000    999.000
+
+Latent Class Pattern 8 4
+
+ Means
+    DRIVES            -0.059      0.346     -0.169      0.866
+    COGNITION          0.036      0.456      0.078      0.938
+    AFFECT             0.521      0.251      2.075      0.038
+    SOCIAL            -1.073      1.223     -0.877      0.381
+    BIG_WORDS          0.225      0.166      1.356      0.175
+    WC                -0.716      0.229     -3.124      0.002
+
+ Variances
+    DRIVES             1.000      0.000    999.000    999.000
+    COGNITION          1.000      0.000    999.000    999.000
+    AFFECT             1.000      0.000    999.000    999.000
+    SOCIAL             1.000      0.000    999.000    999.000
+    BIG_WORDS          1.000      0.000    999.000    999.000
+    WC                 1.000      0.000    999.000    999.000
+
+Latent Class Pattern 9 1
+
+ Means
+    DRIVES            -0.422      0.299     -1.410      0.159
+    COGNITION         -0.254      0.239     -1.065      0.287
+    AFFECT            -1.280      0.392     -3.264      0.001
+    SOCIAL             0.270      0.194      1.397      0.163
+    BIG_WORDS          0.240      0.225      1.064      0.287
+    WC                -0.344      0.427     -0.807      0.420
+
+ Variances
+    DRIVES             1.000      0.000    999.000    999.000
+    COGNITION          1.000      0.000    999.000    999.000
+    AFFECT             1.000      0.000    999.000    999.000
+    SOCIAL             1.000      0.000    999.000    999.000
+    BIG_WORDS          1.000      0.000    999.000    999.000
+    WC                 1.000      0.000    999.000    999.000
+
+Latent Class Pattern 9 2
+
+ Means
+    DRIVES             0.276      0.137      2.011      0.044
+    COGNITION         -0.236      0.589     -0.400      0.689
+    AFFECT             0.548      0.217      2.523      0.012
+    SOCIAL             0.704      0.229      3.077      0.002
+    BIG_WORDS         -0.569      0.571     -0.996      0.319
+    WC                -0.921      0.928     -0.992      0.321
+
+ Variances
+    DRIVES             1.000      0.000    999.000    999.000
+    COGNITION          1.000      0.000    999.000    999.000
+    AFFECT             1.000      0.000    999.000    999.000
+    SOCIAL             1.000      0.000    999.000    999.000
+    BIG_WORDS          1.000      0.000    999.000    999.000
+    WC                 1.000      0.000    999.000    999.000
+
+Latent Class Pattern 9 3
+
+ Means
+    DRIVES             0.128      0.182      0.707      0.480
+    COGNITION          0.407      0.151      2.703      0.007
+    AFFECT            -0.311      0.330     -0.943      0.346
+    SOCIAL            -0.252      0.367     -0.685      0.494
+    BIG_WORDS         -0.005      0.191     -0.024      0.981
+    WC                 0.869      0.212      4.094      0.000
+
+ Variances
+    DRIVES             1.000      0.000    999.000    999.000
+    COGNITION          1.000      0.000    999.000    999.000
+    AFFECT             1.000      0.000    999.000    999.000
+    SOCIAL             1.000      0.000    999.000    999.000
+    BIG_WORDS          1.000      0.000    999.000    999.000
+    WC                 1.000      0.000    999.000    999.000
+
+Latent Class Pattern 9 4
+
+ Means
+    DRIVES            -0.059      0.346     -0.169      0.866
+    COGNITION          0.036      0.456      0.078      0.938
+    AFFECT             0.521      0.251      2.075      0.038
+    SOCIAL            -1.073      1.223     -0.877      0.381
+    BIG_WORDS          0.225      0.166      1.356      0.175
+    WC                -0.716      0.229     -3.124      0.002
+
+ Variances
+    DRIVES             1.000      0.000    999.000    999.000
+    COGNITION          1.000      0.000    999.000    999.000
+    AFFECT             1.000      0.000    999.000    999.000
+    SOCIAL             1.000      0.000    999.000    999.000
+    BIG_WORDS          1.000      0.000    999.000    999.000
+    WC                 1.000      0.000    999.000    999.000
+
+Between Level
+
+
+STDY Standardization
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+Within Level
+
+Latent Class Pattern 1 1
+
+ Means
+    DRIVES            -0.422      0.299     -1.410      0.159
+    COGNITION         -0.254      0.239     -1.065      0.287
+    AFFECT            -1.280      0.392     -3.264      0.001
+    SOCIAL             0.270      0.194      1.397      0.163
+    BIG_WORDS          0.240      0.225      1.064      0.287
+    WC                -0.344      0.427     -0.807      0.420
+
+ Variances
+    DRIVES             1.000      0.000    999.000    999.000
+    COGNITION          1.000      0.000    999.000    999.000
+    AFFECT             1.000      0.000    999.000    999.000
+    SOCIAL             1.000      0.000    999.000    999.000
+    BIG_WORDS          1.000      0.000    999.000    999.000
+    WC                 1.000      0.000    999.000    999.000
+
+Latent Class Pattern 1 2
+
+ Means
+    DRIVES             0.276      0.137      2.011      0.044
+    COGNITION         -0.236      0.589     -0.400      0.689
+    AFFECT             0.548      0.217      2.523      0.012
+    SOCIAL             0.704      0.229      3.077      0.002
+    BIG_WORDS         -0.569      0.571     -0.996      0.319
+    WC                -0.921      0.928     -0.992      0.321
+
+ Variances
+    DRIVES             1.000      0.000    999.000    999.000
+    COGNITION          1.000      0.000    999.000    999.000
+    AFFECT             1.000      0.000    999.000    999.000
+    SOCIAL             1.000      0.000    999.000    999.000
+    BIG_WORDS          1.000      0.000    999.000    999.000
+    WC                 1.000      0.000    999.000    999.000
+
+Latent Class Pattern 1 3
+
+ Means
+    DRIVES             0.128      0.182      0.707      0.480
+    COGNITION          0.407      0.151      2.703      0.007
+    AFFECT            -0.311      0.330     -0.943      0.346
+    SOCIAL            -0.252      0.367     -0.685      0.494
+    BIG_WORDS         -0.005      0.191     -0.024      0.981
+    WC                 0.869      0.212      4.094      0.000
+
+ Variances
+    DRIVES             1.000      0.000    999.000    999.000
+    COGNITION          1.000      0.000    999.000    999.000
+    AFFECT             1.000      0.000    999.000    999.000
+    SOCIAL             1.000      0.000    999.000    999.000
+    BIG_WORDS          1.000      0.000    999.000    999.000
+    WC                 1.000      0.000    999.000    999.000
+
+Latent Class Pattern 1 4
+
+ Means
+    DRIVES            -0.059      0.346     -0.169      0.866
+    COGNITION          0.036      0.456      0.078      0.938
+    AFFECT             0.521      0.251      2.075      0.038
+    SOCIAL            -1.073      1.223     -0.877      0.381
+    BIG_WORDS          0.225      0.166      1.356      0.175
+    WC                -0.716      0.229     -3.124      0.002
+
+ Variances
+    DRIVES             1.000      0.000    999.000    999.000
+    COGNITION          1.000      0.000    999.000    999.000
+    AFFECT             1.000      0.000    999.000    999.000
+    SOCIAL             1.000      0.000    999.000    999.000
+    BIG_WORDS          1.000      0.000    999.000    999.000
+    WC                 1.000      0.000    999.000    999.000
+
+Latent Class Pattern 2 1
+
+ Means
+    DRIVES            -0.422      0.299     -1.410      0.159
+    COGNITION         -0.254      0.239     -1.065      0.287
+    AFFECT            -1.280      0.392     -3.264      0.001
+    SOCIAL             0.270      0.194      1.397      0.163
+    BIG_WORDS          0.240      0.225      1.064      0.287
+    WC                -0.344      0.427     -0.807      0.420
+
+ Variances
+    DRIVES             1.000      0.000    999.000    999.000
+    COGNITION          1.000      0.000    999.000    999.000
+    AFFECT             1.000      0.000    999.000    999.000
+    SOCIAL             1.000      0.000    999.000    999.000
+    BIG_WORDS          1.000      0.000    999.000    999.000
+    WC                 1.000      0.000    999.000    999.000
+
+Latent Class Pattern 2 2
+
+ Means
+    DRIVES             0.276      0.137      2.011      0.044
+    COGNITION         -0.236      0.589     -0.400      0.689
+    AFFECT             0.548      0.217      2.523      0.012
+    SOCIAL             0.704      0.229      3.077      0.002
+    BIG_WORDS         -0.569      0.571     -0.996      0.319
+    WC                -0.921      0.928     -0.992      0.321
+
+ Variances
+    DRIVES             1.000      0.000    999.000    999.000
+    COGNITION          1.000      0.000    999.000    999.000
+    AFFECT             1.000      0.000    999.000    999.000
+    SOCIAL             1.000      0.000    999.000    999.000
+    BIG_WORDS          1.000      0.000    999.000    999.000
+    WC                 1.000      0.000    999.000    999.000
+
+Latent Class Pattern 2 3
+
+ Means
+    DRIVES             0.128      0.182      0.707      0.480
+    COGNITION          0.407      0.151      2.703      0.007
+    AFFECT            -0.311      0.330     -0.943      0.346
+    SOCIAL            -0.252      0.367     -0.685      0.494
+    BIG_WORDS         -0.005      0.191     -0.024      0.981
+    WC                 0.869      0.212      4.094      0.000
+
+ Variances
+    DRIVES             1.000      0.000    999.000    999.000
+    COGNITION          1.000      0.000    999.000    999.000
+    AFFECT             1.000      0.000    999.000    999.000
+    SOCIAL             1.000      0.000    999.000    999.000
+    BIG_WORDS          1.000      0.000    999.000    999.000
+    WC                 1.000      0.000    999.000    999.000
+
+Latent Class Pattern 2 4
+
+ Means
+    DRIVES            -0.059      0.346     -0.169      0.866
+    COGNITION          0.036      0.456      0.078      0.938
+    AFFECT             0.521      0.251      2.075      0.038
+    SOCIAL            -1.073      1.223     -0.877      0.381
+    BIG_WORDS          0.225      0.166      1.356      0.175
+    WC                -0.716      0.229     -3.124      0.002
+
+ Variances
+    DRIVES             1.000      0.000    999.000    999.000
+    COGNITION          1.000      0.000    999.000    999.000
+    AFFECT             1.000      0.000    999.000    999.000
+    SOCIAL             1.000      0.000    999.000    999.000
+    BIG_WORDS          1.000      0.000    999.000    999.000
+    WC                 1.000      0.000    999.000    999.000
+
+Latent Class Pattern 3 1
+
+ Means
+    DRIVES            -0.422      0.299     -1.410      0.159
+    COGNITION         -0.254      0.239     -1.065      0.287
+    AFFECT            -1.280      0.392     -3.264      0.001
+    SOCIAL             0.270      0.194      1.397      0.163
+    BIG_WORDS          0.240      0.225      1.064      0.287
+    WC                -0.344      0.427     -0.807      0.420
+
+ Variances
+    DRIVES             1.000      0.000    999.000    999.000
+    COGNITION          1.000      0.000    999.000    999.000
+    AFFECT             1.000      0.000    999.000    999.000
+    SOCIAL             1.000      0.000    999.000    999.000
+    BIG_WORDS          1.000      0.000    999.000    999.000
+    WC                 1.000      0.000    999.000    999.000
+
+Latent Class Pattern 3 2
+
+ Means
+    DRIVES             0.276      0.137      2.011      0.044
+    COGNITION         -0.236      0.589     -0.400      0.689
+    AFFECT             0.548      0.217      2.523      0.012
+    SOCIAL             0.704      0.229      3.077      0.002
+    BIG_WORDS         -0.569      0.571     -0.996      0.319
+    WC                -0.921      0.928     -0.992      0.321
+
+ Variances
+    DRIVES             1.000      0.000    999.000    999.000
+    COGNITION          1.000      0.000    999.000    999.000
+    AFFECT             1.000      0.000    999.000    999.000
+    SOCIAL             1.000      0.000    999.000    999.000
+    BIG_WORDS          1.000      0.000    999.000    999.000
+    WC                 1.000      0.000    999.000    999.000
+
+Latent Class Pattern 3 3
+
+ Means
+    DRIVES             0.128      0.182      0.707      0.480
+    COGNITION          0.407      0.151      2.703      0.007
+    AFFECT            -0.311      0.330     -0.943      0.346
+    SOCIAL            -0.252      0.367     -0.685      0.494
+    BIG_WORDS         -0.005      0.191     -0.024      0.981
+    WC                 0.869      0.212      4.094      0.000
+
+ Variances
+    DRIVES             1.000      0.000    999.000    999.000
+    COGNITION          1.000      0.000    999.000    999.000
+    AFFECT             1.000      0.000    999.000    999.000
+    SOCIAL             1.000      0.000    999.000    999.000
+    BIG_WORDS          1.000      0.000    999.000    999.000
+    WC                 1.000      0.000    999.000    999.000
+
+Latent Class Pattern 3 4
+
+ Means
+    DRIVES            -0.059      0.346     -0.169      0.866
+    COGNITION          0.036      0.456      0.078      0.938
+    AFFECT             0.521      0.251      2.075      0.038
+    SOCIAL            -1.073      1.223     -0.877      0.381
+    BIG_WORDS          0.225      0.166      1.356      0.175
+    WC                -0.716      0.229     -3.124      0.002
+
+ Variances
+    DRIVES             1.000      0.000    999.000    999.000
+    COGNITION          1.000      0.000    999.000    999.000
+    AFFECT             1.000      0.000    999.000    999.000
+    SOCIAL             1.000      0.000    999.000    999.000
+    BIG_WORDS          1.000      0.000    999.000    999.000
+    WC                 1.000      0.000    999.000    999.000
+
+Latent Class Pattern 4 1
+
+ Means
+    DRIVES            -0.422      0.299     -1.410      0.159
+    COGNITION         -0.254      0.239     -1.065      0.287
+    AFFECT            -1.280      0.392     -3.264      0.001
+    SOCIAL             0.270      0.194      1.397      0.163
+    BIG_WORDS          0.240      0.225      1.064      0.287
+    WC                -0.344      0.427     -0.807      0.420
+
+ Variances
+    DRIVES             1.000      0.000    999.000    999.000
+    COGNITION          1.000      0.000    999.000    999.000
+    AFFECT             1.000      0.000    999.000    999.000
+    SOCIAL             1.000      0.000    999.000    999.000
+    BIG_WORDS          1.000      0.000    999.000    999.000
+    WC                 1.000      0.000    999.000    999.000
+
+Latent Class Pattern 4 2
+
+ Means
+    DRIVES             0.276      0.137      2.011      0.044
+    COGNITION         -0.236      0.589     -0.400      0.689
+    AFFECT             0.548      0.217      2.523      0.012
+    SOCIAL             0.704      0.229      3.077      0.002
+    BIG_WORDS         -0.569      0.571     -0.996      0.319
+    WC                -0.921      0.928     -0.992      0.321
+
+ Variances
+    DRIVES             1.000      0.000    999.000    999.000
+    COGNITION          1.000      0.000    999.000    999.000
+    AFFECT             1.000      0.000    999.000    999.000
+    SOCIAL             1.000      0.000    999.000    999.000
+    BIG_WORDS          1.000      0.000    999.000    999.000
+    WC                 1.000      0.000    999.000    999.000
+
+Latent Class Pattern 4 3
+
+ Means
+    DRIVES             0.128      0.182      0.707      0.480
+    COGNITION          0.407      0.151      2.703      0.007
+    AFFECT            -0.311      0.330     -0.943      0.346
+    SOCIAL            -0.252      0.367     -0.685      0.494
+    BIG_WORDS         -0.005      0.191     -0.024      0.981
+    WC                 0.869      0.212      4.094      0.000
+
+ Variances
+    DRIVES             1.000      0.000    999.000    999.000
+    COGNITION          1.000      0.000    999.000    999.000
+    AFFECT             1.000      0.000    999.000    999.000
+    SOCIAL             1.000      0.000    999.000    999.000
+    BIG_WORDS          1.000      0.000    999.000    999.000
+    WC                 1.000      0.000    999.000    999.000
+
+Latent Class Pattern 4 4
+
+ Means
+    DRIVES            -0.059      0.346     -0.169      0.866
+    COGNITION          0.036      0.456      0.078      0.938
+    AFFECT             0.521      0.251      2.075      0.038
+    SOCIAL            -1.073      1.223     -0.877      0.381
+    BIG_WORDS          0.225      0.166      1.356      0.175
+    WC                -0.716      0.229     -3.124      0.002
+
+ Variances
+    DRIVES             1.000      0.000    999.000    999.000
+    COGNITION          1.000      0.000    999.000    999.000
+    AFFECT             1.000      0.000    999.000    999.000
+    SOCIAL             1.000      0.000    999.000    999.000
+    BIG_WORDS          1.000      0.000    999.000    999.000
+    WC                 1.000      0.000    999.000    999.000
+
+Latent Class Pattern 5 1
+
+ Means
+    DRIVES            -0.422      0.299     -1.410      0.159
+    COGNITION         -0.254      0.239     -1.065      0.287
+    AFFECT            -1.280      0.392     -3.264      0.001
+    SOCIAL             0.270      0.194      1.397      0.163
+    BIG_WORDS          0.240      0.225      1.064      0.287
+    WC                -0.344      0.427     -0.807      0.420
+
+ Variances
+    DRIVES             1.000      0.000    999.000    999.000
+    COGNITION          1.000      0.000    999.000    999.000
+    AFFECT             1.000      0.000    999.000    999.000
+    SOCIAL             1.000      0.000    999.000    999.000
+    BIG_WORDS          1.000      0.000    999.000    999.000
+    WC                 1.000      0.000    999.000    999.000
+
+Latent Class Pattern 5 2
+
+ Means
+    DRIVES             0.276      0.137      2.011      0.044
+    COGNITION         -0.236      0.589     -0.400      0.689
+    AFFECT             0.548      0.217      2.523      0.012
+    SOCIAL             0.704      0.229      3.077      0.002
+    BIG_WORDS         -0.569      0.571     -0.996      0.319
+    WC                -0.921      0.928     -0.992      0.321
+
+ Variances
+    DRIVES             1.000      0.000    999.000    999.000
+    COGNITION          1.000      0.000    999.000    999.000
+    AFFECT             1.000      0.000    999.000    999.000
+    SOCIAL             1.000      0.000    999.000    999.000
+    BIG_WORDS          1.000      0.000    999.000    999.000
+    WC                 1.000      0.000    999.000    999.000
+
+Latent Class Pattern 5 3
+
+ Means
+    DRIVES             0.128      0.182      0.707      0.480
+    COGNITION          0.407      0.151      2.703      0.007
+    AFFECT            -0.311      0.330     -0.943      0.346
+    SOCIAL            -0.252      0.367     -0.685      0.494
+    BIG_WORDS         -0.005      0.191     -0.024      0.981
+    WC                 0.869      0.212      4.094      0.000
+
+ Variances
+    DRIVES             1.000      0.000    999.000    999.000
+    COGNITION          1.000      0.000    999.000    999.000
+    AFFECT             1.000      0.000    999.000    999.000
+    SOCIAL             1.000      0.000    999.000    999.000
+    BIG_WORDS          1.000      0.000    999.000    999.000
+    WC                 1.000      0.000    999.000    999.000
+
+Latent Class Pattern 5 4
+
+ Means
+    DRIVES            -0.059      0.346     -0.169      0.866
+    COGNITION          0.036      0.456      0.078      0.938
+    AFFECT             0.521      0.251      2.075      0.038
+    SOCIAL            -1.073      1.223     -0.877      0.381
+    BIG_WORDS          0.225      0.166      1.356      0.175
+    WC                -0.716      0.229     -3.124      0.002
+
+ Variances
+    DRIVES             1.000      0.000    999.000    999.000
+    COGNITION          1.000      0.000    999.000    999.000
+    AFFECT             1.000      0.000    999.000    999.000
+    SOCIAL             1.000      0.000    999.000    999.000
+    BIG_WORDS          1.000      0.000    999.000    999.000
+    WC                 1.000      0.000    999.000    999.000
+
+Latent Class Pattern 6 1
+
+ Means
+    DRIVES            -0.422      0.299     -1.410      0.159
+    COGNITION         -0.254      0.239     -1.065      0.287
+    AFFECT            -1.280      0.392     -3.264      0.001
+    SOCIAL             0.270      0.194      1.397      0.163
+    BIG_WORDS          0.240      0.225      1.064      0.287
+    WC                -0.344      0.427     -0.807      0.420
+
+ Variances
+    DRIVES             1.000      0.000    999.000    999.000
+    COGNITION          1.000      0.000    999.000    999.000
+    AFFECT             1.000      0.000    999.000    999.000
+    SOCIAL             1.000      0.000    999.000    999.000
+    BIG_WORDS          1.000      0.000    999.000    999.000
+    WC                 1.000      0.000    999.000    999.000
+
+Latent Class Pattern 6 2
+
+ Means
+    DRIVES             0.276      0.137      2.011      0.044
+    COGNITION         -0.236      0.589     -0.400      0.689
+    AFFECT             0.548      0.217      2.523      0.012
+    SOCIAL             0.704      0.229      3.077      0.002
+    BIG_WORDS         -0.569      0.571     -0.996      0.319
+    WC                -0.921      0.928     -0.992      0.321
+
+ Variances
+    DRIVES             1.000      0.000    999.000    999.000
+    COGNITION          1.000      0.000    999.000    999.000
+    AFFECT             1.000      0.000    999.000    999.000
+    SOCIAL             1.000      0.000    999.000    999.000
+    BIG_WORDS          1.000      0.000    999.000    999.000
+    WC                 1.000      0.000    999.000    999.000
+
+Latent Class Pattern 6 3
+
+ Means
+    DRIVES             0.128      0.182      0.707      0.480
+    COGNITION          0.407      0.151      2.703      0.007
+    AFFECT            -0.311      0.330     -0.943      0.346
+    SOCIAL            -0.252      0.367     -0.685      0.494
+    BIG_WORDS         -0.005      0.191     -0.024      0.981
+    WC                 0.869      0.212      4.094      0.000
+
+ Variances
+    DRIVES             1.000      0.000    999.000    999.000
+    COGNITION          1.000      0.000    999.000    999.000
+    AFFECT             1.000      0.000    999.000    999.000
+    SOCIAL             1.000      0.000    999.000    999.000
+    BIG_WORDS          1.000      0.000    999.000    999.000
+    WC                 1.000      0.000    999.000    999.000
+
+Latent Class Pattern 6 4
+
+ Means
+    DRIVES            -0.059      0.346     -0.169      0.866
+    COGNITION          0.036      0.456      0.078      0.938
+    AFFECT             0.521      0.251      2.075      0.038
+    SOCIAL            -1.073      1.223     -0.877      0.381
+    BIG_WORDS          0.225      0.166      1.356      0.175
+    WC                -0.716      0.229     -3.124      0.002
+
+ Variances
+    DRIVES             1.000      0.000    999.000    999.000
+    COGNITION          1.000      0.000    999.000    999.000
+    AFFECT             1.000      0.000    999.000    999.000
+    SOCIAL             1.000      0.000    999.000    999.000
+    BIG_WORDS          1.000      0.000    999.000    999.000
+    WC                 1.000      0.000    999.000    999.000
+
+Latent Class Pattern 7 1
+
+ Means
+    DRIVES            -0.422      0.299     -1.410      0.159
+    COGNITION         -0.254      0.239     -1.065      0.287
+    AFFECT            -1.280      0.392     -3.264      0.001
+    SOCIAL             0.270      0.194      1.397      0.163
+    BIG_WORDS          0.240      0.225      1.064      0.287
+    WC                -0.344      0.427     -0.807      0.420
+
+ Variances
+    DRIVES             1.000      0.000    999.000    999.000
+    COGNITION          1.000      0.000    999.000    999.000
+    AFFECT             1.000      0.000    999.000    999.000
+    SOCIAL             1.000      0.000    999.000    999.000
+    BIG_WORDS          1.000      0.000    999.000    999.000
+    WC                 1.000      0.000    999.000    999.000
+
+Latent Class Pattern 7 2
+
+ Means
+    DRIVES             0.276      0.137      2.011      0.044
+    COGNITION         -0.236      0.589     -0.400      0.689
+    AFFECT             0.548      0.217      2.523      0.012
+    SOCIAL             0.704      0.229      3.077      0.002
+    BIG_WORDS         -0.569      0.571     -0.996      0.319
+    WC                -0.921      0.928     -0.992      0.321
+
+ Variances
+    DRIVES             1.000      0.000    999.000    999.000
+    COGNITION          1.000      0.000    999.000    999.000
+    AFFECT             1.000      0.000    999.000    999.000
+    SOCIAL             1.000      0.000    999.000    999.000
+    BIG_WORDS          1.000      0.000    999.000    999.000
+    WC                 1.000      0.000    999.000    999.000
+
+Latent Class Pattern 7 3
+
+ Means
+    DRIVES             0.128      0.182      0.707      0.480
+    COGNITION          0.407      0.151      2.703      0.007
+    AFFECT            -0.311      0.330     -0.943      0.346
+    SOCIAL            -0.252      0.367     -0.685      0.494
+    BIG_WORDS         -0.005      0.191     -0.024      0.981
+    WC                 0.869      0.212      4.094      0.000
+
+ Variances
+    DRIVES             1.000      0.000    999.000    999.000
+    COGNITION          1.000      0.000    999.000    999.000
+    AFFECT             1.000      0.000    999.000    999.000
+    SOCIAL             1.000      0.000    999.000    999.000
+    BIG_WORDS          1.000      0.000    999.000    999.000
+    WC                 1.000      0.000    999.000    999.000
+
+Latent Class Pattern 7 4
+
+ Means
+    DRIVES            -0.059      0.346     -0.169      0.866
+    COGNITION          0.036      0.456      0.078      0.938
+    AFFECT             0.521      0.251      2.075      0.038
+    SOCIAL            -1.073      1.223     -0.877      0.381
+    BIG_WORDS          0.225      0.166      1.356      0.175
+    WC                -0.716      0.229     -3.124      0.002
+
+ Variances
+    DRIVES             1.000      0.000    999.000    999.000
+    COGNITION          1.000      0.000    999.000    999.000
+    AFFECT             1.000      0.000    999.000    999.000
+    SOCIAL             1.000      0.000    999.000    999.000
+    BIG_WORDS          1.000      0.000    999.000    999.000
+    WC                 1.000      0.000    999.000    999.000
+
+Latent Class Pattern 8 1
+
+ Means
+    DRIVES            -0.422      0.299     -1.410      0.159
+    COGNITION         -0.254      0.239     -1.065      0.287
+    AFFECT            -1.280      0.392     -3.264      0.001
+    SOCIAL             0.270      0.194      1.397      0.163
+    BIG_WORDS          0.240      0.225      1.064      0.287
+    WC                -0.344      0.427     -0.807      0.420
+
+ Variances
+    DRIVES             1.000      0.000    999.000    999.000
+    COGNITION          1.000      0.000    999.000    999.000
+    AFFECT             1.000      0.000    999.000    999.000
+    SOCIAL             1.000      0.000    999.000    999.000
+    BIG_WORDS          1.000      0.000    999.000    999.000
+    WC                 1.000      0.000    999.000    999.000
+
+Latent Class Pattern 8 2
+
+ Means
+    DRIVES             0.276      0.137      2.011      0.044
+    COGNITION         -0.236      0.589     -0.400      0.689
+    AFFECT             0.548      0.217      2.523      0.012
+    SOCIAL             0.704      0.229      3.077      0.002
+    BIG_WORDS         -0.569      0.571     -0.996      0.319
+    WC                -0.921      0.928     -0.992      0.321
+
+ Variances
+    DRIVES             1.000      0.000    999.000    999.000
+    COGNITION          1.000      0.000    999.000    999.000
+    AFFECT             1.000      0.000    999.000    999.000
+    SOCIAL             1.000      0.000    999.000    999.000
+    BIG_WORDS          1.000      0.000    999.000    999.000
+    WC                 1.000      0.000    999.000    999.000
+
+Latent Class Pattern 8 3
+
+ Means
+    DRIVES             0.128      0.182      0.707      0.480
+    COGNITION          0.407      0.151      2.703      0.007
+    AFFECT            -0.311      0.330     -0.943      0.346
+    SOCIAL            -0.252      0.367     -0.685      0.494
+    BIG_WORDS         -0.005      0.191     -0.024      0.981
+    WC                 0.869      0.212      4.094      0.000
+
+ Variances
+    DRIVES             1.000      0.000    999.000    999.000
+    COGNITION          1.000      0.000    999.000    999.000
+    AFFECT             1.000      0.000    999.000    999.000
+    SOCIAL             1.000      0.000    999.000    999.000
+    BIG_WORDS          1.000      0.000    999.000    999.000
+    WC                 1.000      0.000    999.000    999.000
+
+Latent Class Pattern 8 4
+
+ Means
+    DRIVES            -0.059      0.346     -0.169      0.866
+    COGNITION          0.036      0.456      0.078      0.938
+    AFFECT             0.521      0.251      2.075      0.038
+    SOCIAL            -1.073      1.223     -0.877      0.381
+    BIG_WORDS          0.225      0.166      1.356      0.175
+    WC                -0.716      0.229     -3.124      0.002
+
+ Variances
+    DRIVES             1.000      0.000    999.000    999.000
+    COGNITION          1.000      0.000    999.000    999.000
+    AFFECT             1.000      0.000    999.000    999.000
+    SOCIAL             1.000      0.000    999.000    999.000
+    BIG_WORDS          1.000      0.000    999.000    999.000
+    WC                 1.000      0.000    999.000    999.000
+
+Latent Class Pattern 9 1
+
+ Means
+    DRIVES            -0.422      0.299     -1.410      0.159
+    COGNITION         -0.254      0.239     -1.065      0.287
+    AFFECT            -1.280      0.392     -3.264      0.001
+    SOCIAL             0.270      0.194      1.397      0.163
+    BIG_WORDS          0.240      0.225      1.064      0.287
+    WC                -0.344      0.427     -0.807      0.420
+
+ Variances
+    DRIVES             1.000      0.000    999.000    999.000
+    COGNITION          1.000      0.000    999.000    999.000
+    AFFECT             1.000      0.000    999.000    999.000
+    SOCIAL             1.000      0.000    999.000    999.000
+    BIG_WORDS          1.000      0.000    999.000    999.000
+    WC                 1.000      0.000    999.000    999.000
+
+Latent Class Pattern 9 2
+
+ Means
+    DRIVES             0.276      0.137      2.011      0.044
+    COGNITION         -0.236      0.589     -0.400      0.689
+    AFFECT             0.548      0.217      2.523      0.012
+    SOCIAL             0.704      0.229      3.077      0.002
+    BIG_WORDS         -0.569      0.571     -0.996      0.319
+    WC                -0.921      0.928     -0.992      0.321
+
+ Variances
+    DRIVES             1.000      0.000    999.000    999.000
+    COGNITION          1.000      0.000    999.000    999.000
+    AFFECT             1.000      0.000    999.000    999.000
+    SOCIAL             1.000      0.000    999.000    999.000
+    BIG_WORDS          1.000      0.000    999.000    999.000
+    WC                 1.000      0.000    999.000    999.000
+
+Latent Class Pattern 9 3
+
+ Means
+    DRIVES             0.128      0.182      0.707      0.480
+    COGNITION          0.407      0.151      2.703      0.007
+    AFFECT            -0.311      0.330     -0.943      0.346
+    SOCIAL            -0.252      0.367     -0.685      0.494
+    BIG_WORDS         -0.005      0.191     -0.024      0.981
+    WC                 0.869      0.212      4.094      0.000
+
+ Variances
+    DRIVES             1.000      0.000    999.000    999.000
+    COGNITION          1.000      0.000    999.000    999.000
+    AFFECT             1.000      0.000    999.000    999.000
+    SOCIAL             1.000      0.000    999.000    999.000
+    BIG_WORDS          1.000      0.000    999.000    999.000
+    WC                 1.000      0.000    999.000    999.000
+
+Latent Class Pattern 9 4
+
+ Means
+    DRIVES            -0.059      0.346     -0.169      0.866
+    COGNITION          0.036      0.456      0.078      0.938
+    AFFECT             0.521      0.251      2.075      0.038
+    SOCIAL            -1.073      1.223     -0.877      0.381
+    BIG_WORDS          0.225      0.166      1.356      0.175
+    WC                -0.716      0.229     -3.124      0.002
+
+ Variances
+    DRIVES             1.000      0.000    999.000    999.000
+    COGNITION          1.000      0.000    999.000    999.000
+    AFFECT             1.000      0.000    999.000    999.000
+    SOCIAL             1.000      0.000    999.000    999.000
+    BIG_WORDS          1.000      0.000    999.000    999.000
+    WC                 1.000      0.000    999.000    999.000
+
+Between Level
+
+
+STD Standardization
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+Within Level
+
+Latent Class Pattern 1 1
+
+ Means
+    DRIVES            -0.411      0.209     -1.964      0.050
+    COGNITION         -0.259      0.244     -1.062      0.288
+    AFFECT            -0.847      0.156     -5.438      0.000
+    SOCIAL             0.312      0.216      1.445      0.149
+    BIG_WORDS          0.254      0.233      1.088      0.276
+    WC                -0.250      0.308     -0.810      0.418
+
+ Variances
+    DRIVES             0.948      0.421      2.251      0.024
+    COGNITION          1.037      0.141      7.342      0.000
+    AFFECT             0.437      0.116      3.784      0.000
+    SOCIAL             1.332      0.209      6.379      0.000
+    BIG_WORDS          1.120      0.168      6.654      0.000
+    WC                 0.526      0.072      7.258      0.000
+
+Latent Class Pattern 1 2
+
+ Means
+    DRIVES             0.307      0.145      2.118      0.034
+    COGNITION         -0.216      0.564     -0.384      0.701
+    AFFECT             0.611      0.288      2.123      0.034
+    SOCIAL             0.620      0.179      3.471      0.001
+    BIG_WORDS         -0.479      0.333     -1.437      0.151
+    WC                -0.523      0.365     -1.433      0.152
+
+ Variances
+    DRIVES             1.235      0.312      3.960      0.000
+    COGNITION          0.842      0.214      3.937      0.000
+    AFFECT             1.244      0.242      5.140      0.000
+    SOCIAL             0.776      0.108      7.207      0.000
+    BIG_WORDS          0.708      0.448      1.581      0.114
+    WC                 0.322      0.203      1.587      0.112
+
+Latent Class Pattern 1 3
+
+ Means
+    DRIVES             0.107      0.154      0.696      0.486
+    COGNITION          0.331      0.151      2.191      0.028
+    AFFECT            -0.191      0.183     -1.047      0.295
+    SOCIAL            -0.190      0.274     -0.691      0.490
+    BIG_WORDS         -0.004      0.155     -0.024      0.981
+    WC                 0.918      0.252      3.646      0.000
+
+ Variances
+    DRIVES             0.699      0.069     10.076      0.000
+    COGNITION          0.661      0.167      3.965      0.000
+    AFFECT             0.378      0.096      3.951      0.000
+    SOCIAL             0.568      0.072      7.898      0.000
+    BIG_WORDS          0.660      0.104      6.378      0.000
+    WC                 1.116      0.148      7.525      0.000
+
+Latent Class Pattern 1 4
+
+ Means
+    DRIVES            -0.056      0.328     -0.172      0.864
+    COGNITION          0.041      0.527      0.078      0.938
+    AFFECT             0.459      0.134      3.418      0.001
+    SOCIAL            -0.707      0.547     -1.293      0.196
+    BIG_WORDS          0.254      0.187      1.361      0.174
+    WC                -0.432      0.094     -4.581      0.000
+
+ Variances
+    DRIVES             0.923      0.196      4.704      0.000
+    COGNITION          1.318      0.301      4.373      0.000
+    AFFECT             0.774      0.406      1.904      0.057
+    SOCIAL             0.434      0.321      1.354      0.176
+    BIG_WORDS          1.272      0.198      6.441      0.000
+    WC                 0.365      0.143      2.554      0.011
+
+Latent Class Pattern 2 1
+
+ Means
+    DRIVES            -0.411      0.209     -1.964      0.050
+    COGNITION         -0.259      0.244     -1.062      0.288
+    AFFECT            -0.847      0.156     -5.438      0.000
+    SOCIAL             0.312      0.216      1.445      0.149
+    BIG_WORDS          0.254      0.233      1.088      0.276
+    WC                -0.250      0.308     -0.810      0.418
+
+ Variances
+    DRIVES             0.948      0.421      2.251      0.024
+    COGNITION          1.037      0.141      7.342      0.000
+    AFFECT             0.437      0.116      3.784      0.000
+    SOCIAL             1.332      0.209      6.379      0.000
+    BIG_WORDS          1.120      0.168      6.654      0.000
+    WC                 0.526      0.072      7.258      0.000
+
+Latent Class Pattern 2 2
+
+ Means
+    DRIVES             0.307      0.145      2.118      0.034
+    COGNITION         -0.216      0.564     -0.384      0.701
+    AFFECT             0.611      0.288      2.123      0.034
+    SOCIAL             0.620      0.179      3.471      0.001
+    BIG_WORDS         -0.479      0.333     -1.437      0.151
+    WC                -0.523      0.365     -1.433      0.152
+
+ Variances
+    DRIVES             1.235      0.312      3.960      0.000
+    COGNITION          0.842      0.214      3.937      0.000
+    AFFECT             1.244      0.242      5.140      0.000
+    SOCIAL             0.776      0.108      7.207      0.000
+    BIG_WORDS          0.708      0.448      1.581      0.114
+    WC                 0.322      0.203      1.587      0.112
+
+Latent Class Pattern 2 3
+
+ Means
+    DRIVES             0.107      0.154      0.696      0.486
+    COGNITION          0.331      0.151      2.191      0.028
+    AFFECT            -0.191      0.183     -1.047      0.295
+    SOCIAL            -0.190      0.274     -0.691      0.490
+    BIG_WORDS         -0.004      0.155     -0.024      0.981
+    WC                 0.918      0.252      3.646      0.000
+
+ Variances
+    DRIVES             0.699      0.069     10.076      0.000
+    COGNITION          0.661      0.167      3.965      0.000
+    AFFECT             0.378      0.096      3.951      0.000
+    SOCIAL             0.568      0.072      7.898      0.000
+    BIG_WORDS          0.660      0.104      6.378      0.000
+    WC                 1.116      0.148      7.525      0.000
+
+Latent Class Pattern 2 4
+
+ Means
+    DRIVES            -0.056      0.328     -0.172      0.864
+    COGNITION          0.041      0.527      0.078      0.938
+    AFFECT             0.459      0.134      3.418      0.001
+    SOCIAL            -0.707      0.547     -1.293      0.196
+    BIG_WORDS          0.254      0.187      1.361      0.174
+    WC                -0.432      0.094     -4.581      0.000
+
+ Variances
+    DRIVES             0.923      0.196      4.704      0.000
+    COGNITION          1.318      0.301      4.373      0.000
+    AFFECT             0.774      0.406      1.904      0.057
+    SOCIAL             0.434      0.321      1.354      0.176
+    BIG_WORDS          1.272      0.198      6.441      0.000
+    WC                 0.365      0.143      2.554      0.011
+
+Latent Class Pattern 3 1
+
+ Means
+    DRIVES            -0.411      0.209     -1.964      0.050
+    COGNITION         -0.259      0.244     -1.062      0.288
+    AFFECT            -0.847      0.156     -5.438      0.000
+    SOCIAL             0.312      0.216      1.445      0.149
+    BIG_WORDS          0.254      0.233      1.088      0.276
+    WC                -0.250      0.308     -0.810      0.418
+
+ Variances
+    DRIVES             0.948      0.421      2.251      0.024
+    COGNITION          1.037      0.141      7.342      0.000
+    AFFECT             0.437      0.116      3.784      0.000
+    SOCIAL             1.332      0.209      6.379      0.000
+    BIG_WORDS          1.120      0.168      6.654      0.000
+    WC                 0.526      0.072      7.258      0.000
+
+Latent Class Pattern 3 2
+
+ Means
+    DRIVES             0.307      0.145      2.118      0.034
+    COGNITION         -0.216      0.564     -0.384      0.701
+    AFFECT             0.611      0.288      2.123      0.034
+    SOCIAL             0.620      0.179      3.471      0.001
+    BIG_WORDS         -0.479      0.333     -1.437      0.151
+    WC                -0.523      0.365     -1.433      0.152
+
+ Variances
+    DRIVES             1.235      0.312      3.960      0.000
+    COGNITION          0.842      0.214      3.937      0.000
+    AFFECT             1.244      0.242      5.140      0.000
+    SOCIAL             0.776      0.108      7.207      0.000
+    BIG_WORDS          0.708      0.448      1.581      0.114
+    WC                 0.322      0.203      1.587      0.112
+
+Latent Class Pattern 3 3
+
+ Means
+    DRIVES             0.107      0.154      0.696      0.486
+    COGNITION          0.331      0.151      2.191      0.028
+    AFFECT            -0.191      0.183     -1.047      0.295
+    SOCIAL            -0.190      0.274     -0.691      0.490
+    BIG_WORDS         -0.004      0.155     -0.024      0.981
+    WC                 0.918      0.252      3.646      0.000
+
+ Variances
+    DRIVES             0.699      0.069     10.076      0.000
+    COGNITION          0.661      0.167      3.965      0.000
+    AFFECT             0.378      0.096      3.951      0.000
+    SOCIAL             0.568      0.072      7.898      0.000
+    BIG_WORDS          0.660      0.104      6.378      0.000
+    WC                 1.116      0.148      7.525      0.000
+
+Latent Class Pattern 3 4
+
+ Means
+    DRIVES            -0.056      0.328     -0.172      0.864
+    COGNITION          0.041      0.527      0.078      0.938
+    AFFECT             0.459      0.134      3.418      0.001
+    SOCIAL            -0.707      0.547     -1.293      0.196
+    BIG_WORDS          0.254      0.187      1.361      0.174
+    WC                -0.432      0.094     -4.581      0.000
+
+ Variances
+    DRIVES             0.923      0.196      4.704      0.000
+    COGNITION          1.318      0.301      4.373      0.000
+    AFFECT             0.774      0.406      1.904      0.057
+    SOCIAL             0.434      0.321      1.354      0.176
+    BIG_WORDS          1.272      0.198      6.441      0.000
+    WC                 0.365      0.143      2.554      0.011
+
+Latent Class Pattern 4 1
+
+ Means
+    DRIVES            -0.411      0.209     -1.964      0.050
+    COGNITION         -0.259      0.244     -1.062      0.288
+    AFFECT            -0.847      0.156     -5.438      0.000
+    SOCIAL             0.312      0.216      1.445      0.149
+    BIG_WORDS          0.254      0.233      1.088      0.276
+    WC                -0.250      0.308     -0.810      0.418
+
+ Variances
+    DRIVES             0.948      0.421      2.251      0.024
+    COGNITION          1.037      0.141      7.342      0.000
+    AFFECT             0.437      0.116      3.784      0.000
+    SOCIAL             1.332      0.209      6.379      0.000
+    BIG_WORDS          1.120      0.168      6.654      0.000
+    WC                 0.526      0.072      7.258      0.000
+
+Latent Class Pattern 4 2
+
+ Means
+    DRIVES             0.307      0.145      2.118      0.034
+    COGNITION         -0.216      0.564     -0.384      0.701
+    AFFECT             0.611      0.288      2.123      0.034
+    SOCIAL             0.620      0.179      3.471      0.001
+    BIG_WORDS         -0.479      0.333     -1.437      0.151
+    WC                -0.523      0.365     -1.433      0.152
+
+ Variances
+    DRIVES             1.235      0.312      3.960      0.000
+    COGNITION          0.842      0.214      3.937      0.000
+    AFFECT             1.244      0.242      5.140      0.000
+    SOCIAL             0.776      0.108      7.207      0.000
+    BIG_WORDS          0.708      0.448      1.581      0.114
+    WC                 0.322      0.203      1.587      0.112
+
+Latent Class Pattern 4 3
+
+ Means
+    DRIVES             0.107      0.154      0.696      0.486
+    COGNITION          0.331      0.151      2.191      0.028
+    AFFECT            -0.191      0.183     -1.047      0.295
+    SOCIAL            -0.190      0.274     -0.691      0.490
+    BIG_WORDS         -0.004      0.155     -0.024      0.981
+    WC                 0.918      0.252      3.646      0.000
+
+ Variances
+    DRIVES             0.699      0.069     10.076      0.000
+    COGNITION          0.661      0.167      3.965      0.000
+    AFFECT             0.378      0.096      3.951      0.000
+    SOCIAL             0.568      0.072      7.898      0.000
+    BIG_WORDS          0.660      0.104      6.378      0.000
+    WC                 1.116      0.148      7.525      0.000
+
+Latent Class Pattern 4 4
+
+ Means
+    DRIVES            -0.056      0.328     -0.172      0.864
+    COGNITION          0.041      0.527      0.078      0.938
+    AFFECT             0.459      0.134      3.418      0.001
+    SOCIAL            -0.707      0.547     -1.293      0.196
+    BIG_WORDS          0.254      0.187      1.361      0.174
+    WC                -0.432      0.094     -4.581      0.000
+
+ Variances
+    DRIVES             0.923      0.196      4.704      0.000
+    COGNITION          1.318      0.301      4.373      0.000
+    AFFECT             0.774      0.406      1.904      0.057
+    SOCIAL             0.434      0.321      1.354      0.176
+    BIG_WORDS          1.272      0.198      6.441      0.000
+    WC                 0.365      0.143      2.554      0.011
+
+Latent Class Pattern 5 1
+
+ Means
+    DRIVES            -0.411      0.209     -1.964      0.050
+    COGNITION         -0.259      0.244     -1.062      0.288
+    AFFECT            -0.847      0.156     -5.438      0.000
+    SOCIAL             0.312      0.216      1.445      0.149
+    BIG_WORDS          0.254      0.233      1.088      0.276
+    WC                -0.250      0.308     -0.810      0.418
+
+ Variances
+    DRIVES             0.948      0.421      2.251      0.024
+    COGNITION          1.037      0.141      7.342      0.000
+    AFFECT             0.437      0.116      3.784      0.000
+    SOCIAL             1.332      0.209      6.379      0.000
+    BIG_WORDS          1.120      0.168      6.654      0.000
+    WC                 0.526      0.072      7.258      0.000
+
+Latent Class Pattern 5 2
+
+ Means
+    DRIVES             0.307      0.145      2.118      0.034
+    COGNITION         -0.216      0.564     -0.384      0.701
+    AFFECT             0.611      0.288      2.123      0.034
+    SOCIAL             0.620      0.179      3.471      0.001
+    BIG_WORDS         -0.479      0.333     -1.437      0.151
+    WC                -0.523      0.365     -1.433      0.152
+
+ Variances
+    DRIVES             1.235      0.312      3.960      0.000
+    COGNITION          0.842      0.214      3.937      0.000
+    AFFECT             1.244      0.242      5.140      0.000
+    SOCIAL             0.776      0.108      7.207      0.000
+    BIG_WORDS          0.708      0.448      1.581      0.114
+    WC                 0.322      0.203      1.587      0.112
+
+Latent Class Pattern 5 3
+
+ Means
+    DRIVES             0.107      0.154      0.696      0.486
+    COGNITION          0.331      0.151      2.191      0.028
+    AFFECT            -0.191      0.183     -1.047      0.295
+    SOCIAL            -0.190      0.274     -0.691      0.490
+    BIG_WORDS         -0.004      0.155     -0.024      0.981
+    WC                 0.918      0.252      3.646      0.000
+
+ Variances
+    DRIVES             0.699      0.069     10.076      0.000
+    COGNITION          0.661      0.167      3.965      0.000
+    AFFECT             0.378      0.096      3.951      0.000
+    SOCIAL             0.568      0.072      7.898      0.000
+    BIG_WORDS          0.660      0.104      6.378      0.000
+    WC                 1.116      0.148      7.525      0.000
+
+Latent Class Pattern 5 4
+
+ Means
+    DRIVES            -0.056      0.328     -0.172      0.864
+    COGNITION          0.041      0.527      0.078      0.938
+    AFFECT             0.459      0.134      3.418      0.001
+    SOCIAL            -0.707      0.547     -1.293      0.196
+    BIG_WORDS          0.254      0.187      1.361      0.174
+    WC                -0.432      0.094     -4.581      0.000
+
+ Variances
+    DRIVES             0.923      0.196      4.704      0.000
+    COGNITION          1.318      0.301      4.373      0.000
+    AFFECT             0.774      0.406      1.904      0.057
+    SOCIAL             0.434      0.321      1.354      0.176
+    BIG_WORDS          1.272      0.198      6.441      0.000
+    WC                 0.365      0.143      2.554      0.011
+
+Latent Class Pattern 6 1
+
+ Means
+    DRIVES            -0.411      0.209     -1.964      0.050
+    COGNITION         -0.259      0.244     -1.062      0.288
+    AFFECT            -0.847      0.156     -5.438      0.000
+    SOCIAL             0.312      0.216      1.445      0.149
+    BIG_WORDS          0.254      0.233      1.088      0.276
+    WC                -0.250      0.308     -0.810      0.418
+
+ Variances
+    DRIVES             0.948      0.421      2.251      0.024
+    COGNITION          1.037      0.141      7.342      0.000
+    AFFECT             0.437      0.116      3.784      0.000
+    SOCIAL             1.332      0.209      6.379      0.000
+    BIG_WORDS          1.120      0.168      6.654      0.000
+    WC                 0.526      0.072      7.258      0.000
+
+Latent Class Pattern 6 2
+
+ Means
+    DRIVES             0.307      0.145      2.118      0.034
+    COGNITION         -0.216      0.564     -0.384      0.701
+    AFFECT             0.611      0.288      2.123      0.034
+    SOCIAL             0.620      0.179      3.471      0.001
+    BIG_WORDS         -0.479      0.333     -1.437      0.151
+    WC                -0.523      0.365     -1.433      0.152
+
+ Variances
+    DRIVES             1.235      0.312      3.960      0.000
+    COGNITION          0.842      0.214      3.937      0.000
+    AFFECT             1.244      0.242      5.140      0.000
+    SOCIAL             0.776      0.108      7.207      0.000
+    BIG_WORDS          0.708      0.448      1.581      0.114
+    WC                 0.322      0.203      1.587      0.112
+
+Latent Class Pattern 6 3
+
+ Means
+    DRIVES             0.107      0.154      0.696      0.486
+    COGNITION          0.331      0.151      2.191      0.028
+    AFFECT            -0.191      0.183     -1.047      0.295
+    SOCIAL            -0.190      0.274     -0.691      0.490
+    BIG_WORDS         -0.004      0.155     -0.024      0.981
+    WC                 0.918      0.252      3.646      0.000
+
+ Variances
+    DRIVES             0.699      0.069     10.076      0.000
+    COGNITION          0.661      0.167      3.965      0.000
+    AFFECT             0.378      0.096      3.951      0.000
+    SOCIAL             0.568      0.072      7.898      0.000
+    BIG_WORDS          0.660      0.104      6.378      0.000
+    WC                 1.116      0.148      7.525      0.000
+
+Latent Class Pattern 6 4
+
+ Means
+    DRIVES            -0.056      0.328     -0.172      0.864
+    COGNITION          0.041      0.527      0.078      0.938
+    AFFECT             0.459      0.134      3.418      0.001
+    SOCIAL            -0.707      0.547     -1.293      0.196
+    BIG_WORDS          0.254      0.187      1.361      0.174
+    WC                -0.432      0.094     -4.581      0.000
+
+ Variances
+    DRIVES             0.923      0.196      4.704      0.000
+    COGNITION          1.318      0.301      4.373      0.000
+    AFFECT             0.774      0.406      1.904      0.057
+    SOCIAL             0.434      0.321      1.354      0.176
+    BIG_WORDS          1.272      0.198      6.441      0.000
+    WC                 0.365      0.143      2.554      0.011
+
+Latent Class Pattern 7 1
+
+ Means
+    DRIVES            -0.411      0.209     -1.964      0.050
+    COGNITION         -0.259      0.244     -1.062      0.288
+    AFFECT            -0.847      0.156     -5.438      0.000
+    SOCIAL             0.312      0.216      1.445      0.149
+    BIG_WORDS          0.254      0.233      1.088      0.276
+    WC                -0.250      0.308     -0.810      0.418
+
+ Variances
+    DRIVES             0.948      0.421      2.251      0.024
+    COGNITION          1.037      0.141      7.342      0.000
+    AFFECT             0.437      0.116      3.784      0.000
+    SOCIAL             1.332      0.209      6.379      0.000
+    BIG_WORDS          1.120      0.168      6.654      0.000
+    WC                 0.526      0.072      7.258      0.000
+
+Latent Class Pattern 7 2
+
+ Means
+    DRIVES             0.307      0.145      2.118      0.034
+    COGNITION         -0.216      0.564     -0.384      0.701
+    AFFECT             0.611      0.288      2.123      0.034
+    SOCIAL             0.620      0.179      3.471      0.001
+    BIG_WORDS         -0.479      0.333     -1.437      0.151
+    WC                -0.523      0.365     -1.433      0.152
+
+ Variances
+    DRIVES             1.235      0.312      3.960      0.000
+    COGNITION          0.842      0.214      3.937      0.000
+    AFFECT             1.244      0.242      5.140      0.000
+    SOCIAL             0.776      0.108      7.207      0.000
+    BIG_WORDS          0.708      0.448      1.581      0.114
+    WC                 0.322      0.203      1.587      0.112
+
+Latent Class Pattern 7 3
+
+ Means
+    DRIVES             0.107      0.154      0.696      0.486
+    COGNITION          0.331      0.151      2.191      0.028
+    AFFECT            -0.191      0.183     -1.047      0.295
+    SOCIAL            -0.190      0.274     -0.691      0.490
+    BIG_WORDS         -0.004      0.155     -0.024      0.981
+    WC                 0.918      0.252      3.646      0.000
+
+ Variances
+    DRIVES             0.699      0.069     10.076      0.000
+    COGNITION          0.661      0.167      3.965      0.000
+    AFFECT             0.378      0.096      3.951      0.000
+    SOCIAL             0.568      0.072      7.898      0.000
+    BIG_WORDS          0.660      0.104      6.378      0.000
+    WC                 1.116      0.148      7.525      0.000
+
+Latent Class Pattern 7 4
+
+ Means
+    DRIVES            -0.056      0.328     -0.172      0.864
+    COGNITION          0.041      0.527      0.078      0.938
+    AFFECT             0.459      0.134      3.418      0.001
+    SOCIAL            -0.707      0.547     -1.293      0.196
+    BIG_WORDS          0.254      0.187      1.361      0.174
+    WC                -0.432      0.094     -4.581      0.000
+
+ Variances
+    DRIVES             0.923      0.196      4.704      0.000
+    COGNITION          1.318      0.301      4.373      0.000
+    AFFECT             0.774      0.406      1.904      0.057
+    SOCIAL             0.434      0.321      1.354      0.176
+    BIG_WORDS          1.272      0.198      6.441      0.000
+    WC                 0.365      0.143      2.554      0.011
+
+Latent Class Pattern 8 1
+
+ Means
+    DRIVES            -0.411      0.209     -1.964      0.050
+    COGNITION         -0.259      0.244     -1.062      0.288
+    AFFECT            -0.847      0.156     -5.438      0.000
+    SOCIAL             0.312      0.216      1.445      0.149
+    BIG_WORDS          0.254      0.233      1.088      0.276
+    WC                -0.250      0.308     -0.810      0.418
+
+ Variances
+    DRIVES             0.948      0.421      2.251      0.024
+    COGNITION          1.037      0.141      7.342      0.000
+    AFFECT             0.437      0.116      3.784      0.000
+    SOCIAL             1.332      0.209      6.379      0.000
+    BIG_WORDS          1.120      0.168      6.654      0.000
+    WC                 0.526      0.072      7.258      0.000
+
+Latent Class Pattern 8 2
+
+ Means
+    DRIVES             0.307      0.145      2.118      0.034
+    COGNITION         -0.216      0.564     -0.384      0.701
+    AFFECT             0.611      0.288      2.123      0.034
+    SOCIAL             0.620      0.179      3.471      0.001
+    BIG_WORDS         -0.479      0.333     -1.437      0.151
+    WC                -0.523      0.365     -1.433      0.152
+
+ Variances
+    DRIVES             1.235      0.312      3.960      0.000
+    COGNITION          0.842      0.214      3.937      0.000
+    AFFECT             1.244      0.242      5.140      0.000
+    SOCIAL             0.776      0.108      7.207      0.000
+    BIG_WORDS          0.708      0.448      1.581      0.114
+    WC                 0.322      0.203      1.587      0.112
+
+Latent Class Pattern 8 3
+
+ Means
+    DRIVES             0.107      0.154      0.696      0.486
+    COGNITION          0.331      0.151      2.191      0.028
+    AFFECT            -0.191      0.183     -1.047      0.295
+    SOCIAL            -0.190      0.274     -0.691      0.490
+    BIG_WORDS         -0.004      0.155     -0.024      0.981
+    WC                 0.918      0.252      3.646      0.000
+
+ Variances
+    DRIVES             0.699      0.069     10.076      0.000
+    COGNITION          0.661      0.167      3.965      0.000
+    AFFECT             0.378      0.096      3.951      0.000
+    SOCIAL             0.568      0.072      7.898      0.000
+    BIG_WORDS          0.660      0.104      6.378      0.000
+    WC                 1.116      0.148      7.525      0.000
+
+Latent Class Pattern 8 4
+
+ Means
+    DRIVES            -0.056      0.328     -0.172      0.864
+    COGNITION          0.041      0.527      0.078      0.938
+    AFFECT             0.459      0.134      3.418      0.001
+    SOCIAL            -0.707      0.547     -1.293      0.196
+    BIG_WORDS          0.254      0.187      1.361      0.174
+    WC                -0.432      0.094     -4.581      0.000
+
+ Variances
+    DRIVES             0.923      0.196      4.704      0.000
+    COGNITION          1.318      0.301      4.373      0.000
+    AFFECT             0.774      0.406      1.904      0.057
+    SOCIAL             0.434      0.321      1.354      0.176
+    BIG_WORDS          1.272      0.198      6.441      0.000
+    WC                 0.365      0.143      2.554      0.011
+
+Latent Class Pattern 9 1
+
+ Means
+    DRIVES            -0.411      0.209     -1.964      0.050
+    COGNITION         -0.259      0.244     -1.062      0.288
+    AFFECT            -0.847      0.156     -5.438      0.000
+    SOCIAL             0.312      0.216      1.445      0.149
+    BIG_WORDS          0.254      0.233      1.088      0.276
+    WC                -0.250      0.308     -0.810      0.418
+
+ Variances
+    DRIVES             0.948      0.421      2.251      0.024
+    COGNITION          1.037      0.141      7.342      0.000
+    AFFECT             0.437      0.116      3.784      0.000
+    SOCIAL             1.332      0.209      6.379      0.000
+    BIG_WORDS          1.120      0.168      6.654      0.000
+    WC                 0.526      0.072      7.258      0.000
+
+Latent Class Pattern 9 2
+
+ Means
+    DRIVES             0.307      0.145      2.118      0.034
+    COGNITION         -0.216      0.564     -0.384      0.701
+    AFFECT             0.611      0.288      2.123      0.034
+    SOCIAL             0.620      0.179      3.471      0.001
+    BIG_WORDS         -0.479      0.333     -1.437      0.151
+    WC                -0.523      0.365     -1.433      0.152
+
+ Variances
+    DRIVES             1.235      0.312      3.960      0.000
+    COGNITION          0.842      0.214      3.937      0.000
+    AFFECT             1.244      0.242      5.140      0.000
+    SOCIAL             0.776      0.108      7.207      0.000
+    BIG_WORDS          0.708      0.448      1.581      0.114
+    WC                 0.322      0.203      1.587      0.112
+
+Latent Class Pattern 9 3
+
+ Means
+    DRIVES             0.107      0.154      0.696      0.486
+    COGNITION          0.331      0.151      2.191      0.028
+    AFFECT            -0.191      0.183     -1.047      0.295
+    SOCIAL            -0.190      0.274     -0.691      0.490
+    BIG_WORDS         -0.004      0.155     -0.024      0.981
+    WC                 0.918      0.252      3.646      0.000
+
+ Variances
+    DRIVES             0.699      0.069     10.076      0.000
+    COGNITION          0.661      0.167      3.965      0.000
+    AFFECT             0.378      0.096      3.951      0.000
+    SOCIAL             0.568      0.072      7.898      0.000
+    BIG_WORDS          0.660      0.104      6.378      0.000
+    WC                 1.116      0.148      7.525      0.000
+
+Latent Class Pattern 9 4
+
+ Means
+    DRIVES            -0.056      0.328     -0.172      0.864
+    COGNITION          0.041      0.527      0.078      0.938
+    AFFECT             0.459      0.134      3.418      0.001
+    SOCIAL            -0.707      0.547     -1.293      0.196
+    BIG_WORDS          0.254      0.187      1.361      0.174
+    WC                -0.432      0.094     -4.581      0.000
+
+ Variances
+    DRIVES             0.923      0.196      4.704      0.000
+    COGNITION          1.318      0.301      4.373      0.000
+    AFFECT             0.774      0.406      1.904      0.057
+    SOCIAL             0.434      0.321      1.354      0.176
+    BIG_WORDS          1.272      0.198      6.441      0.000
+    WC                 0.365      0.143      2.554      0.011
+
+Between Level
+
+
+TECHNICAL 7 OUTPUT
+
+
+     SAMPLE STATISTICS WEIGHTED BY ESTIMATED CLASS PROBABILITIES FOR PATTERN 1 1
+
+
+           Means
+              DRIVES        COGNITIO      AFFECT        SOCIAL        BIG_WORD
+              ________      ________      ________      ________      ________
+               -0.312        -0.267        -0.954         0.021         0.184
+
+
+           Means
+              WC
+              ________
+                0.035
+
+
+           Covariances
+              DRIVES        COGNITIO      AFFECT        SOCIAL        BIG_WORD
+              ________      ________      ________      ________      ________
+ DRIVES         0.694
+ COGNITIO       0.131         1.069
+ AFFECT        -0.021         0.082         0.434
+ SOCIAL         0.349        -0.136        -0.043         1.560
+ BIG_WORD       0.000        -0.070         0.103        -0.195         0.977
+ WC            -0.071        -0.101        -0.078        -0.133         0.170
+
+
+           Covariances
+              WC
+              ________
+ WC             0.609
+
+
+     SAMPLE STATISTICS WEIGHTED BY ESTIMATED CLASS PROBABILITIES FOR PATTERN 1 2
+
+
+           Means
+              DRIVES        COGNITIO      AFFECT        SOCIAL        BIG_WORD
+              ________      ________      ________      ________      ________
+                0.604        -0.443         0.221         0.999        -0.875
+
+
+           Means
+              WC
+              ________
+               -0.616
+
+
+           Covariances
+              DRIVES        COGNITIO      AFFECT        SOCIAL        BIG_WORD
+              ________      ________      ________      ________      ________
+ DRIVES         0.821
+ COGNITIO       0.048         0.653
+ AFFECT         0.015        -0.131         0.819
+ SOCIAL         0.186        -0.126        -0.152         0.646
+ BIG_WORD       0.092         0.239         0.081        -0.425         1.020
+ WC            -0.075        -0.025        -0.046        -0.033        -0.015
+
+
+           Covariances
+              WC
+              ________
+ WC             0.162
+
+
+     SAMPLE STATISTICS WEIGHTED BY ESTIMATED CLASS PROBABILITIES FOR PATTERN 1 3
+
+
+           Means
+              DRIVES        COGNITIO      AFFECT        SOCIAL        BIG_WORD
+              ________      ________      ________      ________      ________
+               -0.054         0.044        -0.577        -0.346         0.307
+
+
+           Means
+              WC
+              ________
+                1.340
+
+
+           Covariances
+              DRIVES        COGNITIO      AFFECT        SOCIAL        BIG_WORD
+              ________      ________      ________      ________      ________
+ DRIVES         0.523
+ COGNITIO       0.017         0.543
+ AFFECT         0.054         0.005         0.364
+ SOCIAL         0.184        -0.083         0.051         1.004
+ BIG_WORD      -0.065        -0.036        -0.010        -0.044         0.862
+ WC            -0.048        -0.075        -0.208         0.091         0.110
+
+
+           Covariances
+              WC
+              ________
+ WC             1.377
+
+
+     SAMPLE STATISTICS WEIGHTED BY ESTIMATED CLASS PROBABILITIES FOR PATTERN 1 4
+
+
+           Means
+              DRIVES        COGNITIO      AFFECT        SOCIAL        BIG_WORD
+              ________      ________      ________      ________      ________
+                0.475         0.118         0.182        -0.582         0.875
+
+
+           Means
+              WC
+              ________
+               -0.497
+
+
+           Covariances
+              DRIVES        COGNITIO      AFFECT        SOCIAL        BIG_WORD
+              ________      ________      ________      ________      ________
+ DRIVES         2.589
+ COGNITIO       0.196         1.211
+ AFFECT         0.589        -0.095         0.734
+ SOCIAL         0.601         0.117         0.245         0.600
+ BIG_WORD       1.409         0.115         0.416         0.495         1.704
+ WC            -0.520        -0.081        -0.193        -0.161        -0.261
+
+
+           Covariances
+              WC
+              ________
+ WC             0.388
+
+
+     SAMPLE STATISTICS WEIGHTED BY ESTIMATED CLASS PROBABILITIES FOR PATTERN 2 1
+
+
+           Means
+              DRIVES        COGNITIO      AFFECT        SOCIAL        BIG_WORD
+              ________      ________      ________      ________      ________
+               -0.163        -0.291        -0.583        -0.138         0.200
+
+
+           Means
+              WC
+              ________
+               -0.475
+
+
+           Covariances
+              DRIVES        COGNITIO      AFFECT        SOCIAL        BIG_WORD
+              ________      ________      ________      ________      ________
+ DRIVES         1.076
+ COGNITIO      -0.182         0.915
+ AFFECT        -0.078         0.004         0.439
+ SOCIAL         0.269        -0.318         0.098         0.987
+ BIG_WORD       0.116        -0.041         0.161        -0.003         1.157
+ WC            -0.154         0.140         0.151        -0.143         0.115
+
+
+           Covariances
+              WC
+              ________
+ WC             0.527
+
+
+     SAMPLE STATISTICS WEIGHTED BY ESTIMATED CLASS PROBABILITIES FOR PATTERN 2 2
+
+
+           Means
+              DRIVES        COGNITIO      AFFECT        SOCIAL        BIG_WORD
+              ________      ________      ________      ________      ________
+                0.465        -0.555         0.787         0.462        -0.523
+
+
+           Means
+              WC
+              ________
+               -0.782
+
+
+           Covariances
+              DRIVES        COGNITIO      AFFECT        SOCIAL        BIG_WORD
+              ________      ________      ________      ________      ________
+ DRIVES         1.543
+ COGNITIO       0.221         1.126
+ AFFECT        -0.091        -0.036         1.746
+ SOCIAL         0.209        -0.096        -0.254         0.709
+ BIG_WORD      -0.062        -0.049        -0.168         0.081         0.689
+ WC            -0.197        -0.008        -0.159        -0.096         0.029
+
+
+           Covariances
+              WC
+              ________
+ WC             0.309
+
+
+     SAMPLE STATISTICS WEIGHTED BY ESTIMATED CLASS PROBABILITIES FOR PATTERN 2 3
+
+
+           Means
+              DRIVES        COGNITIO      AFFECT        SOCIAL        BIG_WORD
+              ________      ________      ________      ________      ________
+                0.124         0.842        -0.239        -0.816         0.591
+
+
+           Means
+              WC
+              ________
+                1.033
+
+
+           Covariances
+              DRIVES        COGNITIO      AFFECT        SOCIAL        BIG_WORD
+              ________      ________      ________      ________      ________
+ DRIVES         0.424
+ COGNITIO      -0.002         0.756
+ AFFECT        -0.025        -0.063         0.163
+ SOCIAL         0.065        -0.246         0.023         0.387
+ BIG_WORD       0.123         0.315        -0.004        -0.150         0.584
+ WC             0.074         0.514        -0.069        -0.301         0.410
+
+
+           Covariances
+              WC
+              ________
+ WC             0.899
+
+
+     SAMPLE STATISTICS WEIGHTED BY ESTIMATED CLASS PROBABILITIES FOR PATTERN 2 4
+
+
+           Means
+              DRIVES        COGNITIO      AFFECT        SOCIAL        BIG_WORD
+              ________      ________      ________      ________      ________
+               -0.055         0.045         0.457        -0.791         0.320
+
+
+           Means
+              WC
+              ________
+               -0.465
+
+
+           Covariances
+              DRIVES        COGNITIO      AFFECT        SOCIAL        BIG_WORD
+              ________      ________      ________      ________      ________
+ DRIVES         0.968
+ COGNITIO      -0.044         1.241
+ AFFECT        -0.034        -0.113         0.842
+ SOCIAL         0.084        -0.087         0.001         0.433
+ BIG_WORD       0.198         0.166        -0.100        -0.086         1.361
+ WC             0.036         0.048        -0.074         0.002         0.127
+
+
+           Covariances
+              WC
+              ________
+ WC             0.362
+
+
+     SAMPLE STATISTICS WEIGHTED BY ESTIMATED CLASS PROBABILITIES FOR PATTERN 3 1
+
+
+           Means
+              DRIVES        COGNITIO      AFFECT        SOCIAL        BIG_WORD
+              ________      ________      ________      ________      ________
+               -0.491        -0.059        -0.717         0.381        -0.110
+
+
+           Means
+              WC
+              ________
+               -0.161
+
+
+           Covariances
+              DRIVES        COGNITIO      AFFECT        SOCIAL        BIG_WORD
+              ________      ________      ________      ________      ________
+ DRIVES         0.773
+ COGNITIO       0.060         0.708
+ AFFECT         0.111         0.137         0.320
+ SOCIAL         0.132        -0.015        -0.119         1.011
+ BIG_WORD      -0.041         0.107        -0.023        -0.107         0.808
+ WC             0.099         0.088         0.058        -0.073        -0.086
+
+
+           Covariances
+              WC
+              ________
+ WC             0.337
+
+
+     SAMPLE STATISTICS WEIGHTED BY ESTIMATED CLASS PROBABILITIES FOR PATTERN 3 2
+
+
+           Means
+              DRIVES        COGNITIO      AFFECT        SOCIAL        BIG_WORD
+              ________      ________      ________      ________      ________
+                0.307         0.090         0.706         0.641        -0.587
+
+
+           Means
+              WC
+              ________
+               -0.338
+
+
+           Covariances
+              DRIVES        COGNITIO      AFFECT        SOCIAL        BIG_WORD
+              ________      ________      ________      ________      ________
+ DRIVES         1.085
+ COGNITIO       0.103         0.773
+ AFFECT         0.065         0.130         1.344
+ SOCIAL         0.225         0.112        -0.079         0.838
+ BIG_WORD       0.021         0.138        -0.014        -0.023         0.689
+ WC             0.045        -0.027        -0.169         0.043         0.030
+
+
+           Covariances
+              WC
+              ________
+ WC             0.337
+
+
+     SAMPLE STATISTICS WEIGHTED BY ESTIMATED CLASS PROBABILITIES FOR PATTERN 3 3
+
+
+           Means
+              DRIVES        COGNITIO      AFFECT        SOCIAL        BIG_WORD
+              ________      ________      ________      ________      ________
+                0.145         0.420        -0.092         0.064        -0.216
+
+
+           Means
+              WC
+              ________
+                0.676
+
+
+           Covariances
+              DRIVES        COGNITIO      AFFECT        SOCIAL        BIG_WORD
+              ________      ________      ________      ________      ________
+ DRIVES         0.694
+ COGNITIO      -0.016         0.558
+ AFFECT        -0.024         0.034         0.341
+ SOCIAL         0.090         0.083         0.029         0.482
+ BIG_WORD       0.065         0.116        -0.030        -0.071         0.600
+ WC             0.080         0.088         0.024         0.063        -0.031
+
+
+           Covariances
+              WC
+              ________
+ WC             0.774
+
+
+     SAMPLE STATISTICS WEIGHTED BY ESTIMATED CLASS PROBABILITIES FOR PATTERN 3 4
+
+
+           Means
+              DRIVES        COGNITIO      AFFECT        SOCIAL        BIG_WORD
+              ________      ________      ________      ________      ________
+               -0.238         0.754         0.584        -0.571         0.112
+
+
+           Means
+              WC
+              ________
+               -0.360
+
+
+           Covariances
+              DRIVES        COGNITIO      AFFECT        SOCIAL        BIG_WORD
+              ________      ________      ________      ________      ________
+ DRIVES         0.667
+ COGNITIO      -0.102         1.614
+ AFFECT         0.025         0.136         0.677
+ SOCIAL         0.067        -0.057        -0.020         0.275
+ BIG_WORD      -0.061         0.563        -0.031        -0.054         0.934
+ WC             0.044        -0.135        -0.096         0.016        -0.048
+
+
+           Covariances
+              WC
+              ________
+ WC             0.240
+
+
+     SAMPLE STATISTICS WEIGHTED BY ESTIMATED CLASS PROBABILITIES FOR PATTERN 4 1
+
+
+           Means
+              DRIVES        COGNITIO      AFFECT        SOCIAL        BIG_WORD
+              ________      ________      ________      ________      ________
+               -0.497        -0.191        -0.850         0.244         0.350
+
+
+           Means
+              WC
+              ________
+               -0.287
+
+
+           Covariances
+              DRIVES        COGNITIO      AFFECT        SOCIAL        BIG_WORD
+              ________      ________      ________      ________      ________
+ DRIVES         0.987
+ COGNITIO      -0.020         1.106
+ AFFECT         0.183        -0.003         0.451
+ SOCIAL         0.479        -0.040         0.144         1.354
+ BIG_WORD      -0.050        -0.021         0.007        -0.229         1.287
+ WC             0.077         0.115        -0.054         0.070         0.008
+
+
+           Covariances
+              WC
+              ________
+ WC             0.462
+
+
+     SAMPLE STATISTICS WEIGHTED BY ESTIMATED CLASS PROBABILITIES FOR PATTERN 4 2
+
+
+           Means
+              DRIVES        COGNITIO      AFFECT        SOCIAL        BIG_WORD
+              ________      ________      ________      ________      ________
+                0.827        -1.025         0.573         1.126         0.315
+
+
+           Means
+              WC
+              ________
+               -1.018
+
+
+           Covariances
+              DRIVES        COGNITIO      AFFECT        SOCIAL        BIG_WORD
+              ________      ________      ________      ________      ________
+ DRIVES         1.170
+ COGNITIO      -0.594         1.413
+ AFFECT         0.363        -0.703         0.907
+ SOCIAL         0.441        -0.587         0.503         0.907
+ BIG_WORD       0.488        -0.657         0.640         0.462         1.219
+ WC            -0.230         0.435        -0.375        -0.259        -0.248
+
+
+           Covariances
+              WC
+              ________
+ WC             0.347
+
+
+     SAMPLE STATISTICS WEIGHTED BY ESTIMATED CLASS PROBABILITIES FOR PATTERN 4 3
+
+
+           Means
+              DRIVES        COGNITIO      AFFECT        SOCIAL        BIG_WORD
+              ________      ________      ________      ________      ________
+                0.560         0.202        -0.364        -0.011         0.075
+
+
+           Means
+              WC
+              ________
+                1.378
+
+
+           Covariances
+              DRIVES        COGNITIO      AFFECT        SOCIAL        BIG_WORD
+              ________      ________      ________      ________      ________
+ DRIVES         0.549
+ COGNITIO      -0.033         0.617
+ AFFECT        -0.033        -0.171         0.278
+ SOCIAL         0.102         0.120        -0.118         0.387
+ BIG_WORD      -0.015        -0.009         0.023         0.007         0.383
+ WC             0.587        -0.334        -0.020         0.009        -0.131
+
+
+           Covariances
+              WC
+              ________
+ WC             1.781
+
+
+     SAMPLE STATISTICS WEIGHTED BY ESTIMATED CLASS PROBABILITIES FOR PATTERN 4 4
+
+
+           Means
+              DRIVES        COGNITIO      AFFECT        SOCIAL        BIG_WORD
+              ________      ________      ________      ________      ________
+               -0.391         0.461         0.161        -0.398         0.756
+
+
+           Means
+              WC
+              ________
+               -0.724
+
+
+           Covariances
+              DRIVES        COGNITIO      AFFECT        SOCIAL        BIG_WORD
+              ________      ________      ________      ________      ________
+ DRIVES         1.390
+ COGNITIO      -0.144         1.343
+ AFFECT        -0.005         0.058         0.417
+ SOCIAL         0.192        -0.091         0.159         0.337
+ BIG_WORD       0.116         0.240         0.250         0.257         1.411
+ WC             0.116        -0.041        -0.178        -0.031         0.050
+
+
+           Covariances
+              WC
+              ________
+ WC             0.413
+
+
+     SAMPLE STATISTICS WEIGHTED BY ESTIMATED CLASS PROBABILITIES FOR PATTERN 5 1
+
+
+           Means
+              DRIVES        COGNITIO      AFFECT        SOCIAL        BIG_WORD
+              ________      ________      ________      ________      ________
+               -0.493        -0.268        -0.699         0.300         0.212
+
+
+           Means
+              WC
+              ________
+               -0.700
+
+
+           Covariances
+              DRIVES        COGNITIO      AFFECT        SOCIAL        BIG_WORD
+              ________      ________      ________      ________      ________
+ DRIVES         0.789
+ COGNITIO      -0.076         1.041
+ AFFECT         0.013        -0.045         0.245
+ SOCIAL         0.389        -0.487         0.017         1.451
+ BIG_WORD      -0.168         0.374         0.047        -0.529         0.968
+ WC             0.160         0.007         0.069         0.226        -0.025
+
+
+           Covariances
+              WC
+              ________
+ WC             0.420
+
+
+     SAMPLE STATISTICS WEIGHTED BY ESTIMATED CLASS PROBABILITIES FOR PATTERN 5 2
+
+
+           Means
+              DRIVES        COGNITIO      AFFECT        SOCIAL        BIG_WORD
+              ________      ________      ________      ________      ________
+                0.280        -0.407         0.557         0.661        -0.422
+
+
+           Means
+              WC
+              ________
+               -0.675
+
+
+           Covariances
+              DRIVES        COGNITIO      AFFECT        SOCIAL        BIG_WORD
+              ________      ________      ________      ________      ________
+ DRIVES         1.362
+ COGNITIO       0.138         0.762
+ AFFECT        -0.053         0.023         1.087
+ SOCIAL         0.114        -0.083        -0.034         0.810
+ BIG_WORD      -0.011         0.187        -0.040        -0.039         0.693
+ WC             0.017         0.041        -0.090        -0.001         0.045
+
+
+           Covariances
+              WC
+              ________
+ WC             0.235
+
+
+     SAMPLE STATISTICS WEIGHTED BY ESTIMATED CLASS PROBABILITIES FOR PATTERN 5 3
+
+
+           Means
+              DRIVES        COGNITIO      AFFECT        SOCIAL        BIG_WORD
+              ________      ________      ________      ________      ________
+                0.761        -0.241        -0.463         0.321         0.285
+
+
+           Means
+              WC
+              ________
+                1.173
+
+
+           Covariances
+              DRIVES        COGNITIO      AFFECT        SOCIAL        BIG_WORD
+              ________      ________      ________      ________      ________
+ DRIVES         1.686
+ COGNITIO      -0.441         0.636
+ AFFECT        -0.401         0.187         0.274
+ SOCIAL         0.267        -0.188        -0.082         0.232
+ BIG_WORD       0.264         0.047        -0.087         0.021         0.341
+ WC             0.924        -0.632        -0.306         0.387         0.035
+
+
+           Covariances
+              WC
+              ________
+ WC             1.491
+
+
+     SAMPLE STATISTICS WEIGHTED BY ESTIMATED CLASS PROBABILITIES FOR PATTERN 5 4
+
+
+           Means
+              DRIVES        COGNITIO      AFFECT        SOCIAL        BIG_WORD
+              ________      ________      ________      ________      ________
+               -0.409         0.018         0.214        -0.496         0.453
+
+
+           Means
+              WC
+              ________
+               -0.809
+
+
+           Covariances
+              DRIVES        COGNITIO      AFFECT        SOCIAL        BIG_WORD
+              ________      ________      ________      ________      ________
+ DRIVES         0.889
+ COGNITIO       0.035         1.643
+ AFFECT         0.009        -0.108         0.672
+ SOCIAL         0.079         0.104         0.067         0.216
+ BIG_WORD      -0.109         0.311        -0.080        -0.101         0.691
+ WC             0.092        -0.008         0.101         0.117        -0.096
+
+
+           Covariances
+              WC
+              ________
+ WC             0.235
+
+
+     SAMPLE STATISTICS WEIGHTED BY ESTIMATED CLASS PROBABILITIES FOR PATTERN 6 1
+
+
+           Means
+              DRIVES        COGNITIO      AFFECT        SOCIAL        BIG_WORD
+              ________      ________      ________      ________      ________
+               -0.387        -0.100        -0.794         0.240        -0.019
+
+
+           Means
+              WC
+              ________
+               -0.089
+
+
+           Covariances
+              DRIVES        COGNITIO      AFFECT        SOCIAL        BIG_WORD
+              ________      ________      ________      ________      ________
+ DRIVES         0.782
+ COGNITIO      -0.047         0.941
+ AFFECT         0.083         0.072         0.381
+ SOCIAL        -0.004        -0.077        -0.179         0.960
+ BIG_WORD       0.056        -0.026         0.087        -0.059         0.940
+ WC            -0.062        -0.018        -0.022        -0.171         0.142
+
+
+           Covariances
+              WC
+              ________
+ WC             0.405
+
+
+     SAMPLE STATISTICS WEIGHTED BY ESTIMATED CLASS PROBABILITIES FOR PATTERN 6 2
+
+
+           Means
+              DRIVES        COGNITIO      AFFECT        SOCIAL        BIG_WORD
+              ________      ________      ________      ________      ________
+                0.396        -0.214         0.589         0.298        -0.692
+
+
+           Means
+              WC
+              ________
+               -0.469
+
+
+           Covariances
+              DRIVES        COGNITIO      AFFECT        SOCIAL        BIG_WORD
+              ________      ________      ________      ________      ________
+ DRIVES         1.131
+ COGNITIO      -0.111         0.904
+ AFFECT        -0.413         0.155         1.273
+ SOCIAL         0.174         0.004        -0.374         0.495
+ BIG_WORD       0.041         0.156        -0.038        -0.036         0.626
+ WC            -0.038        -0.066         0.027        -0.053         0.013
+
+
+           Covariances
+              WC
+              ________
+ WC             0.344
+
+
+     SAMPLE STATISTICS WEIGHTED BY ESTIMATED CLASS PROBABILITIES FOR PATTERN 6 3
+
+
+           Means
+              DRIVES        COGNITIO      AFFECT        SOCIAL        BIG_WORD
+              ________      ________      ________      ________      ________
+                0.111         0.346        -0.170        -0.307         0.014
+
+
+           Means
+              WC
+              ________
+                0.969
+
+
+           Covariances
+              DRIVES        COGNITIO      AFFECT        SOCIAL        BIG_WORD
+              ________      ________      ________      ________      ________
+ DRIVES         0.748
+ COGNITIO      -0.002         0.714
+ AFFECT         0.038         0.011         0.363
+ SOCIAL         0.080        -0.122        -0.029         0.466
+ BIG_WORD      -0.035         0.012        -0.056        -0.048         0.663
+ WC            -0.056         0.078        -0.071        -0.084         0.057
+
+
+           Covariances
+              WC
+              ________
+ WC             1.119
+
+
+     SAMPLE STATISTICS WEIGHTED BY ESTIMATED CLASS PROBABILITIES FOR PATTERN 6 4
+
+
+           Means
+              DRIVES        COGNITIO      AFFECT        SOCIAL        BIG_WORD
+              ________      ________      ________      ________      ________
+               -0.005         0.233         0.578        -0.602        -0.035
+
+
+           Means
+              WC
+              ________
+               -0.333
+
+
+           Covariances
+              DRIVES        COGNITIO      AFFECT        SOCIAL        BIG_WORD
+              ________      ________      ________      ________      ________
+ DRIVES         0.765
+ COGNITIO      -0.084         1.765
+ AFFECT         0.023        -0.258         0.848
+ SOCIAL         0.020        -0.083         0.108         0.394
+ BIG_WORD       0.050         0.206        -0.148        -0.078         1.065
+ WC             0.003        -0.095        -0.031        -0.043         0.074
+
+
+           Covariances
+              WC
+              ________
+ WC             0.410
+
+
+     SAMPLE STATISTICS WEIGHTED BY ESTIMATED CLASS PROBABILITIES FOR PATTERN 7 1
+
+
+           Means
+              DRIVES        COGNITIO      AFFECT        SOCIAL        BIG_WORD
+              ________      ________      ________      ________      ________
+               -0.389        -0.545        -0.626         0.029         0.310
+
+
+           Means
+              WC
+              ________
+               -0.461
+
+
+           Covariances
+              DRIVES        COGNITIO      AFFECT        SOCIAL        BIG_WORD
+              ________      ________      ________      ________      ________
+ DRIVES         1.012
+ COGNITIO      -0.123         0.925
+ AFFECT         0.054        -0.106         0.344
+ SOCIAL         0.082        -0.094         0.119         0.812
+ BIG_WORD      -0.020        -0.188        -0.022         0.029         1.152
+ WC             0.123         0.024         0.066         0.003        -0.025
+
+
+           Covariances
+              WC
+              ________
+ WC             0.547
+
+
+     SAMPLE STATISTICS WEIGHTED BY ESTIMATED CLASS PROBABILITIES FOR PATTERN 7 2
+
+
+           Means
+              DRIVES        COGNITIO      AFFECT        SOCIAL        BIG_WORD
+              ________      ________      ________      ________      ________
+                0.141        -0.646         0.245         0.432        -0.342
+
+
+           Means
+              WC
+              ________
+               -0.753
+
+
+           Covariances
+              DRIVES        COGNITIO      AFFECT        SOCIAL        BIG_WORD
+              ________      ________      ________      ________      ________
+ DRIVES         1.439
+ COGNITIO      -0.157         0.863
+ AFFECT        -0.311         0.014         0.666
+ SOCIAL         0.024         0.071         0.039         0.643
+ BIG_WORD       0.094        -0.080         0.108         0.066         0.664
+ WC             0.059        -0.019        -0.112        -0.095        -0.064
+
+
+           Covariances
+              WC
+              ________
+ WC             0.297
+
+
+     SAMPLE STATISTICS WEIGHTED BY ESTIMATED CLASS PROBABILITIES FOR PATTERN 7 3
+
+
+           Means
+              DRIVES        COGNITIO      AFFECT        SOCIAL        BIG_WORD
+              ________      ________      ________      ________      ________
+                0.115        -0.048        -0.336        -0.328        -0.014
+
+
+           Means
+              WC
+              ________
+                0.624
+
+
+           Covariances
+              DRIVES        COGNITIO      AFFECT        SOCIAL        BIG_WORD
+              ________      ________      ________      ________      ________
+ DRIVES         0.392
+ COGNITIO       0.064         0.368
+ AFFECT         0.011        -0.057         0.203
+ SOCIAL         0.020        -0.062         0.041         0.324
+ BIG_WORD       0.056         0.027         0.089         0.062         0.398
+ WC             0.074         0.031        -0.100        -0.088        -0.008
+
+
+           Covariances
+              WC
+              ________
+ WC             0.534
+
+
+     SAMPLE STATISTICS WEIGHTED BY ESTIMATED CLASS PROBABILITIES FOR PATTERN 7 4
+
+
+           Means
+              DRIVES        COGNITIO      AFFECT        SOCIAL        BIG_WORD
+              ________      ________      ________      ________      ________
+               -0.047        -0.542         0.212        -0.533         0.235
+
+
+           Means
+              WC
+              ________
+               -0.650
+
+
+           Covariances
+              DRIVES        COGNITIO      AFFECT        SOCIAL        BIG_WORD
+              ________      ________      ________      ________      ________
+ DRIVES         1.163
+ COGNITIO      -0.137         1.224
+ AFFECT        -0.023        -0.092         0.573
+ SOCIAL         0.155        -0.089         0.063         0.411
+ BIG_WORD       0.295         0.092         0.087         0.059         1.116
+ WC             0.036         0.013        -0.095         0.020         0.010
+
+
+           Covariances
+              WC
+              ________
+ WC             0.386
+
+
+     SAMPLE STATISTICS WEIGHTED BY ESTIMATED CLASS PROBABILITIES FOR PATTERN 8 1
+
+
+           Means
+              DRIVES        COGNITIO      AFFECT        SOCIAL        BIG_WORD
+              ________      ________      ________      ________      ________
+               -0.319        -0.201        -0.725         0.334        -0.126
+
+
+           Means
+              WC
+              ________
+               -0.129
+
+
+           Covariances
+              DRIVES        COGNITIO      AFFECT        SOCIAL        BIG_WORD
+              ________      ________      ________      ________      ________
+ DRIVES         0.878
+ COGNITIO      -0.059         0.604
+ AFFECT         0.151         0.032         0.437
+ SOCIAL         0.047        -0.253        -0.093         0.950
+ BIG_WORD       0.447        -0.038         0.192         0.152         1.151
+ WC             0.018         0.017         0.037        -0.097         0.088
+
+
+           Covariances
+              WC
+              ________
+ WC             0.388
+
+
+     SAMPLE STATISTICS WEIGHTED BY ESTIMATED CLASS PROBABILITIES FOR PATTERN 8 2
+
+
+           Means
+              DRIVES        COGNITIO      AFFECT        SOCIAL        BIG_WORD
+              ________      ________      ________      ________      ________
+                0.089        -0.176         0.739         0.424        -0.365
+
+
+           Means
+              WC
+              ________
+               -0.470
+
+
+           Covariances
+              DRIVES        COGNITIO      AFFECT        SOCIAL        BIG_WORD
+              ________      ________      ________      ________      ________
+ DRIVES         0.732
+ COGNITIO       0.026         0.592
+ AFFECT        -0.066         0.018         1.353
+ SOCIAL         0.059        -0.046        -0.088         0.448
+ BIG_WORD       0.243         0.035        -0.073         0.087         0.851
+ WC             0.003        -0.050        -0.168        -0.041         0.062
+
+
+           Covariances
+              WC
+              ________
+ WC             0.286
+
+
+     SAMPLE STATISTICS WEIGHTED BY ESTIMATED CLASS PROBABILITIES FOR PATTERN 8 3
+
+
+           Means
+              DRIVES        COGNITIO      AFFECT        SOCIAL        BIG_WORD
+              ________      ________      ________      ________      ________
+                0.118         0.357        -0.078        -0.260         0.008
+
+
+           Means
+              WC
+              ________
+                0.799
+
+
+           Covariances
+              DRIVES        COGNITIO      AFFECT        SOCIAL        BIG_WORD
+              ________      ________      ________      ________      ________
+ DRIVES         0.645
+ COGNITIO       0.001         0.695
+ AFFECT         0.003         0.025         0.302
+ SOCIAL         0.130        -0.129        -0.023         0.588
+ BIG_WORD       0.024         0.034         0.033        -0.015         0.589
+ WC            -0.042         0.161        -0.054        -0.178        -0.026
+
+
+           Covariances
+              WC
+              ________
+ WC             1.089
+
+
+     SAMPLE STATISTICS WEIGHTED BY ESTIMATED CLASS PROBABILITIES FOR PATTERN 8 4
+
+
+           Means
+              DRIVES        COGNITIO      AFFECT        SOCIAL        BIG_WORD
+              ________      ________      ________      ________      ________
+               -0.064         0.207         0.541        -0.582         0.162
+
+
+           Means
+              WC
+              ________
+               -0.261
+
+
+           Covariances
+              DRIVES        COGNITIO      AFFECT        SOCIAL        BIG_WORD
+              ________      ________      ________      ________      ________
+ DRIVES         0.730
+ COGNITIO       0.034         1.204
+ AFFECT        -0.088        -0.096         0.611
+ SOCIAL         0.026        -0.153         0.067         0.418
+ BIG_WORD       0.149        -0.034         0.032        -0.017         1.123
+ WC            -0.011         0.003        -0.016        -0.033         0.055
+
+
+           Covariances
+              WC
+              ________
+ WC             0.299
+
+
+     SAMPLE STATISTICS WEIGHTED BY ESTIMATED CLASS PROBABILITIES FOR PATTERN 9 1
+
+
+           Means
+              DRIVES        COGNITIO      AFFECT        SOCIAL        BIG_WORD
+              ________      ________      ________      ________      ________
+               -0.299        -0.257        -0.892         0.712         0.081
+
+
+           Means
+              WC
+              ________
+               -0.200
+
+
+           Covariances
+              DRIVES        COGNITIO      AFFECT        SOCIAL        BIG_WORD
+              ________      ________      ________      ________      ________
+ DRIVES         0.949
+ COGNITIO       0.033         0.895
+ AFFECT         0.134         0.055         0.434
+ SOCIAL         0.261        -0.101        -0.014         1.157
+ BIG_WORD      -0.031         0.032        -0.006         0.047         0.813
+ WC             0.113         0.167        -0.002        -0.111        -0.036
+
+
+           Covariances
+              WC
+              ________
+ WC             0.530
+
+
+     SAMPLE STATISTICS WEIGHTED BY ESTIMATED CLASS PROBABILITIES FOR PATTERN 9 2
+
+
+           Means
+              DRIVES        COGNITIO      AFFECT        SOCIAL        BIG_WORD
+              ________      ________      ________      ________      ________
+                0.564        -0.401         0.186         0.848        -0.283
+
+
+           Means
+              WC
+              ________
+               -0.413
+
+
+           Covariances
+              DRIVES        COGNITIO      AFFECT        SOCIAL        BIG_WORD
+              ________      ________      ________      ________      ________
+ DRIVES         1.469
+ COGNITIO      -0.042         0.500
+ AFFECT        -0.110         0.019         0.844
+ SOCIAL         0.157         0.001        -0.037         0.595
+ BIG_WORD       0.210         0.032         0.109         0.031         0.513
+ WC             0.046         0.101         0.018        -0.040         0.041
+
+
+           Covariances
+              WC
+              ________
+ WC             0.304
+
+
+     SAMPLE STATISTICS WEIGHTED BY ESTIMATED CLASS PROBABILITIES FOR PATTERN 9 3
+
+
+           Means
+              DRIVES        COGNITIO      AFFECT        SOCIAL        BIG_WORD
+              ________      ________      ________      ________      ________
+                0.074         0.221        -0.410         0.155         0.079
+
+
+           Means
+              WC
+              ________
+                1.070
+
+
+           Covariances
+              DRIVES        COGNITIO      AFFECT        SOCIAL        BIG_WORD
+              ________      ________      ________      ________      ________
+ DRIVES         0.651
+ COGNITIO       0.028         0.522
+ AFFECT        -0.061        -0.120         0.523
+ SOCIAL         0.006         0.044        -0.009         0.445
+ BIG_WORD       0.022         0.114        -0.012         0.025         0.453
+ WC             0.042         0.134        -0.339         0.148         0.168
+
+
+           Covariances
+              WC
+              ________
+ WC             1.423
+
+
+     SAMPLE STATISTICS WEIGHTED BY ESTIMATED CLASS PROBABILITIES FOR PATTERN 9 4
+
+
+           Means
+              DRIVES        COGNITIO      AFFECT        SOCIAL        BIG_WORD
+              ________      ________      ________      ________      ________
+                0.087        -0.165         0.150        -0.375         0.321
+
+
+           Means
+              WC
+              ________
+               -0.394
+
+
+           Covariances
+              DRIVES        COGNITIO      AFFECT        SOCIAL        BIG_WORD
+              ________      ________      ________      ________      ________
+ DRIVES         1.807
+ COGNITIO       0.250         0.760
+ AFFECT         0.204        -0.107         0.484
+ SOCIAL         0.185        -0.056         0.111         0.471
+ BIG_WORD       0.907         0.309         0.181         0.179         1.416
+ WC            -0.159         0.031        -0.052         0.017        -0.067
+
+
+           Covariances
+              WC
+              ________
+ WC             0.419
+
+
+SAVEDATA INFORMATION
+
+
+  Save file
+    mlLpa_L2_9_L1_4.dat
+
+  Order and format of variables
+
+    DRIVES         F10.3
+    COGNITIO       F10.3
+    AFFECT         F10.3
+    SOCIAL         F10.3
+    BIG_WORD       F10.3
+    WC             F10.3
+    CPROB1         F10.3
+    CPROB2         F10.3
+    CPROB3         F10.3
+    CPROB4         F10.3
+    CPROB5         F10.3
+    CPROB6         F10.3
+    CPROB7         F10.3
+    CPROB8         F10.3
+    CPROB9         F10.3
+    CPROB10        F10.3
+    CPROB11        F10.3
+    CPROB12        F10.3
+    CPROB13        F10.3
+    CPROB14        F10.3
+    CPROB15        F10.3
+    CPROB16        F10.3
+    CPROB17        F10.3
+    CPROB18        F10.3
+    CPROB19        F10.3
+    CPROB20        F10.3
+    CPROB21        F10.3
+    CPROB22        F10.3
+    CPROB23        F10.3
+    CPROB24        F10.3
+    CPROB25        F10.3
+    CPROB26        F10.3
+    CPROB27        F10.3
+    CPROB28        F10.3
+    CPROB29        F10.3
+    CPROB30        F10.3
+    CPROB31        F10.3
+    CPROB32        F10.3
+    CPROB33        F10.3
+    CPROB34        F10.3
+    CPROB35        F10.3
+    CPROB36        F10.3
+    BC             F10.3
+    C              F10.3
+    MLCJOINT       F10.3
+    ROW_NUM        I5
+    PCP_ID         I4
+
+  Save file format
+    45F10.3 I5 I4
+
+  Save file record length    10000
+
+  Save missing symbol        *
+
+
+  Estimated Means and Covariance Matrix for the Latent Variables
+
+  Save file
+    tech4.dat
+  Save format      Free
+
+     Beginning Time:  16:59:01
+        Ending Time:  17:03:55
+       Elapsed Time:  00:04:54
+
+
+
+MUTHEN & MUTHEN
+3463 Stoner Ave.
+Los Angeles, CA  90066
+
+Tel: (310) 391-9971
+Fax: (310) 391-8971
+Web: www.StatModel.com
+Support: Support@StatModel.com
+
+Copyright (c) 1998-2023 Muthen & Muthen

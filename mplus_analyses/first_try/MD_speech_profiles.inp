@@ -1,0 +1,32 @@
+TITLE: MD speech profiles
+DATA: 
+FILE = "mplus_analyses/MD_profile_cmb_mPlus.dat";
+VARIABLE: 
+NAMES = drives cognition affect social wc big_words wps provider_id; 
+USEVARIABLES = drives cognition affect social wc wps big_words;
+MISSING=.;
+CLASSES = c(4);
+DEFINE:
+STANDARDIZE drives cognition affect social wc wps big_words;
+ANALYSIS: 
+TYPE = MIXTURE;
+ESTIMATOR=MLR;
+STARTS=1000 50;
+STITERATIONS=50;
+LRTSTARTS=1000 50 1000 50;
+PROCESSORS=4;
+MODEL:
+%OVERALL%
+%C#1%
+[drives cognition affect social wc wps big_words];
+drives cognition affect social wc wps big_words;
+%C#2%
+[drives cognition affect social wc wps big_words];
+drives cognition affect social wc wps big_words;
+%C#3%
+[drives cognition affect social wc wps big_words];
+drives cognition affect social wc wps big_words;
+%C#4%
+[drives cognition affect social wc wps big_words];
+drives cognition affect social wc wps big_words;
+OUTPUT:

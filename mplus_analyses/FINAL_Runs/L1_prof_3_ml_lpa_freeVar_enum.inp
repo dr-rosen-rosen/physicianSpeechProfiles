@@ -1,0 +1,31 @@
+TITLE:
+L1_P_3_lpa_freeVar;
+DATA:
+FILE = "mplus_analyses/FINAL_Runs/L1_prof_3_ml_lpa_freeVar_enum.dat";
+ 
+VARIABLE:
+NAMES = drives cognition affect social big_words wc; 
+ MISSING=.;
+ CLASSES = c(3);
+DEFINE:
+STANDARDIZE drives cognition affect social big_words wc;
+ANALYSIS:
+TYPE = MIXTURE;
+    ESTIMATOR=MLR;
+    STARTS=1000 50;
+    STITERATIONS=50;
+    LRTSTARTS=1000 50 1000 50;
+    PROCESSORS=4;
+MODEL:
+%OVERALL%
+%C#1%
+[drives cognition affect social big_words wc];
+drives cognition affect social big_words wc;
+%C#2%
+[drives cognition affect social big_words wc];
+drives cognition affect social big_words wc;
+%C#3%
+[drives cognition affect social big_words wc];
+drives cognition affect social big_words wc;
+OUTPUT:
+SAMPSTAT STANDARDIZED MOD (5.00) TECH7 TECH11 TECH13 TECH14;

@@ -1,0 +1,663 @@
+Mplus VERSION 8.7 (Mac)
+MUTHEN & MUTHEN
+05/25/2023   1:38 PM
+
+INPUT INSTRUCTIONS
+
+  TITLE:
+  L2_1_P_5_lpa_freeVar;
+  DATA:
+  FILE = "mplus_analyses/psych_process/L2_1_P_5_ml_lpa_freeVar.dat";
+
+  VARIABLE:
+  NAMES = drives cognition affect social wc big_words PCP_ID;
+   MISSING=.;
+   CLASSES = BC(1) c(5);
+  CLUSTER IS PCP_ID;
+  WITHIN ARE drives cognition affect social wc big_words;
+  BETWEEN ARE BC;
+  DEFINE:
+  STANDARDIZE drives cognition affect social wc big_words;
+  ANALYSIS:
+  TYPE = MIXTURE TWOLEVEL;
+      ESTIMATOR=MLR;
+      STARTS=1000 200;
+      STITERATIONS=50;
+      LRTSTARTS=1000 50 1000 50;
+      PROCESSORS=4;
+  MODEL:
+  %WITHIN%
+  %OVERALL%
+  %BETWEEN%
+  %OVERALL%
+  c ON BC;
+  MODEL c:
+  %WITHIN%
+  %C#1%
+  [drives cognition affect social wc big_words];
+  drives cognition affect social wc big_words;
+  %C#2%
+  [drives cognition affect social wc big_words];
+  drives cognition affect social wc big_words;
+  %C#3%
+  [drives cognition affect social wc big_words];
+  drives cognition affect social wc big_words;
+  %C#4%
+  [drives cognition affect social wc big_words];
+  drives cognition affect social wc big_words;
+  %C#5%
+  [drives cognition affect social wc big_words];
+  drives cognition affect social wc big_words;
+  SAVEDATA:
+  file=mlLpa_L2_1_L1_5.dat; save=cprob; TECH4 IS tech4.dat;
+  PLOT:
+  type = plot3;
+
+
+
+*** WARNING in VARIABLE command
+  Note that only the first 8 characters of variable names are used in the output.
+  Shorten variable names to avoid any confusion.
+*** WARNING in MODEL command
+  Variable is uncorrelated with all other variables within class: DRIVES
+*** WARNING in MODEL command
+  Variable is uncorrelated with all other variables within class: COGNITION
+*** WARNING in MODEL command
+  Variable is uncorrelated with all other variables within class: AFFECT
+*** WARNING in MODEL command
+  Variable is uncorrelated with all other variables within class: SOCIAL
+*** WARNING in MODEL command
+  Variable is uncorrelated with all other variables within class: WC
+*** WARNING in MODEL command
+  Variable is uncorrelated with all other variables within class: BIG_WORDS
+*** WARNING in MODEL command
+  At least one variable is uncorrelated with all other variables within class.
+  Check that this is what is intended.
+*** WARNING in PLOT command
+  Note that only the first 8 characters of variable names are used in plots.
+  If variable names are not unique within the first 8 characters, problems
+  may occur.
+   9 WARNING(S) FOUND IN THE INPUT INSTRUCTIONS
+
+
+
+
+L2_1_P_5_lpa_freeVar;
+
+SUMMARY OF ANALYSIS
+
+Number of groups                                                 1
+Number of observations                                        1670
+
+Number of dependent variables                                    6
+Number of independent variables                                  0
+Number of continuous latent variables                            0
+Number of categorical latent variables                           2
+
+Observed dependent variables
+
+  Continuous
+   DRIVES      COGNITION   AFFECT      SOCIAL      WC          BIG_WORDS
+
+Categorical latent variables
+   BC          C
+
+Variables with special functions
+
+  Cluster variable      PCP_ID
+
+  Within variables
+   DRIVES      COGNITIO    AFFECT      SOCIAL      WC          BIG_WORD
+
+
+Estimator                                                      MLR
+Information matrix                                        OBSERVED
+Optimization Specifications for the Quasi-Newton Algorithm for
+Continuous Outcomes
+  Maximum number of iterations                                 100
+  Convergence criterion                                  0.100D-05
+Optimization Specifications for the EM Algorithm
+  Maximum number of iterations                                 500
+  Convergence criteria
+    Loglikelihood change                                 0.100D-02
+    Relative loglikelihood change                        0.100D-05
+    Derivative                                           0.100D-02
+Optimization Specifications for the M step of the EM Algorithm for
+Categorical Latent variables
+  Number of M step iterations                                    1
+  M step convergence criterion                           0.100D-02
+  Basis for M step termination                           ITERATION
+Optimization Specifications for the M step of the EM Algorithm for
+Censored, Binary or Ordered Categorical (Ordinal), Unordered
+Categorical (Nominal) and Count Outcomes
+  Number of M step iterations                                    1
+  M step convergence criterion                           0.100D-02
+  Basis for M step termination                           ITERATION
+  Maximum value for logit thresholds                            15
+  Minimum value for logit thresholds                           -15
+  Minimum expected cell size for chi-square              0.100D-01
+Maximum number of iterations for H1                           2000
+Convergence criterion for H1                             0.100D-03
+Optimization algorithm                                         EMA
+Integration Specifications
+  Type                                                    STANDARD
+  Number of integration points                                  15
+  Dimensions of numerical integration                            0
+  Adaptive quadrature                                           ON
+Random Starts Specifications
+  Number of initial stage random starts                       1000
+  Number of final stage optimizations                          200
+  Number of initial stage iterations                            50
+  Initial stage convergence criterion                    0.100D+01
+  Random starts scale                                    0.500D+01
+  Random seed for generating random starts                       0
+Parameterization                                             LOGIT
+Cholesky                                                       OFF
+
+Input data file(s)
+  mplus_analyses/psych_process/L2_1_P_5_ml_lpa_freeVar.dat
+Input data format  FREE
+
+
+SUMMARY OF DATA
+
+     Number of missing data patterns             1
+     Number of y missing data patterns           1
+     Number of u missing data patterns           0
+     Number of clusters                        116
+
+
+
+COVARIANCE COVERAGE OF DATA
+
+Minimum covariance coverage value   0.100
+
+
+     PROPORTION OF DATA PRESENT FOR Y
+
+
+           Covariance Coverage
+              DRIVES        COGNITIO      AFFECT        SOCIAL        WC
+              ________      ________      ________      ________      ________
+ DRIVES         1.000
+ COGNITIO       1.000         1.000
+ AFFECT         1.000         1.000         1.000
+ SOCIAL         1.000         1.000         1.000         1.000
+ WC             1.000         1.000         1.000         1.000         1.000
+ BIG_WORD       1.000         1.000         1.000         1.000         1.000
+
+
+           Covariance Coverage
+              BIG_WORD
+              ________
+ BIG_WORD       1.000
+
+
+
+UNIVARIATE SAMPLE STATISTICS
+
+
+     UNIVARIATE HIGHER-ORDER MOMENT DESCRIPTIVE STATISTICS
+
+         Variable/         Mean/     Skewness/   Minimum/ % with                Percentiles
+        Sample Size      Variance    Kurtosis    Maximum  Min/Max      20%/60%    40%/80%    Median
+
+     DRIVES                0.000       0.358      -2.668    0.06%      -0.842     -0.284     -0.039
+            1670.000       1.000       0.166       3.571    0.06%       0.179      0.792
+     COGNITION             0.000       0.212      -3.225    0.06%      -0.832     -0.296     -0.044
+            1670.000       1.000       0.290       4.468    0.06%       0.225      0.815
+     AFFECT                0.000       0.663      -2.958    0.06%      -0.826     -0.317     -0.092
+            1670.000       1.000       0.978       4.396    0.06%       0.162      0.739
+     SOCIAL                0.000       0.460      -2.644    0.06%      -0.844     -0.329     -0.077
+            1670.000       1.000       0.387       3.992    0.06%       0.175      0.792
+     WC                    0.000       1.218      -1.854    0.06%      -0.801     -0.370     -0.167
+            1670.000       1.000       2.407       4.876    0.06%       0.057      0.714
+     BIG_WORDS             0.000       0.326      -3.514    0.06%      -0.843     -0.292     -0.055
+            1670.000       1.000       0.490       4.575    0.06%       0.188      0.835
+
+RANDOM STARTS RESULTS RANKED FROM THE BEST TO THE WORST LOGLIKELIHOOD VALUES
+
+
+15 perturbed starting value run(s) did not converge or were rejected in the third stage.
+Final stage loglikelihood values at local maxima, seeds, and initial stage start numbers:
+
+          -13703.677  970689           266
+          -13703.679  340112           126
+          -13703.679  76974            16
+          -13703.679  193847           354
+          -13703.680  645052           910
+          -13703.681  203508           806
+          -13703.682  726035           191
+          -13703.682  751153           110
+          -13703.682  114433           708
+          -13703.682  843555           952
+          -13703.683  563584           657
+          -13703.684  284716           713
+          -13703.684  655497           376
+          -13703.685  118438           601
+          -13703.686  572637           989
+          -13703.687  197223           332
+          -13703.687  491970           563
+          -13703.688  668003           647
+          -13703.688  281558           184
+          -13703.688  485483           498
+          -13703.688  836066           372
+          -13703.688  645664           39
+          -13703.689  130541           896
+          -13703.689  301180           236
+          -13703.690  436892           565
+
+175 perturbed starting value run(s) did not converge or were rejected in the third stage.
+
+
+
+THE BEST LOGLIKELIHOOD VALUE HAS BEEN REPLICATED.  RERUN WITH AT LEAST TWICE THE
+RANDOM STARTS TO CHECK THAT THE BEST LOGLIKELIHOOD IS STILL OBTAINED AND REPLICATED.
+
+
+THE MODEL ESTIMATION TERMINATED NORMALLY
+
+
+
+MODEL FIT INFORMATION
+
+Number of Free Parameters                       64
+
+Loglikelihood
+
+          H0 Value                      -13703.677
+          H0 Scaling Correction Factor      2.4298
+            for MLR
+
+Information Criteria
+
+          Akaike (AIC)                   27535.354
+          Bayesian (BIC)                 27882.271
+          Sample-Size Adjusted BIC       27678.952
+            (n* = (n + 2) / 24)
+
+
+
+MODEL RESULTS USE THE LATENT CLASS VARIABLE ORDER
+
+   BC  C
+
+
+FINAL CLASS COUNTS AND PROPORTIONS FOR THE LATENT CLASS PATTERNS
+BASED ON ESTIMATED POSTERIOR PROBABILITIES
+
+  Latent Class
+    Pattern
+
+    1  1        277.71218          0.16629
+    1  2        335.21061          0.20072
+    1  3        333.03388          0.19942
+    1  4        529.50085          0.31707
+    1  5        194.54249          0.11649
+
+
+FINAL CLASS COUNTS AND PROPORTIONS FOR EACH LATENT CLASS VARIABLE
+BASED ON ESTIMATED POSTERIOR PROBABILITIES
+
+  Latent Class
+    Variable    Class
+
+    BC             1      1670.00000          1.00000
+    C              1       277.71219          0.16629
+                   2       335.21060          0.20072
+                   3       333.03387          0.19942
+                   4       529.50085          0.31707
+                   5       194.54248          0.11649
+
+
+FINAL CLASS COUNTS AND PROPORTIONS FOR THE LATENT CLASS PATTERNS
+BASED ON THEIR MOST LIKELY LATENT CLASS PATTERN
+
+Class Counts and Proportions
+
+  Latent Class
+    Pattern
+
+    1  1              284          0.17006
+    1  2              259          0.15509
+    1  3              303          0.18144
+    1  4              632          0.37844
+    1  5              192          0.11497
+
+
+FINAL CLASS COUNTS AND PROPORTIONS FOR EACH LATENT CLASS VARIABLE
+BASED ON THEIR MOST LIKELY LATENT CLASS PATTERN
+
+  Latent Class
+    Variable    Class
+
+    BC             1            1670          1.00000
+    C              1             284          0.17006
+                   2             259          0.15509
+                   3             303          0.18144
+                   4             632          0.37844
+                   5             192          0.11497
+
+
+CLASSIFICATION QUALITY
+
+     Entropy                         0.517
+
+
+MODEL RESULTS
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+Within Level
+
+Latent Class Pattern 1 1
+
+ Means
+    DRIVES            -0.010      0.206     -0.049      0.961
+    COGNITION         -0.585      0.230     -2.539      0.011
+    AFFECT             0.486      0.158      3.088      0.002
+    SOCIAL             0.317      0.184      1.724      0.085
+    WC                -1.013      0.119     -8.513      0.000
+    BIG_WORDS         -0.228      0.125     -1.818      0.069
+
+ Variances
+    DRIVES             1.513      0.212      7.139      0.000
+    COGNITION          1.077      0.293      3.679      0.000
+    AFFECT             1.954      0.269      7.267      0.000
+    SOCIAL             1.347      0.237      5.680      0.000
+    WC                 0.128      0.027      4.820      0.000
+    BIG_WORDS          1.310      0.209      6.267      0.000
+
+Latent Class Pattern 1 2
+
+ Means
+    DRIVES             0.525      0.216      2.425      0.015
+    COGNITION          0.274      0.177      1.550      0.121
+    AFFECT            -0.096      0.220     -0.436      0.663
+    SOCIAL             0.668      0.287      2.331      0.020
+    WC                -0.008      0.245     -0.032      0.974
+    BIG_WORDS         -0.200      0.141     -1.418      0.156
+
+ Variances
+    DRIVES             1.199      0.217      5.526      0.000
+    COGNITION          1.011      0.220      4.594      0.000
+    AFFECT             0.678      0.090      7.541      0.000
+    SOCIAL             1.049      0.192      5.464      0.000
+    WC                 0.475      0.065      7.321      0.000
+    BIG_WORDS          0.585      0.119      4.920      0.000
+
+Latent Class Pattern 1 3
+
+ Means
+    DRIVES             0.036      0.111      0.319      0.749
+    COGNITION          0.334      0.122      2.727      0.006
+    AFFECT            -0.378      0.103     -3.679      0.000
+    SOCIAL            -0.245      0.121     -2.019      0.043
+    WC                 1.235      0.196      6.317      0.000
+    BIG_WORDS          0.091      0.119      0.769      0.442
+
+ Variances
+    DRIVES             0.641      0.113      5.655      0.000
+    COGNITION          0.661      0.065     10.220      0.000
+    AFFECT             0.380      0.049      7.794      0.000
+    SOCIAL             0.539      0.081      6.646      0.000
+    WC                 1.319      0.201      6.570      0.000
+    BIG_WORDS          0.675      0.107      6.332      0.000
+
+Latent Class Pattern 1 4
+
+ Means
+    DRIVES            -0.174      0.096     -1.816      0.069
+    COGNITION         -0.347      0.124     -2.791      0.005
+    AFFECT             0.120      0.149      0.811      0.418
+    SOCIAL            -0.024      0.100     -0.241      0.810
+    WC                -0.202      0.161     -1.257      0.209
+    BIG_WORDS         -0.092      0.116     -0.797      0.426
+
+ Variances
+    DRIVES             0.604      0.087      6.923      0.000
+    COGNITION          0.538      0.113      4.753      0.000
+    AFFECT             0.940      0.147      6.397      0.000
+    SOCIAL             0.485      0.079      6.133      0.000
+    WC                 0.243      0.056      4.323      0.000
+    BIG_WORDS          0.903      0.103      8.764      0.000
+
+Latent Class Pattern 1 5
+
+ Means
+    DRIVES            -0.476      0.275     -1.735      0.083
+    COGNITION          0.735      0.140      5.247      0.000
+    AFFECT            -0.210      0.202     -1.039      0.299
+    SOCIAL            -1.120      0.116     -9.645      0.000
+    WC                -0.105      0.141     -0.741      0.458
+    BIG_WORDS          0.764      0.175      4.362      0.000
+
+ Variances
+    DRIVES             0.829      0.142      5.845      0.000
+    COGNITION          1.033      0.261      3.960      0.000
+    AFFECT             0.738      0.168      4.397      0.000
+    SOCIAL             0.340      0.058      5.845      0.000
+    WC                 0.463      0.061      7.532      0.000
+    BIG_WORDS          1.326      0.217      6.099      0.000
+
+Between Level
+
+Categorical Latent Variables
+
+Within Level
+
+ Means
+    C#1                0.356      0.420      0.848      0.396
+    C#2                0.544      0.401      1.358      0.174
+    C#3                0.537      0.335      1.603      0.109
+    C#4                1.001      0.297      3.369      0.001
+
+Between Level
+
+
+QUALITY OF NUMERICAL RESULTS
+
+     Condition Number for the Information Matrix              0.119E-04
+       (ratio of smallest to largest eigenvalue)
+
+
+C-SPECIFIC CLASSIFICATION RESULTS
+
+Classification Quality for BC
+
+     Entropy                     -Infinity
+
+Average Latent Class Probabilities for Most Likely Latent Class Membership (Row)
+by Latent Class (Column)
+
+           1
+
+    1   1.000
+
+
+Classification Probabilities for the Most Likely Latent Class Membership (Column)
+by Latent Class (Row)
+
+           1
+
+    1   1.000
+
+
+Logits for the Classification Probabilities for the Most Likely Latent Class Membership (Column)
+by Latent Class (Row)
+
+              1
+
+    1      0.000
+
+Classification Quality for C
+
+     Entropy                         0.517
+
+Average Latent Class Probabilities for Most Likely Latent Class Membership (Row)
+by Latent Class (Column)
+
+           1        2        3        4        5
+
+    1   0.708    0.093    0.013    0.152    0.033
+    2   0.071    0.681    0.094    0.136    0.018
+    3   0.001    0.115    0.764    0.067    0.053
+    4   0.078    0.136    0.082    0.653    0.051
+    5   0.045    0.062    0.112    0.095    0.687
+
+
+Classification Probabilities for the Most Likely Latent Class Membership (Column)
+by Latent Class (Row)
+
+           1        2        3        4        5
+
+    1   0.724    0.067    0.001    0.177    0.031
+    2   0.079    0.526    0.104    0.256    0.035
+    3   0.011    0.073    0.695    0.156    0.065
+    4   0.082    0.066    0.038    0.780    0.034
+    5   0.048    0.024    0.082    0.167    0.678
+
+
+Logits for the Classification Probabilities for the Most Likely Latent Class Membership (Column)
+by Latent Class (Row)
+
+              1        2        3        4        5
+
+    1      3.155    0.769   -3.048    1.744    0.000
+    2      0.803    2.697    1.074    1.976    0.000
+    3     -1.748    0.123    2.376    0.880    0.000
+    4      0.863    0.656    0.102    3.121    0.000
+    5     -2.641   -3.322   -2.106   -1.400    0.000
+
+
+SAMPLE STATISTICS FOR ESTIMATED FACTOR SCORES
+
+
+     SAMPLE STATISTICS
+
+
+           Means
+              C#1           C#2           C#3           C#4           C_C#1
+              ________      ________      ________      ________      ________
+                0.356         0.544         0.537         1.001         0.356
+
+
+           Means
+              C_C#2         C_C#3         C_C#4
+              ________      ________      ________
+                0.544         0.537         1.001
+
+
+           Covariances
+              C#1           C#2           C#3           C#4           C_C#1
+              ________      ________      ________      ________      ________
+ C#1            0.000
+ C#2            0.000         0.000
+ C#3            0.000         0.000         0.000
+ C#4            0.000         0.000         0.000         0.000
+ C_C#1          0.000         0.000         0.000         0.000         0.000
+ C_C#2          0.000         0.000         0.000         0.000         0.000
+ C_C#3          0.000         0.000         0.000         0.000         0.000
+ C_C#4          0.000         0.000         0.000         0.000         0.000
+
+
+           Covariances
+              C_C#2         C_C#3         C_C#4
+              ________      ________      ________
+ C_C#2          0.000
+ C_C#3          0.000         0.000
+ C_C#4          0.000         0.000         0.000
+
+
+           Correlations
+              C#1           C#2           C#3           C#4           C_C#1
+              ________      ________      ________      ________      ________
+ C#1            1.000
+ C#2          999.000         1.000
+ C#3          999.000       999.000         1.000
+ C#4          999.000       999.000       999.000         1.000
+ C_C#1        999.000       999.000       999.000       999.000         1.000
+ C_C#2        999.000       999.000       999.000       999.000       999.000
+ C_C#3        999.000       999.000       999.000       999.000       999.000
+ C_C#4        999.000       999.000       999.000       999.000       999.000
+
+
+           Correlations
+              C_C#2         C_C#3         C_C#4
+              ________      ________      ________
+ C_C#2          1.000
+ C_C#3        999.000         1.000
+ C_C#4        999.000       999.000         1.000
+
+
+PLOT INFORMATION
+
+The following plots are available:
+
+  Histograms (sample values, estimated factor scores)
+  Scatterplots (sample values, estimated factor scores)
+  Latent variable distribution plots
+
+SAVEDATA INFORMATION
+
+
+  Save file
+    mlLpa_L2_1_L1_5.dat
+
+  Order and format of variables
+
+    DRIVES         F10.3
+    COGNITIO       F10.3
+    AFFECT         F10.3
+    SOCIAL         F10.3
+    WC             F10.3
+    BIG_WORD       F10.3
+    C#1            F10.3
+    C#2            F10.3
+    C#3            F10.3
+    C#4            F10.3
+    C_C#1          F10.3
+    C_C#2          F10.3
+    C_C#3          F10.3
+    C_C#4          F10.3
+    CPROB1         F10.3
+    CPROB2         F10.3
+    CPROB3         F10.3
+    CPROB4         F10.3
+    CPROB5         F10.3
+    BC             F10.3
+    C              F10.3
+    MLCJOINT       F10.3
+    PCP_ID         I4
+
+  Save file format
+    22F10.3 I4
+
+  Save file record length    10000
+
+  Save missing symbol        *
+
+
+  Estimated Means and Covariance Matrix for the Latent Variables
+
+  Save file
+    tech4.dat
+  Save format      Free
+
+     Beginning Time:  13:38:48
+        Ending Time:  13:39:34
+       Elapsed Time:  00:00:46
+
+
+
+MUTHEN & MUTHEN
+3463 Stoner Ave.
+Los Angeles, CA  90066
+
+Tel: (310) 391-9971
+Fax: (310) 391-8971
+Web: www.StatModel.com
+Support: Support@StatModel.com
+
+Copyright (c) 1998-2021 Muthen & Muthen

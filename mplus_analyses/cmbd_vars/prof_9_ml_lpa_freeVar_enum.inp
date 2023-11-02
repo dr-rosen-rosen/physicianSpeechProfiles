@@ -1,0 +1,49 @@
+TITLE:
+P9_lpa__freeVarenum;
+DATA:
+FILE = "mplus_analyses/cmbd_vars/prof_9_ml_lpa_freeVar_enum.dat";
+ 
+VARIABLE:
+NAMES = drives cognition affect analytic clout authentic wc big_words PCP_ID; 
+ MISSING=.;
+ CLASSES = c(9);
+DEFINE:
+STANDARDIZE drives, cognition, affect, analytic, clout, authentic, wc, big_words;
+ANALYSIS:
+TYPE = MIXTURE;
+    ESTIMATOR=MLR;
+    STARTS=1000 50;
+    STITERATIONS=50;
+    LRTSTARTS=1000 50 1000 50;
+    PROCESSORS=4;
+MODEL:
+%OVERALL%
+%C#1%
+[drives, cognition, affect, analytic, clout, authentic, wc, big_words];
+drives, cognition, affect, analytic, clout, authentic, wc, big_words;
+%C#2%
+[drives, cognition, affect, analytic, clout, authentic, wc, big_words];
+drives, cognition, affect, analytic, clout, authentic, wc, big_words;
+%C#3%
+[drives, cognition, affect, analytic, clout, authentic, wc, big_words];
+drives, cognition, affect, analytic, clout, authentic, wc, big_words;
+%C#4%
+[drives, cognition, affect, analytic, clout, authentic, wc, big_words];
+drives, cognition, affect, analytic, clout, authentic, wc, big_words;
+%C#5%
+[drives, cognition, affect, analytic, clout, authentic, wc, big_words];
+drives, cognition, affect, analytic, clout, authentic, wc, big_words;
+%C#6%
+[drives, cognition, affect, analytic, clout, authentic, wc, big_words];
+drives, cognition, affect, analytic, clout, authentic, wc, big_words;
+%C#7%
+[drives, cognition, affect, analytic, clout, authentic, wc, big_words];
+drives, cognition, affect, analytic, clout, authentic, wc, big_words;
+%C#8%
+[drives, cognition, affect, analytic, clout, authentic, wc, big_words];
+drives, cognition, affect, analytic, clout, authentic, wc, big_words;
+%C#9%
+[drives, cognition, affect, analytic, clout, authentic, wc, big_words];
+drives, cognition, affect, analytic, clout, authentic, wc, big_words;
+PLOT:
+type = plot3;

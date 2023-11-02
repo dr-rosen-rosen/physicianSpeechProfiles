@@ -1,0 +1,582 @@
+Mplus VERSION 8.9 (Mac)
+MUTHEN & MUTHEN
+05/26/2023   9:42 AM
+
+INPUT INSTRUCTIONS
+
+  TITLE:
+  L1_P_9_lpa_freeVar;
+  DATA:
+  FILE = "mplus_analyses/sum_vars/L1_prof_9_ml_lpa_freeVar_enum.dat";
+
+  VARIABLE:
+  NAMES = analytic clout authentic tone wc big_words PCP_ID;
+   MISSING=.;
+   CLASSES = c(9);
+  DEFINE:
+  STANDARDIZE analytic clout authentic tone wc big_words;
+  ANALYSIS:
+  TYPE = MIXTURE;
+      ESTIMATOR=MLR;
+      STARTS=1000 50;
+      STITERATIONS=50;
+      LRTSTARTS=1000 50 1000 50;
+      PROCESSORS=4;
+  MODEL:
+  %OVERALL%
+  %C#1%
+  [analytic clout authentic tone wc big_words];
+  analytic clout authentic tone wc big_words;
+  %C#2%
+  [analytic clout authentic tone wc big_words];
+  analytic clout authentic tone wc big_words;
+  %C#3%
+  [analytic clout authentic tone wc big_words];
+  analytic clout authentic tone wc big_words;
+  %C#4%
+  [analytic clout authentic tone wc big_words];
+  analytic clout authentic tone wc big_words;
+  %C#5%
+  [analytic clout authentic tone wc big_words];
+  analytic clout authentic tone wc big_words;
+  %C#6%
+  [analytic clout authentic tone wc big_words];
+  analytic clout authentic tone wc big_words;
+  %C#7%
+  [analytic clout authentic tone wc big_words];
+  analytic clout authentic tone wc big_words;
+  %C#8%
+  [analytic clout authentic tone wc big_words];
+  analytic clout authentic tone wc big_words;
+  %C#9%
+  [analytic clout authentic tone wc big_words];
+  analytic clout authentic tone wc big_words;
+  PLOT:
+  type = plot3;
+
+
+
+*** WARNING in VARIABLE command
+  Note that only the first 8 characters of variable names are used in the output.
+  Shorten variable names to avoid any confusion.
+*** WARNING in MODEL command
+  All variables are uncorrelated with all other variables within class.
+  Check that this is what is intended.
+*** WARNING in PLOT command
+  Note that only the first 8 characters of variable names are used in plots.
+  If variable names are not unique within the first 8 characters, problems
+  may occur.
+   3 WARNING(S) FOUND IN THE INPUT INSTRUCTIONS
+
+
+
+
+L1_P_9_lpa_freeVar;
+
+SUMMARY OF ANALYSIS
+
+Number of groups                                                 1
+Number of observations                                        1672
+
+Number of dependent variables                                    7
+Number of independent variables                                  0
+Number of continuous latent variables                            0
+Number of categorical latent variables                           1
+
+Observed dependent variables
+
+  Continuous
+   ANALYTIC    CLOUT       AUTHENTIC   TONE        WC          BIG_WORDS
+   PCP_ID
+
+Categorical latent variables
+   C
+
+
+Estimator                                                      MLR
+Information matrix                                        OBSERVED
+Optimization Specifications for the Quasi-Newton Algorithm for
+Continuous Outcomes
+  Maximum number of iterations                                 100
+  Convergence criterion                                  0.100D-05
+Optimization Specifications for the EM Algorithm
+  Maximum number of iterations                                 500
+  Convergence criteria
+    Loglikelihood change                                 0.100D-06
+    Relative loglikelihood change                        0.100D-06
+    Derivative                                           0.100D-05
+Optimization Specifications for the M step of the EM Algorithm for
+Categorical Latent variables
+  Number of M step iterations                                    1
+  M step convergence criterion                           0.100D-05
+  Basis for M step termination                           ITERATION
+Optimization Specifications for the M step of the EM Algorithm for
+Censored, Binary or Ordered Categorical (Ordinal), Unordered
+Categorical (Nominal) and Count Outcomes
+  Number of M step iterations                                    1
+  M step convergence criterion                           0.100D-05
+  Basis for M step termination                           ITERATION
+  Maximum value for logit thresholds                            15
+  Minimum value for logit thresholds                           -15
+  Minimum expected cell size for chi-square              0.100D-01
+Maximum number of iterations for H1                           2000
+Convergence criterion for H1                             0.100D-03
+Optimization algorithm                                         EMA
+Random Starts Specifications
+  Number of initial stage random starts                       1000
+  Number of final stage optimizations                           50
+  Number of initial stage iterations                            50
+  Initial stage convergence criterion                    0.100D+01
+  Random starts scale                                    0.500D+01
+  Random seed for generating random starts                       0
+
+Input data file(s)
+  mplus_analyses/sum_vars/L1_prof_9_ml_lpa_freeVar_enum.dat
+Input data format  FREE
+
+
+SUMMARY OF DATA
+
+     Number of missing data patterns             1
+     Number of y missing data patterns           1
+     Number of u missing data patterns           0
+
+
+COVARIANCE COVERAGE OF DATA
+
+Minimum covariance coverage value   0.100
+
+
+     PROPORTION OF DATA PRESENT FOR Y
+
+
+           Covariance Coverage
+              ANALYTIC      CLOUT         AUTHENTI      TONE          WC
+              ________      ________      ________      ________      ________
+ ANALYTIC       1.000
+ CLOUT          1.000         1.000
+ AUTHENTI       1.000         1.000         1.000
+ TONE           1.000         1.000         1.000         1.000
+ WC             1.000         1.000         1.000         1.000         1.000
+ BIG_WORD       1.000         1.000         1.000         1.000         1.000
+ PCP_ID         1.000         1.000         1.000         1.000         1.000
+
+
+           Covariance Coverage
+              BIG_WORD      PCP_ID
+              ________      ________
+ BIG_WORD       1.000
+ PCP_ID         1.000         1.000
+
+
+
+UNIVARIATE SAMPLE STATISTICS
+
+
+     UNIVARIATE HIGHER-ORDER MOMENT DESCRIPTIVE STATISTICS
+
+         Variable/         Mean/     Skewness/   Minimum/ % with                Percentiles
+        Sample Size      Variance    Kurtosis    Maximum  Min/Max      20%/60%    40%/80%    Median
+
+     ANALYTIC              0.000       1.350      -1.279    1.67%      -0.818     -0.476     -0.258
+            1672.000       1.000       2.045       5.202    0.06%      -0.029      0.703
+     CLOUT                 0.000      -1.716      -5.773    0.06%      -0.610      0.087      0.305
+            1672.000       1.000       3.556       0.973    6.88%       0.502      0.791
+     AUTHENTIC             0.000       0.159      -2.584    0.06%      -0.867     -0.326     -0.042
+            1672.000       1.000      -0.318       3.354    0.06%       0.245      0.889
+     TONE                  0.000       0.515      -2.462    0.06%      -0.872     -0.362     -0.127
+            1672.000       1.000      -0.083       3.099    0.06%       0.147      0.848
+     WC                    0.000       1.215      -2.015    0.06%      -0.800     -0.370     -0.169
+            1672.000       1.000       2.403       4.875    0.06%       0.057      0.716
+     BIG_WORDS             0.000       0.356      -3.516    0.06%      -0.841     -0.290     -0.060
+            1672.000       1.000       0.509       4.567    0.06%       0.183      0.842
+     PCP_ID               88.139      -0.796       2.000    0.36%      58.000     90.000     96.000
+            1672.000    1098.246      -0.058     142.000    0.42%     105.000    115.000
+
+RANDOM STARTS RESULTS RANKED FROM THE BEST TO THE WORST LOGLIKELIHOOD VALUES
+
+
+577 perturbed starting value run(s) did not converge or were rejected in the third stage.
+Final stage loglikelihood values at local maxima, seeds, and initial stage start numbers:
+
+          -20758.997  636396           168
+          -20766.470  579138           706
+          -20768.588  888905           444
+          -20769.305  502495           724
+          -20769.383  349263           263
+          -20770.107  396795           323
+          -20770.107  453915           975
+          -20770.235  960438           116
+          -20770.598  742609           531
+          -20770.750  61587            400
+          -20771.716  40327            971
+
+39 perturbed starting value run(s) did not converge or were rejected in the third stage.
+
+
+
+     WARNING:  THE BEST LOGLIKELIHOOD VALUE WAS NOT REPLICATED.  THE
+     SOLUTION MAY NOT BE TRUSTWORTHY DUE TO LOCAL MAXIMA.  INCREASE THE
+     NUMBER OF RANDOM STARTS.
+
+
+THE MODEL ESTIMATION TERMINATED NORMALLY
+
+
+
+MODEL FIT INFORMATION
+
+Number of Free Parameters                      126
+
+Loglikelihood
+
+          H0 Value                      -20758.997
+          H0 Scaling Correction Factor      1.2572
+            for MLR
+
+Information Criteria
+
+          Akaike (AIC)                   41769.994
+          Bayesian (BIC)                 42453.138
+          Sample-Size Adjusted BIC       42052.854
+            (n* = (n + 2) / 24)
+
+
+
+FINAL CLASS COUNTS AND PROPORTIONS FOR THE LATENT CLASSES
+BASED ON THE ESTIMATED MODEL
+
+    Latent
+   Classes
+
+       1        106.45104          0.06367
+       2         99.50842          0.05951
+       3        175.08418          0.10472
+       4        123.18490          0.07368
+       5        256.88024          0.15364
+       6        141.22654          0.08447
+       7        251.35581          0.15033
+       8        384.02563          0.22968
+       9        134.28323          0.08031
+
+
+FINAL CLASS COUNTS AND PROPORTIONS FOR THE LATENT CLASSES
+BASED ON ESTIMATED POSTERIOR PROBABILITIES
+
+    Latent
+   Classes
+
+       1        106.45104          0.06367
+       2         99.50842          0.05951
+       3        175.08418          0.10472
+       4        123.18490          0.07368
+       5        256.88024          0.15364
+       6        141.22654          0.08447
+       7        251.35581          0.15033
+       8        384.02563          0.22968
+       9        134.28323          0.08031
+
+
+FINAL CLASS COUNTS AND PROPORTIONS FOR THE LATENT CLASSES
+BASED ON THEIR MOST LIKELY LATENT CLASS MEMBERSHIP
+
+Class Counts and Proportions
+
+    Latent
+   Classes
+
+       1               94          0.05622
+       2               83          0.04964
+       3              165          0.09868
+       4              135          0.08074
+       5              246          0.14713
+       6              161          0.09629
+       7              275          0.16447
+       8              380          0.22727
+       9              133          0.07955
+
+
+CLASSIFICATION QUALITY
+
+     Entropy                         0.730
+
+
+Average Latent Class Probabilities for Most Likely Latent Class Membership (Row)
+by Latent Class (Column)
+
+           1        2        3        4        5        6        7        8        9
+
+    1   0.789    0.031    0.051    0.000    0.076    0.000    0.001    0.038    0.014
+    2   0.020    0.829    0.039    0.016    0.009    0.000    0.007    0.034    0.047
+    3   0.043    0.019    0.773    0.000    0.068    0.000    0.019    0.071    0.006
+    4   0.001    0.053    0.002    0.776    0.000    0.027    0.015    0.026    0.100
+    5   0.048    0.006    0.060    0.000    0.775    0.001    0.022    0.083    0.005
+    6   0.002    0.002    0.008    0.023    0.010    0.787    0.102    0.066    0.001
+    7   0.003    0.001    0.043    0.007    0.050    0.022    0.745    0.128    0.001
+    8   0.022    0.016    0.029    0.011    0.080    0.012    0.048    0.769    0.014
+    9   0.017    0.069    0.004    0.055    0.008    0.001    0.005    0.030    0.810
+
+
+
+Classification Probabilities for the Most Likely Latent Class Membership (Column)
+by Latent Class (Row)
+
+           1        2        3        4        5        6        7        8        9
+
+    1   0.697    0.015    0.067    0.001    0.110    0.003    0.007    0.079    0.021
+    2   0.029    0.692    0.031    0.072    0.016    0.003    0.003    0.061    0.093
+    3   0.027    0.019    0.729    0.001    0.084    0.007    0.067    0.063    0.003
+    4   0.000    0.011    0.000    0.850    0.000    0.030    0.016    0.033    0.060
+    5   0.028    0.003    0.044    0.000    0.742    0.007    0.054    0.119    0.004
+    6   0.000    0.000    0.000    0.026    0.002    0.897    0.042    0.032    0.001
+    7   0.000    0.002    0.013    0.008    0.021    0.065    0.815    0.072    0.003
+    8   0.009    0.007    0.031    0.009    0.053    0.028    0.092    0.761    0.010
+    9   0.010    0.029    0.007    0.100    0.009    0.001    0.003    0.038    0.802
+
+
+
+Logits for the Classification Probabilities for the Most Likely Latent Class Membership (Column)
+by Latent Class (Row)
+
+              1        2        3        4        5        6        7        8        9
+
+    1      3.508   -0.316    1.172   -3.016    1.662   -1.945   -1.136    1.336    0.000
+    2     -1.154    2.010   -1.084   -0.246   -1.787   -3.350   -3.346   -0.426    0.000
+    3      2.196    1.810    5.477   -0.859    3.317    0.848    3.088    3.033    0.000
+    4     -7.622   -1.731   -6.770    2.653  -10.495   -0.701   -1.321   -0.582    0.000
+    5      1.892   -0.319    2.352   -3.201    5.180    0.445    2.550    3.346    0.000
+    6     -7.078   -7.078   -4.365    3.088    0.247    6.628    3.577    3.297    0.000
+    7     -1.815   -0.274    1.482    1.061    2.023    3.136    5.659    3.233    0.000
+    8     -0.109   -0.356    1.087   -0.134    1.641    0.979    2.186    4.298    0.000
+    9     -4.381   -3.323   -4.743   -2.080   -4.457   -6.661   -5.659   -3.037    0.000
+
+
+
+MODEL RESULTS
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+Latent Class 1
+
+ Means
+    ANALYTIC           0.838      0.237      3.530      0.000
+    CLOUT             -1.210      0.184     -6.568      0.000
+    AUTHENTIC          0.793      0.146      5.439      0.000
+    TONE              -0.675      0.077     -8.772      0.000
+    WC                 0.582      0.181      3.214      0.001
+    BIG_WORDS          0.829      0.187      4.438      0.000
+    PCP_ID            93.845      4.065     23.085      0.000
+
+ Variances
+    ANALYTIC           1.609      0.276      5.826      0.000
+    CLOUT              1.405      0.254      5.537      0.000
+    AUTHENTIC          0.605      0.102      5.910      0.000
+    TONE               0.214      0.040      5.304      0.000
+    WC                 1.454      0.314      4.634      0.000
+    BIG_WORDS          1.041      0.198      5.259      0.000
+    PCP_ID           383.585     28.251     13.578      0.000
+
+Latent Class 2
+
+ Means
+    ANALYTIC           0.219      0.173      1.267      0.205
+    CLOUT             -0.774      0.233     -3.328      0.001
+    AUTHENTIC          0.528      0.131      4.023      0.000
+    TONE               0.426      0.178      2.387      0.017
+    WC                -0.609      0.124     -4.896      0.000
+    BIG_WORDS          0.601      0.231      2.604      0.009
+    PCP_ID            43.004      6.317      6.808      0.000
+
+ Variances
+    ANALYTIC           0.924      0.202      4.579      0.000
+    CLOUT              1.060      0.182      5.813      0.000
+    AUTHENTIC          0.928      0.173      5.376      0.000
+    TONE               1.470      0.198      7.417      0.000
+    WC                 0.354      0.117      3.017      0.003
+    BIG_WORDS          2.140      0.355      6.032      0.000
+    PCP_ID           383.585     28.251     13.578      0.000
+
+Latent Class 3
+
+ Means
+    ANALYTIC          -0.829      0.058    -14.384      0.000
+    CLOUT             -1.109      0.207     -5.349      0.000
+    AUTHENTIC          1.073      0.219      4.896      0.000
+    TONE              -0.098      0.154     -0.633      0.526
+    WC                -0.040      0.182     -0.221      0.825
+    BIG_WORDS         -0.246      0.128     -1.920      0.055
+    PCP_ID            94.882      2.409     39.382      0.000
+
+ Variances
+    ANALYTIC           0.063      0.022      2.906      0.004
+    CLOUT              1.804      0.335      5.383      0.000
+    AUTHENTIC          0.601      0.220      2.735      0.006
+    TONE               0.965      0.205      4.710      0.000
+    WC                 0.579      0.183      3.170      0.002
+    BIG_WORDS          0.726      0.154      4.726      0.000
+    PCP_ID           383.585     28.251     13.578      0.000
+
+Latent Class 4
+
+ Means
+    ANALYTIC           0.645      0.158      4.086      0.000
+    CLOUT              0.759      0.069     10.936      0.000
+    AUTHENTIC         -0.487      0.223     -2.185      0.029
+    TONE               0.139      0.167      0.834      0.404
+    WC                -0.779      0.105     -7.402      0.000
+    BIG_WORDS          0.449      0.136      3.303      0.001
+    PCP_ID            37.169      3.541     10.496      0.000
+
+ Variances
+    ANALYTIC           1.440      0.251      5.740      0.000
+    CLOUT              0.038      0.016      2.328      0.020
+    AUTHENTIC          0.824      0.179      4.605      0.000
+    TONE               1.178      0.193      6.117      0.000
+    WC                 0.293      0.045      6.562      0.000
+    BIG_WORDS          1.100      0.137      8.012      0.000
+    PCP_ID           383.585     28.251     13.578      0.000
+
+Latent Class 5
+
+ Means
+    ANALYTIC          -0.270      0.080     -3.377      0.001
+    CLOUT             -0.448      0.118     -3.787      0.000
+    AUTHENTIC         -0.102      0.119     -0.859      0.391
+    TONE              -0.199      0.130     -1.533      0.125
+    WC                 0.998      0.206      4.835      0.000
+    BIG_WORDS         -0.122      0.074     -1.661      0.097
+    PCP_ID           112.454      2.323     48.409      0.000
+
+ Variances
+    ANALYTIC           0.297      0.045      6.575      0.000
+    CLOUT              0.679      0.118      5.765      0.000
+    AUTHENTIC          0.561      0.083      6.761      0.000
+    TONE               0.543      0.137      3.969      0.000
+    WC                 1.627      0.197      8.249      0.000
+    BIG_WORDS          0.485      0.075      6.434      0.000
+    PCP_ID           383.585     28.251     13.578      0.000
+
+Latent Class 6
+
+ Means
+    ANALYTIC          -0.248      0.174     -1.427      0.154
+    CLOUT              0.938      0.018     53.180      0.000
+    AUTHENTIC         -0.667      0.135     -4.949      0.000
+    TONE               0.229      0.143      1.605      0.108
+    WC                -0.658      0.104     -6.318      0.000
+    BIG_WORDS         -0.274      0.113     -2.421      0.015
+    PCP_ID            98.942      3.957     25.003      0.000
+
+ Variances
+    ANALYTIC           0.429      0.174      2.468      0.014
+    CLOUT              0.002      0.001      1.536      0.125
+    AUTHENTIC          0.892      0.204      4.371      0.000
+    TONE               1.347      0.150      8.994      0.000
+    WC                 0.274      0.057      4.782      0.000
+    BIG_WORDS          0.827      0.100      8.262      0.000
+    PCP_ID           383.585     28.251     13.578      0.000
+
+Latent Class 7
+
+ Means
+    ANALYTIC          -0.629      0.053    -11.863      0.000
+    CLOUT              0.664      0.064     10.449      0.000
+    AUTHENTIC         -0.327      0.112     -2.928      0.003
+    TONE               0.100      0.121      0.829      0.407
+    WC                -0.041      0.095     -0.429      0.668
+    BIG_WORDS         -0.529      0.072     -7.303      0.000
+    PCP_ID           103.339      2.158     47.880      0.000
+
+ Variances
+    ANALYTIC           0.117      0.025      4.704      0.000
+    CLOUT              0.030      0.017      1.746      0.081
+    AUTHENTIC          0.861      0.144      5.981      0.000
+    TONE               1.098      0.134      8.211      0.000
+    WC                 0.519      0.062      8.331      0.000
+    BIG_WORDS          0.529      0.067      7.887      0.000
+    PCP_ID           383.585     28.251     13.578      0.000
+
+Latent Class 8
+
+ Means
+    ANALYTIC           0.278      0.110      2.539      0.011
+    CLOUT              0.245      0.093      2.631      0.009
+    AUTHENTIC         -0.228      0.102     -2.239      0.025
+    TONE               0.185      0.089      2.077      0.038
+    WC                -0.272      0.079     -3.451      0.001
+    BIG_WORDS         -0.120      0.078     -1.538      0.124
+    PCP_ID            99.961      1.954     51.168      0.000
+
+ Variances
+    ANALYTIC           0.980      0.105      9.345      0.000
+    CLOUT              0.175      0.051      3.458      0.001
+    AUTHENTIC          0.784      0.089      8.856      0.000
+    TONE               1.087      0.108     10.090      0.000
+    WC                 0.350      0.050      6.951      0.000
+    BIG_WORDS          0.922      0.099      9.286      0.000
+    PCP_ID           383.585     28.251     13.578      0.000
+
+Latent Class 9
+
+ Means
+    ANALYTIC           0.822      0.148      5.562      0.000
+    CLOUT              0.209      0.089      2.353      0.019
+    AUTHENTIC          0.188      0.100      1.872      0.061
+    TONE              -0.356      0.097     -3.670      0.000
+    WC                 0.394      0.155      2.541      0.011
+    BIG_WORDS          0.663      0.092      7.215      0.000
+    PCP_ID            34.897      2.714     12.857      0.000
+
+ Variances
+    ANALYTIC           1.338      0.215      6.217      0.000
+    CLOUT              0.219      0.049      4.441      0.000
+    AUTHENTIC          0.583      0.070      8.308      0.000
+    TONE               0.333      0.076      4.369      0.000
+    WC                 0.807      0.121      6.666      0.000
+    BIG_WORDS          0.472      0.076      6.218      0.000
+    PCP_ID           383.585     28.251     13.578      0.000
+
+Categorical Latent Variables
+
+ Means
+    C#1               -0.232      0.288     -0.807      0.419
+    C#2               -0.300      0.288     -1.041      0.298
+    C#3                0.265      0.285      0.931      0.352
+    C#4               -0.086      0.382     -0.226      0.822
+    C#5                0.649      0.246      2.640      0.008
+    C#6                0.050      0.259      0.195      0.846
+    C#7                0.627      0.248      2.533      0.011
+    C#8                1.051      0.229      4.583      0.000
+
+
+QUALITY OF NUMERICAL RESULTS
+
+     Condition Number for the Information Matrix              0.520E-04
+       (ratio of smallest to largest eigenvalue)
+
+
+PLOT INFORMATION
+
+The following plots are available:
+
+  Histograms (sample values)
+  Scatterplots (sample values)
+  Estimated overall and class-specific distributions
+
+     Beginning Time:  09:42:26
+        Ending Time:  09:43:27
+       Elapsed Time:  00:01:01
+
+
+
+MUTHEN & MUTHEN
+3463 Stoner Ave.
+Los Angeles, CA  90066
+
+Tel: (310) 391-9971
+Fax: (310) 391-8971
+Web: www.StatModel.com
+Support: Support@StatModel.com
+
+Copyright (c) 1998-2023 Muthen & Muthen
